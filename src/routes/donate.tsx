@@ -40,24 +40,27 @@ function DonatePage() {
 
   return (
     <SiteShell>
-      <header className="relative overflow-hidden border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <div className="space-y-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Donate</p>
-            <h1 className="font-display text-5xl font-semibold leading-[1.05] lg:text-6xl">
-              Change a life for just <span className="text-gold">$5/month.</span>
-            </h1>
-            <p className="max-w-lg text-lg text-charcoal/70">
-              Small enough to forget about. Big enough to keep a child in a classroom, with clean
-              water and a daily meal, all year long.
-            </p>
-          </div>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-            <img src={IMG.childrenCloseup} alt="Cross River State student" className="h-full w-full object-cover animate-ken-burns" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-            <p className="absolute bottom-6 left-6 right-6 font-display text-2xl italic text-offwhite">
-              "Your $5 keeps me in school."
-            </p>
+      <header className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+        <img
+          src={IMG.childrenCloseup}
+          alt="Donate"
+          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/10" />
+        <div className="absolute inset-0 flex items-end pb-16 px-6">
+          <div className="mx-auto max-w-7xl w-full">
+            <ScrollReveal translateY={12}>
+              <div className="space-y-4 text-offwhite">
+                <p className="font-mono text-xs uppercase tracking-widest text-gold">Donate</p>
+                <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-offwhite max-w-4xl">
+                  Change a life for just <span className="text-gold">$5/month.</span>
+                </h1>
+                <p className="max-w-2xl text-lg text-offwhite/80">
+                  Small enough to forget about. Big enough to keep a child in a classroom, with clean
+                  water and a daily meal, all year long.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </header>

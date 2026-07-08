@@ -34,16 +34,27 @@ const team = [
 function WhoWeArePage() {
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20 bg-stone-50">
-        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-7 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
-            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
-              A Nigerian NGO built on receipts, not rhetoric.
-            </h1>
-          </div>
-          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
-            <img src={IMG.schoolGroup} alt="MSSF school pupils smiling together" className="w-full object-cover" />
+      <header className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+        <img
+          src={IMG.schoolGroup}
+          alt="Who We Are"
+          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/10" />
+        <div className="absolute inset-0 flex items-end pb-16 px-6">
+          <div className="mx-auto max-w-7xl w-full">
+            <ScrollReveal translateY={12}>
+              <div className="space-y-4 text-offwhite">
+                <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
+                <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-offwhite max-w-4xl">
+                  A Nigerian NGO built on receipts, not rhetoric.
+                </h1>
+                <p className="max-w-2xl text-lg text-offwhite/80">
+                  We are a grassroots team of planners, educators, and volunteers proving that
+                  holistic child support is the only way to break the cycle of poverty.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </header>

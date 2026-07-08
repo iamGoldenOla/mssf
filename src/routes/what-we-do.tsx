@@ -29,20 +29,27 @@ const capabilities = [
 function WhatWeDoPage() {
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20 bg-stone-50">
-        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-7 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
-            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
-              Seven programs. One integrated model.
-            </h1>
-            <p className="max-w-2xl text-lg text-charcoal/70">
-              Delivering only textbooks leaves a hungry child. Delivering only meals leaves a
-              child who can't read them. Our model works because it refuses to pick one.
-            </p>
-          </div>
-          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
-            <img src={IMG.uniforms} alt="Students with new school uniforms" className="w-full object-cover" />
+      <header className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+        <img
+          src={IMG.uniforms}
+          alt="What We Do"
+          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/10" />
+        <div className="absolute inset-0 flex items-end pb-16 px-6">
+          <div className="mx-auto max-w-7xl w-full">
+            <ScrollReveal translateY={12}>
+              <div className="space-y-4 text-offwhite">
+                <p className="font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
+                <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-offwhite max-w-4xl">
+                  Seven programs. One integrated model.
+                </h1>
+                <p className="max-w-2xl text-lg text-offwhite/80">
+                  Delivering only textbooks leaves a hungry child. Delivering only meals leaves a
+                  child who can't read them. Our model works because it refuses to pick one.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </header>
