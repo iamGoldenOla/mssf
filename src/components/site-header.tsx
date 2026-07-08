@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { IMG } from "@/lib/images";
 
 const links = [
   { to: "/who-we-are", label: "Who We Are" },
@@ -16,9 +17,7 @@ export function SiteHeader() {
     <nav className="sticky top-0 z-50 border-b border-border bg-offwhite/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="grid size-8 place-items-center bg-green">
-            <div className="size-3 rotate-45 bg-gold" />
-          </div>
+          <img src={IMG.logo} alt="MSSF Logo" className="h-9 w-auto" />
           <span className="font-display text-lg font-semibold uppercase tracking-tight text-green">
             MSSF
           </span>

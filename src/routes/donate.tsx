@@ -125,11 +125,11 @@ function DonatePage() {
             <div className="space-y-4">
               <Row label="Bank" value="Zenith Bank" />
               <Row label="Account Name" value="My Shining Star Foundation" />
-              <Row label="Account Number" value="XXXX XXXX XX" mono />
+              <Row label="Account Number" value="1016024813" mono />
               <Row label="Reference" value="Your name + purpose" />
             </div>
             <p className="text-xs text-charcoal/50">
-              Please email your transfer confirmation to <a href="mailto:hello@mssf.ng" className="text-gold hover:underline">hello@mssf.ng</a> so we can issue a formal receipt.
+              Please email your transfer confirmation to <a href="mailto:info@mssf.com.ng" className="text-gold hover:underline">info@mssf.com.ng</a> so we can issue a formal receipt.
             </p>
             <p className="rounded-sm bg-stone-100 p-3 font-mono text-[10px] uppercase tracking-widest text-charcoal/60">
               Paystack / Flutterwave NGN checkout — coming soon
@@ -171,7 +171,7 @@ function DonatePage() {
               Every project. Every year. If you want the naira-level detail, ask us — we'll send
               the log.
             </p>
-            <a href="mailto:hello@mssf.ng" className="inline-flex items-center gap-2 font-semibold text-gold">
+            <a href="mailto:info@mssf.com.ng" className="inline-flex items-center gap-2 font-semibold text-gold">
               Request the full impact log →
             </a>
           </div>

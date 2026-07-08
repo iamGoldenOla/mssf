@@ -21,26 +21,35 @@ const YEARS: Year[] = [
   {
     year: "2026",
     entries: [
-      { date: "03 / 2026", item: "Early Childhood Reading Corner — Odiofiong", qty: "1 room, 40 children", remark: "Play-based learning space with age-appropriate books and low seating." },
-      { date: "01 / 2026", item: "Rotary Partnership Kickoff", remark: "Formal MoU signed for co-funded teacher training program in Q2." },
+      { date: "03 / 2026", item: "Donation of First Aid Box with kits inside", qty: "1 Box", remark: "Delivered to the school for safety and basic health support." },
+      { date: "02 / 2026", item: "Donation of Empty Water Kegs & Trash Bins", qty: "8 Kegs, 4 Bins", remark: "Brought to facilitate fetching of clean water and school hygiene." },
+      { date: "02 / 2026", item: "Donation of GP Tank for Water", qty: "1 GP Tank", remark: "Installation of a large GP tank to store clean borehole water." },
+      { date: "02 / 2026", item: "Completed 3 Rooms of School Toilets", qty: "3 Rooms", remark: "New school toilet facilities completed and keys handed over to the Head Teacher." },
     ],
   },
   {
     year: "2025",
     entries: [
-      { date: "11 / 2025", item: "Uniform Distribution — Term 3", qty: "180 sets", remark: "New uniforms distributed to primary students at 2 partner schools." },
-      { date: "09 / 2025", item: "Nutritional Milk Rollout", qty: "Daily, 250 children", remark: "Daily milk supplementation program launched at St. Peter's and Odiofiong." },
-      { date: "06 / 2025", item: "Solar Power Installation", qty: "1 school", remark: "4-panel array powering lights, ceiling fans, and staff room at St. Peter's." },
-      { date: "03 / 2025", item: "Volunteer Cohort #3", qty: "12 volunteers", remark: "Trained on child safeguarding, transport protocols, and first aid." },
+      { date: "10 / 2025", item: "Donation of class registers for teachers", qty: "6 Registers", remark: "Supplied to teachers to track and manage student attendance." },
+      { date: "08 / 2025", item: "Donation of Foldable teachers' tables, seats & Football", qty: "4 Tables, 6 Seats, 1 Football", remark: "Delivered to the school; Mr. Christopher received it on behalf of the school." },
+      { date: "07 / 2025", item: "Donation of wooden benches without tops for ECCDE writing", qty: "6 Benches", remark: "Benches without tops provided for Early Child Care writing." },
+      { date: "06 / 2025", item: "Donation of Colour Books & Pencil Crayons for ECCDE", qty: "4 Books, 2 Pkts", remark: "Supplied for ECCDE early childhood learning usage." },
+      { date: "06 / 2025", item: "Donation of exercise books, pencils and pens by Rotary Club", qty: "1000 Books, 4 Pkts, 1 Container", remark: "Rotary Club donated 1000pcs of writing materials, 4 packets of pencils, and 1 container of pens." },
+      { date: "05 / 2025", item: "Issuance of class register for the head teacher", qty: "1 Register", remark: "Attendance register issued for the Head Teacher." },
+      { date: "03 / 2025", item: "Donation of mattress for teachers", qty: "6 Mattresses", remark: "Donation of mattresses for the 2nd batch of teachers to upgrade living quarters." },
+      { date: "03 / 2025", item: "Donation of Hausa mat for ECCDE", qty: "1 Mat", remark: "Provided for early childhood learning environment." },
+      { date: "02 / 2025", item: "Donation of wooden benches without tops for ECCDE writing", qty: "3 Benches", remark: "The Head Teacher received the benches." },
     ],
   },
   {
     year: "2024",
     entries: [
-      { date: "11 / 2024", item: "St. Peter's — Renovation Phase II Complete", qty: "4 classrooms", remark: "Roofing, painting, and desk replacement finished. 120 students served." },
-      { date: "08 / 2024", item: "Borehole & Water Purification", qty: "2,000 L / day", remark: "New water system at Odiofiong Primary serves school and adjacent community." },
-      { date: "05 / 2024", item: "Community Health Camp", qty: "180 screenings", remark: "General health screenings, deworming, and basic dental care for enrolled children." },
-      { date: "01 / 2024", item: "Quarterly Learning Kit Distribution", qty: "800 books, 400 pens", remark: "Distributed across 3 rural schools alongside 50 teacher instructional guides." },
+      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture." },
+      { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use." },
+      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students." },
+      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment." },
+      { date: "01 / 2024", item: "Writing materials distribution", qty: "500 Books, 3 Pkts, 2 Containers", remark: "Distributed 500 copies of 40 leaves exercise books, 3 packets of pencils, and 2 containers of erasers." },
+      { date: "01 / 2024", item: "Recruitment of teachers", qty: "4 Educators", remark: "Recruitment of 4 qualified and passionate teachers for the school." },
     ],
   },
 ];
@@ -149,10 +158,10 @@ function ProjectsPage() {
               </div>
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-widest text-charcoal/50">Account Number</div>
-                <div className="font-mono text-xl font-semibold text-green">XXXX XXXX XX</div>
+                <div className="font-mono text-xl font-semibold text-green">1016024813</div>
               </div>
               <p className="text-xs text-charcoal/50">
-                Please email a copy of your transfer confirmation to hello@mssf.ng so we can send a receipt.
+                Please email a copy of your transfer confirmation to info@mssf.com.ng so we can send a receipt.
               </p>
             </div>
           </div>

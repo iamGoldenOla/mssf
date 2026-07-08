@@ -36,14 +36,14 @@ function ContactPage() {
           <div className="space-y-10 lg:col-span-4">
             <div>
               <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Email</p>
-              <a href="mailto:hello@mssf.ng" className="font-display text-xl text-charcoal hover:text-gold">
-                hello@mssf.ng
+              <a href="mailto:info@mssf.com.ng" className="font-display text-xl text-charcoal hover:text-gold">
+                info@mssf.com.ng
               </a>
             </div>
             <div>
               <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Phone</p>
-              <a href="tel:+2340000000000" className="font-display text-xl text-charcoal hover:text-gold">
-                +234 000 000 0000
+              <a href="tel:+234XXXXXXXXX" className="font-display text-xl text-charcoal hover:text-gold">
+                +234 XXX XXX XXXX
               </a>
             </div>
             <div>
@@ -51,10 +51,10 @@ function ContactPage() {
               <p className="text-charcoal/80">Calabar<br />Cross River State, Nigeria</p>
             </div>
             <div className="flex flex-wrap gap-3 pt-4">
-              <a href="https://wa.me/2340000000000" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
+              <a href="https://wa.me/234XXXXXXXXX" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
                 WhatsApp Chat
               </a>
-              <a href="mailto:hello@mssf.ng" className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
+              <a href="mailto:info@mssf.com.ng" className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
                 Email Us
               </a>
             </div>

@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { IMG } from "@/lib/images";
 
 export function SiteFooter() {
   return (
@@ -6,9 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="mb-5 flex items-center gap-2.5">
-            <div className="grid size-8 place-items-center bg-gold">
-              <div className="size-3 rotate-45 bg-green-deep" />
-            </div>
+            <img src={IMG.logo} alt="MSSF Logo" className="h-9 w-auto" />
             <span className="font-display text-lg font-semibold uppercase tracking-tight">MSSF</span>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-offwhite/60">
@@ -35,8 +34,8 @@ export function SiteFooter() {
           </h4>
           <ul className="space-y-3 text-sm text-offwhite/60">
             <li>Calabar, Cross River State, Nigeria</li>
-            <li><a href="mailto:hello@mssf.ng" className="hover:text-gold">hello@mssf.ng</a></li>
-            <li><a href="#" className="hover:text-gold">WhatsApp Chat</a></li>
+            <li><a href="mailto:info@mssf.com.ng" className="hover:text-gold">info@mssf.com.ng</a></li>
+            <li><a href="https://wa.me/234XXXXXXXXX" className="hover:text-gold">WhatsApp Chat</a></li>
             <li><Link to="/donate" className="hover:text-gold">Donate</Link></li>
           </ul>
         </div>
