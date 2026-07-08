@@ -4,7 +4,27 @@ This document summarizes the changes made to My Shining Star Foundation (MSSF) f
 
 ---
 
-## 1. Automatic Partner Marquee Carousel
+## 1. Contrast & Dimmer Background Overhaul
+
+- **Replaced Whitish Background**: Dropped the stark, sterile white page background in favor of a warm, rich, dimmer linen/stone color token (`oklch(0.958 0.005 85)`). This reduces eye strain and gives the site an organic, editorial documentary feel.
+- **Enhanced Contrast**: Kept the panels and card content elements pure white (`bg-card`), making them stand out beautifully from the dimmer page background.
+- **Pronounced Card Borders**: Increased the primary border opacity to `18%` (`oklch(0.28 0.008 60 / 18%)`) to give all card modules clean structural outlines.
+
+---
+
+## 2. Aesthetically Gracious Card Outlines & Hover Highlights
+
+Added clean, structured borders to all page cards and enabled premium hover interactions:
+- **Core Values Cards (`src/routes/index.tsx`)**: Re-styled to feature clean outlines (`border-border/80`) that translate upward (`hover:-translate-y-1`) and transition to gold borders (`hover:border-gold/60`) on hover.
+- **Direct Impact Cards (`src/routes/index.tsx`)**: Overhauled the grid checkboxes into individual cards with borders and gold hover states.
+- **Capabilities Cards (`src/routes/index.tsx` & `src/routes/what-we-do.tsx`)**: Converted the inline layout grids into distinct, responsive card blocks with thin borders, shadows, and translation effects.
+- **Timeline Cards (`src/routes/projects.tsx`)**: Wrapped project milestones in structured cards that shift upward on hover.
+- **Partners & Team Cards (`src/routes/who-we-are.tsx` & `src/routes/get-involved.tsx`)**: Equipped logo marquee blocks and ground team profiles with borders and transition offsets.
+- **Zenith Transfer & Categories (`src/routes/donate.tsx`)**: StyledZenith Bank credentials and allocation categories inside elegant card boxes.
+
+---
+
+## 3. Automatic Partner Marquee Carousel
 
 - **Removed Manual Scrollbars**: Overhauled the strategic partners section on the **Home** and **Who We Are** pages to completely remove manual horizontal scrollbars and scroll controls.
 - **Infinite Marquee CSS Carousel**: Reconfigured the logos to scroll automatically from right to left using a seamless `@utility animate-marquee` CSS animation, running on hardware-accelerated GPU transitions.
@@ -12,7 +32,7 @@ This document summarizes the changes made to My Shining Star Foundation (MSSF) f
 
 ---
 
-## 2. Microsoft Template Asset Replacement
+## 4. Microsoft Template Asset Replacement
 
 - **Clean Cropped Photos**: Replaced all previous screenshot-style assets (which had Microsoft Word document chrome, borders, grid lines, or document headers) with the clean, raw cropped images:
   - `achievement_drums_2024.png`: Clean crop of the blue MSSF school drums in the classroom.
@@ -23,50 +43,7 @@ This document summarizes the changes made to My Shining Star Foundation (MSSF) f
 
 ---
 
-## 3. Before & After Editorial Redesign
-
-Redesigned the renovation comparison section on the **Gallery** page:
-- **Removed Split Slider**: Got rid of the horizontal drag-slider wrapper which was visually clunky, prone to alignment glitches, and cut pupil faces in half.
-- **Side-by-Side Photo-Essay Layout**: Re-implemented the section as a high-contrast, side-by-side editorial comparison displaying two separate photo cards:
-  - **Left Card (Before Renovation)**: Highlights the dilapidated classroom structures at St. Peter's (collapsing roof, empty rooms) with a soft red alert badge.
-  - **Right Card (After Renovation)**: Highlights the finished building upgrades (renovated sheet roofing, concrete foundations, classroom desks, and painted mural) with a soft green success badge.
-- **Detailed Impact Descriptions**: Added context paragraphs beneath both cards detailing what was wrong (rusted metal, unsafe conditions) and how MSSF fixed it (desks, mural, support beams) to reinforce the documentary narrative.
-
----
-
-## 4. Homepage Hero Redesign & Context Section
-
-- **Full-Bleed Autoplay Slideshow Hero**: Redesigned the homepage hero to feature a full-bleed, full-screen relative slider (`h-[85vh]`). The slideshow automatically cross-fades between 5 high-resolution project images with Ken Burns loop drifts.
-- **Overlaid Text & CTAs**: Placed the primary title (*"Nurturing Futures, One Community at a Time"*), category eyebrow, and primary CTAs (*"Donate $5 Monthly"* and *"Join Our Mission"*) directly in the center of the slideshow overlay.
-- **Intro Context Section**: Removed the long, detailed introductory paragraph from the hero section and placed it in a clean, dedicated editorial section immediately below the slideshow. The paragraph is displayed as an elegant serif blockquote with Lora italics for strong emotional resonance.
-
----
-
-## 5. Inner-Page Hero Refinements (Faces & Centralization)
-
-Refined the full-bleed headers on all inner pages (**Who We Are, What We Do, Projects & Impact, Gallery, Donate, Get Involved, Contact**) to ensure professional scaling:
-- **Heads Preserved**: Added top-focused alignment classes (`object-[center_25%]` or `object-[center_35%]`) to prevent the faces of the children and volunteers from being cut off during responsive viewport scaling.
-- **Centralized Text Contents**: Centered the overlaid headers (`flex items-center justify-center text-center`) for a clean, cohesive, editorial look across the website.
-- **Opacity Overlay**: Set an explicit background-scrim overlay (`bg-charcoal/50`) combined with bottom gradient fades to ensure text remains highly legible.
-
----
-
-## 6. Web Push Notification Feature
-
-- **Native Push Notification Dialog (`src/components/push-notification.tsx`)**: Built a native Web Push notification toast banner that slides up in the bottom-right corner after a 6-second delay.
-- **Browser Permission Prompt**: Clicking "Subscribe" calls the browser's `Notification.requestPermission()`. If granted, it fires a native OS-level welcome push notification welcoming them to MSSF.
-- **Smart Dismissal**: Clicking "Dismiss" saves the state in `localStorage` to avoid repeatedly prompt-blocking the user.
-
----
-
-## 7. Logo as Favicon
-
-- **Public Assets Sync**: Copied the official `logo.png` image to the `public/` directory.
-- **Root Layout Update**: Reconfigured the HTML links in `src/routes/__root.tsx` to serve `logo.png` as the site's official favicon.
-
----
-
-## 8. Verification & Dev Status
+## 5. Verification & Dev Status
 
 - **Build**: Successfully built the application (`bun run build`). No typescript or bundle compiler errors.
 - **Dev Server**: Autoloaded server is actively running on [http://localhost:8080/](http://localhost:8080/).

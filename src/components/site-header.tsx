@@ -8,11 +8,14 @@ export function SiteHeader() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-offwhite/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2.5">
-          <img src={IMG.logo} alt="MSSF Logo" className="h-9 w-auto" />
-          <span className="font-display text-lg font-semibold uppercase tracking-tight text-green">
-            MSSF
-          </span>
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex size-10 items-center justify-center rounded-sm bg-white p-1 ring-1 ring-gold/40 shadow-sm transition-transform duration-300 hover:scale-105">
+            <img src={IMG.logo} alt="MSSF Logo" className="h-full w-auto object-contain" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-display text-lg font-semibold uppercase tracking-wider text-green leading-none">MSSF</span>
+            <span className="font-mono text-[8px] uppercase tracking-widest text-gold mt-1">Shining Star</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}

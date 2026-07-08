@@ -81,8 +81,8 @@ function ContactPage() {
                     Email Us
                   </a>
                 </div>
-                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
-                  <img src={IMG.teamEvent} alt="MSSF team" className="w-full object-cover" loading="lazy" />
+                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
+                  <img src={IMG.teamEvent} alt="MSSF team" className="w-full object-cover rounded-sm" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -96,7 +96,7 @@ function ContactPage() {
                   e.preventDefault();
                   setSent(true);
                 }}
-                className="grid gap-6 border border-border bg-card p-8 md:grid-cols-2 shadow-sm"
+                className="grid gap-6 border border-border/80 bg-card p-8 md:grid-cols-2 shadow-md hover:border-gold/60 transition-all duration-300 rounded-sm"
               >
                 <Field label="Full Name" name="name" required />
                 <Field label="Email" name="email" type="email" required />
@@ -105,7 +105,7 @@ function ContactPage() {
                   <label className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60">Subject</label>
                   <select
                     name="subject"
-                    className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
+                    className="border border-border/80 bg-offwhite px-3.5 py-3 text-sm focus:border-gold focus:ring-1 focus:ring-gold/30 rounded-sm focus:outline-none transition-all duration-200"
                   >
                     <option>General Enquiry</option>
                     <option>Volunteer</option>
@@ -120,7 +120,7 @@ function ContactPage() {
                     name="message"
                     rows={6}
                     required
-                    className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
+                    className="border border-border/80 bg-offwhite px-3.5 py-3 text-sm focus:border-gold focus:ring-1 focus:ring-gold/30 rounded-sm focus:outline-none transition-all duration-200"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -140,20 +140,20 @@ function ContactPage() {
             <ScrollReveal delay={200}>
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Map */}
-                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
+                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
                   <iframe
                     title="MSSF Calabar location"
                     src="https://maps.google.com/maps?q=Oban,%20Akamkpa,%20Calabar,%20Cross%20River,%20Nigeria&t=&z=10&ie=UTF8&iwloc=&output=embed"
-                    className="h-64 w-full border-0"
+                    className="h-64 w-full border-0 rounded-sm"
                     allowFullScreen
                     loading="lazy"
                   />
                 </div>
 
                 {/* YouTube Video */}
-                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
+                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
                   <iframe
-                    className="h-64 w-full border-0"
+                    className="h-64 w-full border-0 rounded-sm"
                     src="https://www.youtube.com/embed/QfduBiaakRo"
                     title="My Shining Star Oban Documentary"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -191,7 +191,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
+        className="border border-border/80 bg-offwhite px-3.5 py-3 text-sm focus:border-gold focus:ring-1 focus:ring-gold/30 rounded-sm focus:outline-none transition-all duration-200"
       />
     </div>
   );

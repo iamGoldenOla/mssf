@@ -104,7 +104,11 @@ function GalleryPage() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-charcoal/0 transition-colors group-hover:bg-charcoal/20" />
+                <div className="absolute inset-0 bg-charcoal/0 transition-all duration-300 group-hover:bg-charcoal/40 flex items-center justify-center">
+                  <div className="size-10 rounded-full border border-offwhite/20 bg-charcoal/30 text-offwhite flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 backdrop-blur-xs">
+                    <span className="text-xl font-light leading-none">+</span>
+                  </div>
+                </div>
                 <div className="absolute bottom-2 left-2 rounded-sm bg-offwhite/85 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity group-hover:opacity-100">
                   {p.cat}
                 </div>

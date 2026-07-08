@@ -6,9 +6,14 @@ export function SiteFooter() {
     <footer className="bg-charcoal text-offwhite">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="mb-5 flex items-center gap-2.5">
-            <img src={IMG.logo} alt="MSSF Logo" className="h-9 w-auto" />
-            <span className="font-display text-lg font-semibold uppercase tracking-tight">MSSF</span>
+          <div className="mb-6 flex items-center gap-3">
+            <div className="flex size-10 items-center justify-center rounded-sm bg-white p-1 ring-1 ring-gold/40 shadow-md">
+              <img src={IMG.logo} alt="MSSF Logo" className="h-full w-auto object-contain" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display text-lg font-semibold uppercase tracking-wider text-offwhite leading-none">MSSF</span>
+              <span className="font-mono text-[8px] uppercase tracking-widest text-gold mt-1">Shining Star</span>
+            </div>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-offwhite/60">
             My Shining Star Foundation is a Nigerian NGO delivering education, dignity, and
