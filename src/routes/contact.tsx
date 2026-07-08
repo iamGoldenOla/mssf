@@ -47,8 +47,12 @@ function ContactPage() {
               </a>
             </div>
             <div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Location</p>
-              <p className="text-charcoal/80">Calabar<br />Cross River State, Nigeria</p>
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Address</p>
+              <p className="text-charcoal/80 leading-relaxed">
+                Oban, Akamkpa II, Akamkpa LGA,<br />
+                Calabar, Cross River State,<br />
+                Nigeria 542102
+              </p>
             </div>
             <div className="flex flex-wrap gap-3 pt-4">
               <a href="https://wa.me/234XXXXXXXXX" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
@@ -110,14 +114,29 @@ function ContactPage() {
               </div>
             </form>
 
-            {/* Map */}
-            <div className="mt-8 overflow-hidden rounded-sm ring-1 ring-black/5">
-              <iframe
-                title="MSSF Calabar location"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=8.28%2C4.92%2C8.42%2C5.02&layer=mapnik&marker=4.9757%2C8.3417"
-                className="h-80 w-full"
-                loading="lazy"
-              />
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* Map */}
+              <div className="mt-8 overflow-hidden rounded-sm ring-1 ring-black/5">
+                <iframe
+                  title="MSSF Calabar location"
+                  src="https://maps.google.com/maps?q=Oban,%20Akamkpa,%20Calabar,%20Cross%20River,%20Nigeria&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                  className="h-64 w-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+
+              {/* YouTube Video */}
+              <div className="mt-8 overflow-hidden rounded-sm ring-1 ring-black/5">
+                <iframe
+                  className="h-64 w-full border-0"
+                  src="https://www.youtube.com/embed/QfduBiaakRo"
+                  title="My Shining Star Oban Documentary"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
