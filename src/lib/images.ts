@@ -29,6 +29,9 @@ import sportYellowTeamCoaches from "@/assets/sport-yellow-team-coaches.jpg";
 import sportCoachStudents from "@/assets/sport-coach-students.jpg";
 import sportCeremony from "@/assets/sport-ceremony.jpg";
 import sportField from "@/assets/sport-field.jpg";
+import classroomAssembly from "@/assets/classroom-assembly.jpg";
+import classroomGreenTables from "@/assets/classroom-green-tables.jpg";
+import classroomTeaching from "@/assets/classroom-teaching.jpg";
 
 export const IMG = {
   heroClassroom,
@@ -62,5 +65,8 @@ export const IMG = {
   sportCoachStudents,
   sportCeremony,
   sportField,
+  classroomAssembly,
+  classroomGreenTables,
+  classroomTeaching,
 };
 

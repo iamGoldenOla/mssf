@@ -55,8 +55,8 @@ function GalleryPage() {
           alt="Gallery"
           className="absolute inset-0 h-full w-full object-cover object-[center_25%] animate-ken-burns"
         />
-        <div className="absolute inset-0 bg-charcoal/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center text-center p-6">
           <div className="max-w-4xl w-full">
             <ScrollReveal translateY={12}>
@@ -227,44 +227,44 @@ function GalleryPage() {
             ))}
           </div>
 
-          {/* Bottom row: coaches + ceremony + field */}
+          {/* Bottom row: coaches + classroom photos */}
           <div className="grid gap-4 md:grid-cols-3">
             <ScrollReveal delay={0} translateY={12}>
               <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
                 <img
-                  src={IMG.sportCoaches}
-                  alt="House coaches in colourful tracksuits"
-                  className="h-[260px] w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.03]"
+                  src={IMG.classroomAssembly}
+                  alt="Children gathered in the school assembly hall"
+                  className="h-[260px] w-full object-cover object-[center_30%] transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
                 <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  House Coaches
+                  School Assembly
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={80} translateY={12}>
               <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
                 <img
-                  src={IMG.sportCeremony}
-                  alt="Award ceremony with students and partners"
-                  className="h-[260px] w-full object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-[1.03]"
+                  src={IMG.classroomGreenTables}
+                  alt="New green round tables and chairs in the classroom"
+                  className="h-[260px] w-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
                 <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  Award Ceremony
+                  New Classroom Furniture
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={160} translateY={12}>
               <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
                 <img
-                  src={IMG.sportCoachStudents}
-                  alt="Coach with students on the sports field"
-                  className="h-[260px] w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.03]"
+                  src={IMG.classroomTeaching}
+                  alt="Teacher and staff at the blackboard with children"
+                  className="h-[260px] w-full object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
                 <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  Coach & Athletes
+                  Classroom Teaching
                 </div>
               </div>
             </ScrollReveal>

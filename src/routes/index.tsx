@@ -92,9 +92,9 @@ function HomePage() {
               alt={slide.caption}
               className="h-full w-full object-cover object-[center_25%] animate-ken-burns"
             />
-            {/* Dark solid overlay + legibility scrim combined */}
-            <div className="absolute inset-0 bg-charcoal/45 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent z-10" />
+            {/* Dark neutral overlay for sharp, vivid images */}
+            <div className="absolute inset-0 bg-black/40 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
             
             <div className="absolute bottom-8 left-8 z-20 hidden md:block">
               <p className="font-display text-xs italic text-offwhite/70">
@@ -142,6 +142,17 @@ function HomePage() {
           ))}
         </div>
       </header>
+
+      {/* MSSF Name Marquee Ribbon */}
+      <div className="overflow-hidden bg-green py-3 border-b border-green-deep">
+        <div className="flex gap-0 animate-marquee pause-marquee">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span key={i} className="flex-shrink-0 whitespace-nowrap px-8 text-lg md:text-xl text-offwhite/90" style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}>
+              MSSF <span className="mx-2 text-gold">·</span> My Shining Star Foundation <span className="mx-2 text-gold">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Intro Context Section (placed below hero) */}
       <section className="bg-stone-50 border-b border-border py-20 px-6">
@@ -246,7 +257,7 @@ function HomePage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {values.map((v, i) => (
             <ScrollReveal key={v.title} delay={i * 80}>
-              <div className="space-y-4 border border-border/80 p-6 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
+              <div className={`space-y-4 border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} p-6 bg-card rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full`}>
                 <div className="font-mono text-xs text-gold">
                   {String(i + 1).padStart(2, "0")}
                 </div>
@@ -284,7 +295,7 @@ function HomePage() {
               "A chance for children in rural communities to dream big!",
             ].map((item, idx) => (
               <ScrollReveal key={idx} delay={idx * 60}>
-                <div className="flex items-start gap-3 bg-card p-6 border border-border/80 rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
+                <div className={`flex items-start gap-3 bg-card p-6 border-2 ${idx % 2 === 0 ? 'border-gold/50' : 'border-green/50'} rounded-sm shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full`}>
                   <span className="text-green font-bold text-lg">✓</span>
                   <p className="text-sm font-semibold text-charcoal">{item}</p>
                 </div>
@@ -311,7 +322,7 @@ function HomePage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c, i) => (
             <ScrollReveal key={c.n} delay={i * 80} className="h-full">
-              <div className="space-y-4 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
+              <div className={`space-y-4 p-8 border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full`}>
                 <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
                   {c.n}
                 </div>
@@ -345,7 +356,7 @@ function HomePage() {
           <div className="space-y-4 lg:col-span-8">
             {timeline.map((t, i) => (
               <ScrollReveal key={t.title} delay={i * 100}>
-                <article className="flex items-start gap-8 border border-border/80 bg-card p-6 rounded-sm hover:border-gold/60 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
+                <article className={`flex items-start gap-8 border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card p-6 rounded-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300`}>
                   <div className="whitespace-nowrap py-1 font-mono text-xs text-gold">{t.date}</div>
                   <div className="space-y-2">
                     <h3 className="font-semibold">{t.title}</h3>
@@ -378,7 +389,7 @@ function HomePage() {
                   { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
                   { name: "Oban Community Committee", desc: "Local engagement & administration" }
                 ].map((partner, idx) => (
-                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-6 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 text-center flex-shrink-0">
+                  <div key={`${partner.name}-${idx}`} className={`flex flex-col items-center justify-center border-2 ${idx % 2 === 0 ? 'border-gold/50' : 'border-green/50'} p-6 bg-card rounded-sm shadow-sm hover:-translate-y-0.5 transition-all duration-300 w-72 text-center flex-shrink-0`}>
                     <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
                     <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
                   </div>

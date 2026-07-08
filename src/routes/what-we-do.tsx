@@ -35,8 +35,8 @@ function WhatWeDoPage() {
           alt="What We Do"
           className="absolute inset-0 h-full w-full object-cover object-[center_25%] animate-ken-burns"
         />
-        <div className="absolute inset-0 bg-charcoal/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center text-center p-6">
           <div className="max-w-4xl w-full">
             <ScrollReveal translateY={12}>

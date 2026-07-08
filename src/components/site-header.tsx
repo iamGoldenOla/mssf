@@ -12,9 +12,8 @@ export function SiteHeader() {
           <div className="flex size-10 items-center justify-center rounded-sm bg-white p-1 ring-1 ring-gold/40 shadow-sm transition-transform duration-300 hover:scale-105">
             <img src={IMG.logo} alt="MSSF Logo" className="h-full w-auto object-contain" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-center">
             <span className="font-display text-lg font-semibold uppercase tracking-wider text-green leading-none">MSSF</span>
-            <span className="font-mono text-[8px] uppercase tracking-widest text-gold mt-1">Shining Star</span>
           </div>
         </Link>
 
