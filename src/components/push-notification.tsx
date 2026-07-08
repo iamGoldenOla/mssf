@@ -51,7 +51,7 @@ export function PushNotification() {
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] max-w-sm rounded-sm border border-border bg-card p-6 shadow-xl animate-fade-scale-in">
+    <div className="fixed bottom-6 right-6 z-[100] max-w-sm rounded-sm border border-border/80 bg-card p-6 shadow-xl hover:border-gold/60 transition-colors duration-300 animate-fade-scale-in">
       <div className="flex gap-4">
         {/* Bell Icon */}
         <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">

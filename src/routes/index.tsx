@@ -246,7 +246,7 @@ function HomePage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {values.map((v, i) => (
             <ScrollReveal key={v.title} delay={i * 80}>
-              <div className="space-y-4 border border-border p-6 bg-card rounded-sm hover:shadow-md transition-shadow h-full">
+              <div className="space-y-4 border border-border/80 p-6 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                 <div className="font-mono text-xs text-gold">
                   {String(i + 1).padStart(2, "0")}
                 </div>
@@ -284,7 +284,7 @@ function HomePage() {
               "A chance for children in rural communities to dream big!",
             ].map((item, idx) => (
               <ScrollReveal key={idx} delay={idx * 60}>
-                <div className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow h-full">
+                <div className="flex items-start gap-3 bg-card p-6 border border-border/80 rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                   <span className="text-green font-bold text-lg">✓</span>
                   <p className="text-sm font-semibold text-charcoal">{item}</p>
                 </div>
@@ -308,14 +308,14 @@ function HomePage() {
             </p>
           </div>
         </ScrollReveal>
-        <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c, i) => (
-            <ScrollReveal key={c.n} delay={i * 80} className="bg-offwhite h-full">
-              <div className="space-y-4 p-10 transition-colors hover:bg-stone-50 h-full">
+            <ScrollReveal key={c.n} delay={i * 80} className="h-full">
+              <div className="space-y-4 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                 <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
                   {c.n}
                 </div>
-                <h3 className="font-display text-xl font-semibold">{c.title}</h3>
+                <h3 className="font-display text-xl font-semibold text-green">{c.title}</h3>
                 <p className="text-sm leading-relaxed text-charcoal/70">{c.body}</p>
               </div>
             </ScrollReveal>
@@ -345,7 +345,7 @@ function HomePage() {
           <div className="space-y-4 lg:col-span-8">
             {timeline.map((t, i) => (
               <ScrollReveal key={t.title} delay={i * 100}>
-                <article className="flex items-start gap-8 border border-border bg-card p-6 transition-shadow hover:shadow-sm">
+                <article className="flex items-start gap-8 border border-border/80 bg-card p-6 rounded-sm hover:border-gold/60 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                   <div className="whitespace-nowrap py-1 font-mono text-xs text-gold">{t.date}</div>
                   <div className="space-y-2">
                     <h3 className="font-semibold">{t.title}</h3>
@@ -378,7 +378,7 @@ function HomePage() {
                   { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
                   { name: "Oban Community Committee", desc: "Local engagement & administration" }
                 ].map((partner, idx) => (
-                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
+                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-6 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 text-center flex-shrink-0">
                     <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
                     <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
                   </div>

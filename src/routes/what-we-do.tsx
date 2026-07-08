@@ -56,16 +56,18 @@ function WhatWeDoPage() {
       </header>
 
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c, i) => (
-            <ScrollReveal key={c.n} delay={i * 80} className="bg-offwhite h-full">
-              <div className="space-y-4 p-10 transition-colors hover:bg-stone-50 h-full">
-                <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
-                  {c.n}
+            <ScrollReveal key={c.n} delay={i * 80} className="h-full">
+              <div className="space-y-4 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
+                    {c.n}
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-green">{c.title}</h3>
+                  <p className="text-sm leading-relaxed text-charcoal/70">{c.body}</p>
                 </div>
-                <h3 className="font-display text-xl font-semibold">{c.title}</h3>
-                <p className="text-sm leading-relaxed text-charcoal/70">{c.body}</p>
-                <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mt-2">
+                <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mt-4 self-start">
                   See Impact →
                 </Link>
               </div>

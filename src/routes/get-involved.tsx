@@ -52,18 +52,18 @@ function GetInvolvedPage() {
       </header>
 
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {paths.map((p, i) => (
-            <ScrollReveal key={p.n} delay={i * 80} className="bg-offwhite h-full">
-              <div className="flex flex-col justify-between gap-8 p-10 transition-colors hover:bg-stone-50 h-full">
+            <ScrollReveal key={p.n} delay={i * 80} className="h-full">
+              <div className="flex flex-col justify-between gap-8 bg-card border border-border/80 p-10 rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                 <div className="space-y-4">
                   <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
                     {p.n}
                   </div>
-                  <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
+                  <h3 className="font-display text-2xl font-semibold text-green">{p.title}</h3>
                   <p className="text-charcoal/70">{p.body}</p>
                 </div>
-                <Link to={p.to} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mt-4">
+                <Link to={p.to} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mt-4 self-start">
                   {p.cta} →
                 </Link>
               </div>
@@ -88,7 +88,7 @@ function GetInvolvedPage() {
               { name: "Local School Committees", desc: "Community-level governance and program feedback at every partner school." },
             ].map((p, i) => (
               <ScrollReveal key={p.name} delay={i * 80}>
-                <div className="border border-border bg-card p-8 shadow-sm h-full hover:shadow-md transition-shadow">
+                <div className="border border-border/80 bg-card p-8 shadow-sm h-full rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                   <div className="mb-4 grid h-14 place-items-center bg-stone-100 font-display text-xl font-semibold text-charcoal/60">
                     {p.name.split(" ")[0]}
                   </div>

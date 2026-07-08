@@ -128,7 +128,7 @@ function ProjectsPage() {
               <div className="space-y-3 lg:col-span-9">
                 {y.entries.map((e, idx) => (
                   <ScrollReveal key={e.date + e.item} delay={idx * 60} duration={500}>
-                    <article className="grid grid-cols-1 gap-4 border border-border bg-card p-6 md:grid-cols-12 md:gap-8 hover:shadow-sm transition-shadow">
+                    <article className="grid grid-cols-1 gap-4 border border-border/80 bg-card p-6 md:grid-cols-12 md:gap-8 rounded-sm hover:border-gold/60 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                       <div className="font-mono text-xs text-gold md:col-span-2">{e.date}</div>
                       <div className="space-y-3 md:col-span-6">
                         <div className="space-y-1">

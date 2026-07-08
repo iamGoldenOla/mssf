@@ -161,7 +161,7 @@ function WhoWeArePage() {
                   { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
                   { name: "Oban Community Committee", desc: "Local engagement & administration" }
                 ].map((partner, idx) => (
-                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
+                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-6 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 text-center flex-shrink-0">
                     <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
                     <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
                   </div>
@@ -182,9 +182,9 @@ function WhoWeArePage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {team.map((p, i) => (
               <ScrollReveal key={p.name} delay={i * 80}>
-                <article className="flex h-full flex-col bg-card ring-1 ring-border hover:shadow-md transition-shadow">
+                <article className="flex h-full flex-col bg-card border border-border/80 rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 overflow-hidden">
                   <div className="aspect-[4/5] overflow-hidden">
-                    <img src={p.img} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={p.img} alt={p.name} className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.02]" loading="lazy" />
                   </div>
                   <div className="flex flex-1 flex-col space-y-3 p-6 justify-between">
                     <div className="space-y-3">

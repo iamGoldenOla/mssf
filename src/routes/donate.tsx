@@ -96,10 +96,10 @@ function DonatePage() {
                 {tiers.map((t, idx) => (
                   <ScrollReveal key={t.amount} delay={idx * 80} translateY={10}>
                     <div
-                      className={`relative flex flex-col items-center gap-6 p-8 text-center h-full hover:scale-[1.01] transition-transform ${
+                      className={`relative flex flex-col items-center gap-6 p-8 text-center h-full rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 ${
                         t.featured
-                          ? "bg-green text-offwhite shadow-2xl"
-                          : "border border-border bg-card"
+                          ? "bg-green text-offwhite shadow-lg border border-green-deep"
+                          : "border border-border/80 bg-card hover:border-gold/60"
                       }`}
                     >
                       {t.featured && (
@@ -140,8 +140,8 @@ function DonatePage() {
             </div>
           ) : (
             <ScrollReveal>
-              <div className="mx-auto max-w-2xl space-y-6 border border-border bg-card p-10 shadow-sm">
-                <h3 className="font-display text-2xl font-semibold">Zenith Bank Transfer</h3>
+              <div className="mx-auto max-w-2xl space-y-6 border border-border/80 bg-card p-10 rounded-sm shadow-md hover:border-gold/60 transition-all duration-300">
+                <h3 className="font-display text-2xl font-semibold text-green">Zenith Bank Transfer</h3>
                 <div className="space-y-4">
                   <Row label="Bank" value="Zenith Bank" />
                   <Row label="Account Name" value="My Shining Star Foundation" />
@@ -167,15 +167,15 @@ function DonatePage() {
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Where It Goes</p>
             <h2 className="mb-12 font-display text-4xl font-semibold">Every dollar, accounted for.</h2>
           </ScrollReveal>
-          <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
               { t: "Books & Supplies", b: "Exercise books, pens, and teacher instructional guides." },
               { t: "Renovated Classrooms", b: "Roofing, painting, desks, and solar power." },
               { t: "Teacher Support", b: "Stipends, training, and classroom resources." },
               { t: "Safe Environments", b: "Sanitation, clean water, and daily nutritional milk." },
             ].map((x, i) => (
-              <ScrollReveal key={x.t} delay={i * 80} className="bg-offwhite h-full">
-                <div className="space-y-3 p-8 h-full">
+              <ScrollReveal key={x.t} delay={i * 80} className="h-full">
+                <div className="space-y-3 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
                   <h3 className="font-display text-lg font-semibold">{x.t}</h3>
                   <p className="text-sm text-charcoal/70">{x.b}</p>
                 </div>
