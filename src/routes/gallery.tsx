@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { useMemo, useState } from "react";
+import { BeforeAfter } from "@/components/before-after";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -87,6 +88,30 @@ function GalleryPage() {
               </div>
             </button>
           ))}
+        </div>
+      </section>
+
+      {/* Before & After Renovation */}
+      <section className="bg-stone-50 border-t border-border px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Renovation Impact</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              Before & After Transformation
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+              Drag the slider to see the structural transformation of St. Peter's Primary School, Oban, from a dilapidated state to a safe, vibrant learning environment.
+            </p>
+          </div>
+          <div className="mx-auto max-w-4xl shadow-2xl rounded-sm overflow-hidden bg-white">
+            <BeforeAfter
+              beforeSrc={IMG.schoolBefore}
+              afterSrc={IMG.schoolMural}
+              beforeLabel="Before Renovation"
+              afterLabel="After Renovation"
+              caption="St. Peter's School Renovation Project"
+            />
+          </div>
         </div>
       </section>
 

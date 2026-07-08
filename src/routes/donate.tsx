@@ -159,6 +159,38 @@ function DonatePage() {
         </div>
       </section>
 
+      {/* What Your Donation Provides */}
+      <section className="bg-stone-50 border-t border-border px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Impact Model</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              Your Donation Provides
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+              MSSF coordinates holistic interventions that cover every aspect of a child's school experience. We cannot do it without you.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "Quality and passionate teaching staff",
+              "Access to clean drinking water and milk daily",
+              "School uniforms and learning materials",
+              "Vocational education and excursions",
+              "Free transport (bus fees covered for all pupils)",
+              "Regular medical check-ups",
+              "Safe and child-friendly classrooms",
+              "A chance for children in rural communities to dream big!",
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow">
+                <span className="text-green font-bold text-lg">✓</span>
+                <p className="text-sm font-semibold text-charcoal">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Trust */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid items-center gap-16 lg:grid-cols-2">

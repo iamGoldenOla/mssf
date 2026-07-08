@@ -77,16 +77,14 @@ function WhoWeArePage() {
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
           <div className="space-y-4">
             <p className="font-mono text-xs uppercase tracking-widest text-gold">Vision</p>
-            <h3 className="font-display text-3xl font-semibold leading-tight">
-              A rural Nigeria where no child is asked to choose between school and survival.
+            <h3 className="font-display text-3xl font-semibold leading-tight text-green">
+              A world where every child has access to quality education and the opportunity to thrive.
             </h3>
           </div>
           <div className="space-y-4">
             <p className="font-mono text-xs uppercase tracking-widest text-gold">Mission</p>
             <p className="text-lg leading-relaxed text-charcoal/70">
-              To deliver education, health, and dignity to underserved children in rural Cross River
-              State through an integrated, measurable, and replicable model — in genuine partnership
-              with families, schools, and local institutions.
+              To bring education, dignity, and opportunity to underserved children in rural areas.
             </p>
           </div>
         </div>

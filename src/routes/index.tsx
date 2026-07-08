@@ -87,9 +87,7 @@ function HomePage() {
               Nurturing Futures, One Community at a Time
             </h1>
             <p className="max-w-prose text-lg leading-relaxed text-charcoal/70">
-              Every child deserves a chance to learn in dignity. We revitalize rural
-              classrooms and provide the transport, health, and nourishment needed to stay there —
-              in partnership with JB Farms/Agrinexus and Rotary International.
+              In rural communities across Cross River State - Nigeria, too many children are growing up without access to even the most basic education - a fundamental right and the first step toward breaking the cycle of poverty. At My Shining Star Foundation (MSSF), we are changing that - one child at a time. In collaboration with our partners, My Shining Star Foundation (MSSF), launched a holistic educational initiative that reflects our belief in investing in the next generation.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/donate" className="rounded-sm bg-gold px-8 py-4 text-sm font-semibold text-charcoal shadow-lg shadow-gold/20 transition-transform hover:-translate-y-0.5">
@@ -189,13 +187,21 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Mission Banner */}
-      <section className="bg-stone-50 border-b border-border px-6 py-20 text-center">
-        <div className="mx-auto max-w-3xl space-y-4">
-          <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
-          <h2 className="font-display text-3xl font-semibold leading-relaxed lg:text-4xl text-green">
-            "To bring education, dignity, and opportunity to underserved children in rural areas."
-          </h2>
+      {/* Mission & Vision Banner */}
+      <section className="bg-stone-50 border-b border-border px-6 py-20">
+        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-2 text-center lg:text-left">
+          <div className="space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
+            <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
+              "To bring education, dignity, and opportunity to underserved children in rural areas."
+            </h2>
+          </div>
+          <div className="space-y-4 lg:border-l lg:border-border lg:pl-12">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Vision</p>
+            <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
+              "A world where every child has access to quality education and the opportunity to thrive."
+            </h2>
+          </div>
         </div>
       </section>
 
@@ -217,6 +223,38 @@ function HomePage() {
               <p className="text-sm leading-relaxed text-charcoal/70">{v.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Your Donation Provides */}
+      <section className="bg-stone-50 border-y border-border px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 space-y-4 text-center">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Direct Impact</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              But we can’t do it without You.
+            </h2>
+            <p className="mx-auto max-w-xl text-charcoal/60">
+              Your partnership and support directly power these critical components of our child support ecosystem:
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "Quality and passionate teaching staff",
+              "Access to clean drinking water and milk daily",
+              "School uniforms and learning materials",
+              "Vocational education and excursions",
+              "Free transport (bus fees covered for all pupils)",
+              "Regular medical check-ups",
+              "Safe and child-friendly classrooms",
+              "A chance for children in rural communities to dream big!",
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow">
+                <span className="text-green font-bold text-lg">✓</span>
+                <p className="text-sm font-semibold text-charcoal">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
