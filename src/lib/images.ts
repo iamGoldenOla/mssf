@@ -17,6 +17,18 @@ import achievementBefore from "@/assets/achievement_before_2024.png";
 import achievementDilapidated from "@/assets/achievement_dilapidated_2024.png";
 import achievementQuarters from "@/assets/achievement_quarters_2024.png";
 import achievementDrums from "@/assets/achievement_drums_2024.png";
+import sportAllTeams from "@/assets/sport-all-teams.jpg";
+import sportBlueTeamField from "@/assets/sport-blue-team-field.jpg";
+import sportRedTeamField from "@/assets/sport-red-team-field.jpg";
+import sportGreenTeamField from "@/assets/sport-green-team-field.jpg";
+import sportCoaches from "@/assets/sport-coaches.jpg";
+import sportRedTeamClass from "@/assets/sport-red-team-class.jpg";
+import sportBlueTeamClass from "@/assets/sport-blue-team-class.jpg";
+import sportYellowTeamClass from "@/assets/sport-yellow-team-class.jpg";
+import sportYellowTeamCoaches from "@/assets/sport-yellow-team-coaches.jpg";
+import sportCoachStudents from "@/assets/sport-coach-students.jpg";
+import sportCeremony from "@/assets/sport-ceremony.jpg";
+import sportField from "@/assets/sport-field.jpg";
 
 export const IMG = {
   heroClassroom,
@@ -38,5 +50,17 @@ export const IMG = {
   achievementDilapidated,
   achievementQuarters,
   achievementDrums,
+  sportAllTeams,
+  sportBlueTeamField,
+  sportRedTeamField,
+  sportGreenTeamField,
+  sportCoaches,
+  sportRedTeamClass,
+  sportBlueTeamClass,
+  sportYellowTeamClass,
+  sportYellowTeamCoaches,
+  sportCoachStudents,
+  sportCeremony,
+  sportField,
 };
 

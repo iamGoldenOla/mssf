@@ -143,6 +143,136 @@ function GalleryPage() {
         </div>
       </section>
 
+      {/* Interhouse Sport Competition */}
+      <section className="border-t border-border bg-offwhite px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Beyond the Classroom</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                Interhouse Sport Competition
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+                Fostering teamwork, discipline, and joy through annual interhouse sports — where every child learns that greatness starts with showing up.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Hero shot — all teams together */}
+          <ScrollReveal delay={100}>
+            <div className="relative mb-8 overflow-hidden rounded-md ring-1 ring-black/5">
+              <img
+                src={IMG.sportAllTeams}
+                alt="All four houses assembled together with the coach"
+                className="w-full h-[340px] md:h-[420px] object-cover object-[center_25%] transition-transform duration-700 hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="font-display text-lg md:text-2xl font-semibold text-offwhite">
+                  Four Houses. One Community.
+                </p>
+                <p className="mt-1 text-sm text-offwhite/80">All teams assembled for the annual interhouse sport competition</p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* House colour grid — 4 columns on desktop */}
+          <div className="grid gap-4 md:grid-cols-4 mb-8">
+            {[
+              { src: IMG.sportBlueTeamField, label: "Blue House", desc: "March-past on the field", color: "bg-blue-600" },
+              { src: IMG.sportRedTeamField, label: "Red House", desc: "March-past on the field", color: "bg-red-600" },
+              { src: IMG.sportGreenTeamField, label: "Green House", desc: "March-past on the field", color: "bg-emerald-600" },
+              { src: IMG.sportYellowTeamCoaches, label: "Yellow House", desc: "Team with coaches", color: "bg-amber-500" },
+            ].map((house, i) => (
+              <ScrollReveal key={house.label} delay={i * 80} translateY={16}>
+                <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
+                  <img
+                    src={house.src}
+                    alt={house.label}
+                    className="h-[260px] w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/30" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/70 to-transparent">
+                    <div className="flex items-center gap-2">
+                      <span className={`inline-block size-3 rounded-full ${house.color} ring-2 ring-offwhite/50`} />
+                      <span className="font-display text-sm font-semibold text-offwhite">{house.label}</span>
+                    </div>
+                    <p className="mt-0.5 text-[11px] text-offwhite/70">{house.desc}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Indoor team portraits row */}
+          <div className="grid gap-4 md:grid-cols-3 mb-8">
+            {[
+              { src: IMG.sportBlueTeamClass, alt: "Blue house team portrait", label: "Blue House Portrait" },
+              { src: IMG.sportRedTeamClass, alt: "Red house team portrait", label: "Red House Portrait" },
+              { src: IMG.sportYellowTeamClass, alt: "Yellow house team portrait", label: "Yellow House Portrait" },
+            ].map((shot, i) => (
+              <ScrollReveal key={shot.label} delay={i * 80} translateY={12}>
+                <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="h-[280px] w-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
+                  <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {shot.label}
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Bottom row: coaches + ceremony + field */}
+          <div className="grid gap-4 md:grid-cols-3">
+            <ScrollReveal delay={0} translateY={12}>
+              <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
+                <img
+                  src={IMG.sportCoaches}
+                  alt="House coaches in colourful tracksuits"
+                  className="h-[260px] w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
+                <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  House Coaches
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={80} translateY={12}>
+              <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
+                <img
+                  src={IMG.sportCeremony}
+                  alt="Award ceremony with students and partners"
+                  className="h-[260px] w-full object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
+                <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Award Ceremony
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={160} translateY={12}>
+              <div className="group relative overflow-hidden rounded-md ring-1 ring-black/5 bg-stone-100">
+                <img
+                  src={IMG.sportCoachStudents}
+                  alt="Coach with students on the sports field"
+                  className="h-[260px] w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 transition-colors duration-300 group-hover:bg-charcoal/25" />
+                <div className="absolute bottom-3 left-3 rounded-sm bg-offwhite/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Coach & Athletes
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+
       {open !== null && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/90 p-6 animate-fade-in"
