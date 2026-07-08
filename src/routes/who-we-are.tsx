@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 
@@ -24,10 +24,10 @@ const values = [
 ];
 
 const team = [
-  { name: "Dr. Shermal Perera", role: "Founder", img: IMG.teamEvent, bio: "Founding vision for a Nigerian NGO built on measurable, itemized impact." },
-  { name: "Mr. Vijayakumar Sambanthar (Mr. Vijay)", role: "Program Director", img: IMG.vijay, bio: "Mr. Vijayakumar Sambanthar (Mr. Vijay) is a seasoned plantation executive with over four decades of global experience across Asia and Africa. As General Manager at Agrinexus International, he leads the JB Farms Oban operations in Cross River State, driving operational excellence and sustainable growth. He also serves as Program Director of My Shining Star Foundation, where he has transformed the organisation through the renovation of schools infrastructure and the advancement of quality education for underserved children. Inspired by his leadership within Rotary Club International, Mr. Vijay is deeply committed to humanitarian service. His distinguished career spans senior roles at Trengganu Development Berhad, Technopalm Services Sdn Bhd, Kwantas Plantation Berhad, Goodhope Asia Holdings, and Kuala Lumpur Kepong Berhad, alongside impactful fundraising efforts across Africa, including the ISP Africa Symposium in Ghana. A leader of vision and purpose, he continues to empower communities, develop people, and deliver lasting impact." },
-  { name: "Ms. Deborah Asuquo", role: "Program Coordinator", img: IMG.rebecca, bio: "Manages day-to-day school partnerships, family liaison, and material distribution logistics across our partner schools." },
-  { name: "Mr. Kingsley", role: "Volunteer Team Lead", img: IMG.teamEvent, bio: "Recruits, trains, and coordinates the local volunteer team that runs transport, health checks, and classroom support." },
+  { id: "shermal", name: "Dr. Shermal Perera", role: "Founder", img: IMG.teamEvent, bio: "Founder of Agrinexus International and My Shining Star Foundation, driving sustainable development and education in Cross River State." },
+  { id: "vijay", name: "Mr. Vijayakumar Sambanthar (Mr. Vijay)", role: "Program Director", img: IMG.vijay, bio: "General Manager at Agrinexus and Program Director of MSSF, coordinating on-ground operations with over 40 years of global experience." },
+  { id: "deborah", name: "Ms. Deborah Asuquo", role: "Program Coordinator", img: IMG.rebecca, bio: "Program Coordinator managing school partnerships, community relations, and material distribution logistics." },
+  { id: "kingsley", name: "Mr. Kingsley", role: "Volunteer Team Lead", img: IMG.teamEvent, bio: "Volunteer Team Lead directing student transport, local logistics, and community volunteer groups." },
 ];
 
 function WhoWeArePage() {
@@ -118,16 +118,27 @@ function WhoWeArePage() {
           <h2 className="mb-12 font-display text-4xl font-semibold">The team on the ground.</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {team.map((p) => (
-              <article key={p.name} className="flex h-full flex-col bg-card ring-1 ring-border">
+              <article key={p.name} className="flex h-full flex-col bg-card ring-1 ring-border hover:shadow-md transition-shadow">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img src={p.img} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
                 </div>
-                <div className="flex flex-1 flex-col space-y-3 p-6">
-                  <div>
-                    <h3 className="font-display text-lg font-semibold">{p.name}</h3>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-gold">{p.role}</p>
+                <div className="flex flex-1 flex-col space-y-3 p-6 justify-between">
+                  <div className="space-y-3">
+                    <div>
+                      <h3 className="font-display text-lg font-semibold">{p.name}</h3>
+                      <p className="font-mono text-[10px] uppercase tracking-widest text-gold">{p.role}</p>
+                    </div>
+                    <p className="text-sm leading-relaxed text-charcoal/70">{p.bio}</p>
                   </div>
-                  <p className="text-sm leading-relaxed text-charcoal/70">{p.bio}</p>
+                  <div className="pt-2">
+                    <Link
+                      to="/people/$personId"
+                      params={{ personId: p.id }}
+                      className="text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold-dark"
+                    >
+                      Read Full Bio →
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
