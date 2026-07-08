@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IMG } from "@/lib/images";
 
 const links = [
+  { to: "/", label: "Home" },
   { to: "/who-we-are", label: "Who We Are" },
   { to: "/what-we-do", label: "What We Do" },
   { to: "/projects", label: "Projects" },

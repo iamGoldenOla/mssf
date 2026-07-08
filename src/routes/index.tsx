@@ -46,7 +46,32 @@ const timeline = [
   { date: "11 / 2023", title: "Clean Water Access Project", body: "Borehole maintenance and new water purification at Odiofiong Primary. 2,000 L daily capacity." },
 ];
 
+const slides = [
+  { src: IMG.schoolGroup, caption: "MSSF-supported pupils at St. Peter's Primary" },
+  { src: IMG.uniforms, caption: "New school uniforms provided to students" },
+  { src: IMG.threeBoys, caption: "Students walking safely to school in Cross River State" },
+  { src: IMG.twoBoys, caption: "Connecting with children and families in rural communities" },
+  { src: IMG.childrenCloseup, caption: "A chance for children in rural communities to dream big!" },
+];
+
+const values = [
+  { title: "Compassion", body: "Deeply caring about the welfare, growth, and future of every child." },
+  { title: "Integrity", body: "Honoring every promise and maintaining absolute transparency in all we do." },
+  { title: "Impact", body: "Creating tangible, measurable improvements in rural school systems." },
+  { title: "Inclusion", body: "Ensuring no child is left behind due to location, gender, or family income." },
+  { title: "Sustainability", body: "Building long-term community capacity so positive changes last for generations." },
+];
+
 function HomePage() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <SiteShell>
       <DonationModal />
@@ -77,13 +102,42 @@ function HomePage() {
           </div>
 
           <div className="animate-fade-up lg:col-span-7 [animation-delay:200ms]">
-            <BeforeAfter
-              beforeSrc={IMG.schoolBefore}
-              afterSrc={IMG.schoolMural}
-              beforeLabel="Before"
-              afterLabel="After"
-              caption="St. Peter's School Renovation"
-            />
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-stone-100 ring-1 ring-black/5">
+              {slides.map((slide, index) => (
+                <div
+                  key={slide.src}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    index === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  <img
+                    src={slide.src}
+                    alt={slide.caption}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
+                    <p className="font-display text-lg italic text-offwhite">
+                      {slide.caption}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Slideshow Controls */}
+              <div className="absolute right-6 top-6 z-20 flex gap-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveSlide(index)}
+                    className={`size-2.5 rounded-full transition-colors ${
+                      index === activeSlide ? "bg-gold" : "bg-offwhite/50 hover:bg-offwhite"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -99,6 +153,68 @@ function HomePage() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-offwhite/60">
                 {s.label}
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Who We Are */}
+      <section className="mx-auto max-w-7xl px-6 py-24 border-b border-border">
+        <div className="grid gap-12 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-5 space-y-6">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
+            <h2 className="font-display text-4xl font-semibold leading-tight">
+              A Nigerian NGO built on receipts, not rhetoric.
+            </h2>
+            <p className="text-lg leading-relaxed text-charcoal/70">
+              My Shining Star Foundation (MSSF) was born out of a deep desire to bridge the educational gap in underserved rural communities. We witnessed firsthand the struggles children face — broken classrooms, lack of materials, and limited opportunities — and chose to act.
+            </p>
+            <p className="text-charcoal/70">
+              In collaboration with our partners, we have launched a holistic educational initiative that reflects our belief in investing in the next generation. We don't just campaign; we renovate classrooms, hire qualified teachers, and deliver transport, clean water, and nutritional support.
+            </p>
+            <div>
+              <Link to="/who-we-are" className="group inline-flex items-center gap-2 font-semibold text-gold">
+                Learn more about our team
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </div>
+          <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden rounded-sm shadow-lg">
+            <img
+              src={IMG.schoolMural}
+              alt="MSSF team at school renovation project"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Banner */}
+      <section className="bg-stone-50 border-b border-border px-6 py-20 text-center">
+        <div className="mx-auto max-w-3xl space-y-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
+          <h2 className="font-display text-3xl font-semibold leading-relaxed lg:text-4xl text-green">
+            "To bring education, dignity, and opportunity to underserved children in rural areas."
+          </h2>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="mx-auto max-w-7xl px-6 py-24 border-b border-border">
+        <div className="mb-16 space-y-4 text-center">
+          <p className="font-mono text-xs uppercase tracking-widest text-gold">Core Values</p>
+          <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+            Five commitments we hold to.
+          </h2>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+          {values.map((v, i) => (
+            <div key={v.title} className="space-y-4 border border-border p-6 bg-card rounded-sm hover:shadow-md transition-shadow">
+              <div className="font-mono text-xs text-gold">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <h3 className="font-display text-xl font-semibold text-green">{v.title}</h3>
+              <p className="text-sm leading-relaxed text-charcoal/70">{v.body}</p>
             </div>
           ))}
         </div>
