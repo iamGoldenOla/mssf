@@ -21,12 +21,17 @@ function ContactPage() {
 
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Contact</p>
-          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-tight lg:text-6xl">
-            We'd love to hear from you.
-          </h1>
+      <header className="border-b border-border px-6 py-20 bg-stone-50">
+        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Contact</p>
+            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
+              We'd love to hear from you.
+            </h1>
+          </div>
+          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
+            <img src={IMG.teamEvent} alt="MSSF community outreach event" className="w-full object-cover" />
+          </div>
         </div>
       </header>
 

@@ -57,12 +57,17 @@ const YEARS: Year[] = [
 function ProjectsPage() {
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Projects & Impact</p>
-          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-tight lg:text-6xl">
-            The receipts. Every project. Every year.
-          </h1>
+      <header className="border-b border-border px-6 py-20 bg-stone-50">
+        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Projects & Impact</p>
+            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
+              The receipts. Every project. Every year.
+            </h1>
+          </div>
+          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
+            <img src={IMG.schoolMural} alt="Renovated St. Peter's school building mural" className="w-full object-cover" />
+          </div>
         </div>
       </header>
 

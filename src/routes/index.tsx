@@ -343,6 +343,31 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* YouTube Documentary Section */}
+      <section className="bg-stone-50 border-t border-border px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 text-center space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Documentary Video</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              Watch the Oban School Project Journey
+            </h2>
+            <p className="mx-auto max-w-xl text-charcoal/60 text-sm">
+              See first-hand the impact of our partnership with JB Farms and Rotary International in Oban, Cross River State.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-2xl bg-white p-2">
+            <iframe
+              className="w-full aspect-video border-0"
+              src="https://www.youtube.com/embed/QfduBiaakRo"
+              title="My Shining Star Oban Documentary"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
     </SiteShell>
   );
 }

@@ -33,12 +33,17 @@ const team = [
 function WhoWeArePage() {
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
-          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-tight lg:text-6xl">
-            A Nigerian NGO built on receipts, not rhetoric.
-          </h1>
+      <header className="border-b border-border px-6 py-20 bg-stone-50">
+        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
+            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
+              A Nigerian NGO built on receipts, not rhetoric.
+            </h1>
+          </div>
+          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
+            <img src={IMG.schoolGroup} alt="MSSF school pupils smiling together" className="w-full object-cover" />
+          </div>
         </div>
       </header>
 

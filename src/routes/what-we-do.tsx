@@ -28,16 +28,21 @@ const capabilities = [
 function WhatWeDoPage() {
   return (
     <SiteShell>
-      <header className="border-b border-border px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
-          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-tight lg:text-6xl">
-            Seven programs. One integrated model.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-charcoal/70">
-            Delivering only textbooks leaves a hungry child. Delivering only meals leaves a
-            child who can't read them. Our model works because it refuses to pick one.
-          </p>
+      <header className="border-b border-border px-6 py-20 bg-stone-50">
+        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
+            <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-green">
+              Seven programs. One integrated model.
+            </h1>
+            <p className="max-w-2xl text-lg text-charcoal/70">
+              Delivering only textbooks leaves a hungry child. Delivering only meals leaves a
+              child who can't read them. Our model works because it refuses to pick one.
+            </p>
+          </div>
+          <div className="lg:col-span-5 overflow-hidden rounded-sm ring-1 ring-black/5 shadow-lg max-h-[300px]">
+            <img src={IMG.uniforms} alt="Students with new school uniforms" className="w-full object-cover" />
+          </div>
         </div>
       </header>
 
