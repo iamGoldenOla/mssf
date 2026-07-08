@@ -124,20 +124,17 @@ function GalleryPage() {
                 Before & After Transformation
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
-                Drag the slider to see the structural transformation of St. Peter's Primary School, Oban, from a dilapidated state to a safe, vibrant learning environment.
+                A visual record of the structural transformation of St. Peter's Primary School, Oban, from dilapidated conditions to a safe, encouraging learning environment.
               </p>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={150}>
-            <div className="mx-auto max-w-4xl shadow-2xl rounded-sm overflow-hidden bg-white">
-              <BeforeAfter
-                beforeSrc={IMG.schoolBefore}
-                afterSrc={IMG.schoolMural}
-                beforeLabel="Before Renovation"
-                afterLabel="After Renovation"
-                caption="St. Peter's School Renovation Project"
-              />
-            </div>
+            <BeforeAfter
+              beforeSrc={IMG.schoolBefore}
+              afterSrc={IMG.schoolMural}
+              beforeLabel="Before Renovation"
+              afterLabel="After Renovation"
+            />
           </ScrollReveal>
         </div>
       </section>
