@@ -314,6 +314,27 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Partners Horizontal Scroll */}
+      <section className="border-y border-border bg-stone-50 py-16 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
+          <div className="relative w-full overflow-x-auto flex gap-6 pb-4 scroll-smooth scrollbar-thin">
+            {[
+              { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
+              { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
+              { name: "Rotary Club International", desc: "Community service & fundraising" },
+              { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
+              { name: "Oban Community Committee", desc: "Local engagement & administration" }
+            ].map((partner) => (
+              <div key={partner.name} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
+                <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
+                <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="bg-charcoal text-offwhite">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2">

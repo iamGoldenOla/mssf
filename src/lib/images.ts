@@ -12,6 +12,11 @@ import uniforms from "@/assets/uniforms.jpg";
 import vijay from "@/assets/vijay.jpg";
 import logo from "@/assets/logo.png";
 import flyer from "@/assets/flyer.png";
+import achievementChairs from "@/assets/achievement_chairs_2024.png";
+import achievementBefore from "@/assets/achievement_before_2024.png";
+import achievementDilapidated from "@/assets/achievement_dilapidated_2024.png";
+import achievementQuarters from "@/assets/achievement_quarters_2024.png";
+import achievementDrums from "@/assets/achievement_drums_2024.png";
 
 export const IMG = {
   heroClassroom,
@@ -28,5 +33,10 @@ export const IMG = {
   vijay,
   logo,
   flyer,
+  achievementChairs,
+  achievementBefore,
+  achievementDilapidated,
+  achievementQuarters,
+  achievementDrums,
 };
 

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
+import { IMG } from "@/lib/images";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-type Entry = { date: string; item: string; qty?: string; remark: string };
+type Entry = { date: string; item: string; qty?: string; remark: string; img?: string };
 type Year = { year: string; entries: Entry[] };
 
 const YEARS: Year[] = [
@@ -44,10 +45,10 @@ const YEARS: Year[] = [
   {
     year: "2024",
     entries: [
-      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture." },
-      { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use." },
-      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students." },
-      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment." },
+      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture.", img: IMG.achievementQuarters },
+      { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use.", img: IMG.achievementChairs },
+      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students.", img: IMG.achievementDrums },
+      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment.", img: IMG.achievementBefore },
       { date: "01 / 2024", item: "Writing materials distribution", qty: "500 Books, 3 Pkts, 2 Containers", remark: "Distributed 500 copies of 40 leaves exercise books, 3 packets of pencils, and 2 containers of erasers." },
       { date: "01 / 2024", item: "Recruitment of teachers", qty: "4 Educators", remark: "Recruitment of 4 qualified and passionate teachers for the school." },
     ],
@@ -114,11 +115,18 @@ function ProjectsPage() {
               </div>
               <div className="space-y-3 lg:col-span-9">
                 {y.entries.map((e) => (
-                  <article key={e.date + e.item} className="grid grid-cols-1 gap-4 border border-border bg-card p-6 md:grid-cols-12 md:gap-8">
+                  <article key={e.date + e.item} className="grid grid-cols-1 gap-4 border border-border bg-card p-6 md:grid-cols-12 md:gap-8 hover:shadow-sm transition-shadow">
                     <div className="font-mono text-xs text-gold md:col-span-2">{e.date}</div>
-                    <div className="space-y-1 md:col-span-6">
-                      <h3 className="font-semibold">{e.item}</h3>
-                      <p className="text-sm text-charcoal/70">{e.remark}</p>
+                    <div className="space-y-3 md:col-span-6">
+                      <div className="space-y-1">
+                        <h3 className="font-semibold">{e.item}</h3>
+                        <p className="text-sm text-charcoal/70">{e.remark}</p>
+                      </div>
+                      {e.img && (
+                        <div className="overflow-hidden rounded-sm ring-1 ring-black/5 max-w-sm mt-3">
+                          <img src={e.img} alt={e.item} className="w-full object-cover max-h-[180px]" loading="lazy" />
+                        </div>
+                      )}
                     </div>
                     <div className="md:col-span-4 md:text-right">
                       {e.qty && (

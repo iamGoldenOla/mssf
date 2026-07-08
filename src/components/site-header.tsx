@@ -23,9 +23,9 @@ export function SiteHeader() {
 
           {/* Who We Are Dropdown */}
           <div className="relative group">
-            <button className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 transition-colors hover:text-gold cursor-pointer py-2">
+            <Link to="/who-we-are" className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 transition-colors hover:text-gold cursor-pointer py-2">
               Who We Are <span className="text-[8px] transition-transform group-hover:rotate-180">▼</span>
-            </button>
+            </Link>
             <div className="absolute left-0 mt-0 hidden w-48 rounded-sm border border-border bg-offwhite shadow-lg group-hover:block z-50 animate-fade-in">
               <div className="py-1">
                 <Link to="/who-we-are" className="block px-4 py-2.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 hover:bg-black/5 hover:text-gold">
@@ -40,9 +40,9 @@ export function SiteHeader() {
 
           {/* What We Do Dropdown */}
           <div className="relative group">
-            <button className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 transition-colors hover:text-gold cursor-pointer py-2">
+            <Link to="/what-we-do" className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 transition-colors hover:text-gold cursor-pointer py-2">
               What We Do <span className="text-[8px] transition-transform group-hover:rotate-180">▼</span>
-            </button>
+            </Link>
             <div className="absolute left-0 mt-0 hidden w-48 rounded-sm border border-border bg-offwhite shadow-lg group-hover:block z-50 animate-fade-in">
               <div className="py-1">
                 <Link to="/what-we-do" className="block px-4 py-2.5 text-xs font-medium uppercase tracking-widest text-charcoal/70 hover:bg-black/5 hover:text-gold">
