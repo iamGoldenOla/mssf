@@ -22,22 +22,23 @@ function ContactPage() {
 
   return (
     <SiteShell>
-      <header className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+      <header className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
         <img
           src={IMG.teamEvent}
           alt="Contact"
-          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+          className="absolute inset-0 h-full w-full object-cover object-[center_35%] animate-ken-burns"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/10" />
-        <div className="absolute inset-0 flex items-end pb-16 px-6">
-          <div className="mx-auto max-w-7xl w-full">
+        <div className="absolute inset-0 bg-charcoal/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 flex items-center justify-center text-center p-6">
+          <div className="max-w-4xl w-full">
             <ScrollReveal translateY={12}>
               <div className="space-y-4 text-offwhite">
                 <p className="font-mono text-xs uppercase tracking-widest text-gold">Contact</p>
-                <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-offwhite max-w-4xl">
+                <h1 className="font-display text-4xl font-semibold leading-tight lg:text-6xl text-offwhite">
                   We'd love to hear from you.
                 </h1>
-                <p className="max-w-2xl text-lg text-offwhite/80">
+                <p className="max-w-2xl text-base text-offwhite/90 mx-auto">
                   Reach out to our teams in Cross River State or partner offices. Let's work together to nurture futures.
                 </p>
               </div>

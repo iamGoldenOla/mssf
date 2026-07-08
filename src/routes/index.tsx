@@ -77,69 +77,86 @@ function HomePage() {
     <SiteShell>
       <DonationModal />
       {/* Hero */}
-      <header className="relative px-6 py-12 lg:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12">
-          <div className="animate-fade-up space-y-8 lg:col-span-5">
-            <div className="inline-flex items-center gap-3 text-gold">
-              <div className="h-px w-12 bg-gold" />
-              <span className="font-mono text-xs uppercase tracking-tighter">Cross River State, Nigeria</span>
-            </div>
-            <h1 className="text-balance font-display text-5xl font-semibold leading-[1.05] lg:text-7xl">
-              Nurturing Futures, One Community at a Time
-            </h1>
-            <p className="max-w-prose text-lg leading-relaxed text-charcoal/70">
-              In rural communities across Cross River State - Nigeria, too many children are growing up without access to even the most basic education - a fundamental right and the first step toward breaking the cycle of poverty. At My Shining Star Foundation (MSSF), we are changing that - one child at a time. In collaboration with our partners, My Shining Star Foundation (MSSF), launched a holistic educational initiative that reflects our belief in investing in the next generation.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/donate" className="rounded-sm bg-gold px-8 py-4 text-sm font-semibold text-charcoal shadow-lg shadow-gold/20 transition-transform hover:-translate-y-0.5">
-                Donate $5 Monthly
-              </Link>
-              <Link to="/get-involved" className="rounded-sm border border-border px-8 py-4 text-sm font-semibold transition-colors hover:bg-black/5">
-                Join Our Mission
-              </Link>
+      {/* Hero */}
+      <header className="relative h-[85vh] min-h-[500px] w-full overflow-hidden">
+        {/* Slideshow background */}
+        {slides.map((slide, index) => (
+          <div
+            key={slide.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <img
+              src={slide.src}
+              alt={slide.caption}
+              className="h-full w-full object-cover object-[center_25%] animate-ken-burns"
+            />
+            {/* Dark solid overlay + legibility scrim combined */}
+            <div className="absolute inset-0 bg-charcoal/45 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent z-10" />
+            
+            <div className="absolute bottom-8 left-8 z-20 hidden md:block">
+              <p className="font-display text-xs italic text-offwhite/70">
+                {slide.caption}
+              </p>
             </div>
           </div>
-
-          <div className="animate-fade-up lg:col-span-7 [animation-delay:200ms]">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-stone-100 ring-1 ring-black/5">
-              {slides.map((slide, index) => (
-                <div
-                  key={slide.src}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
-                >
-                  <img
-                    src={slide.src}
-                    alt={slide.caption}
-                    className="h-full w-full object-cover animate-ken-burns"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 z-20">
-                    <p className="font-display text-lg italic text-offwhite">
-                      {slide.caption}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              
-              {/* Slideshow Controls */}
-              <div className="absolute right-6 top-6 z-20 flex gap-2">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveSlide(index)}
-                    className={`size-2.5 rounded-full transition-colors ${
-                      index === activeSlide ? "bg-gold" : "bg-offwhite/50 hover:bg-offwhite"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+        ))}
+        
+        {/* Centered overlaid text & CTAs */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
+          <div className="max-w-4xl space-y-6 text-offwhite">
+            <ScrollReveal translateY={12}>
+              <div className="inline-flex items-center gap-3 text-gold justify-center mb-2">
+                <div className="h-px w-8 bg-gold" />
+                <span className="font-mono text-xs uppercase tracking-widest">Cross River State, Nigeria</span>
+                <div className="h-px w-8 bg-gold" />
               </div>
-            </div>
+              <h1 className="font-display text-5xl font-semibold leading-[1.05] lg:text-7xl text-offwhite">
+                Nurturing Futures, One Community at a Time
+              </h1>
+              <div className="flex flex-wrap justify-center gap-4 pt-6">
+                <Link to="/donate" className="rounded-sm bg-gold px-8 py-4 text-sm font-semibold text-charcoal shadow-lg shadow-gold/20 transition-transform hover:-translate-y-0.5">
+                  Donate $5 Monthly
+                </Link>
+                <Link to="/get-involved" className="rounded-sm border border-offwhite/30 bg-offwhite/10 px-8 py-4 text-sm font-semibold text-offwhite transition-colors hover:bg-offwhite/20">
+                  Join Our Mission
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
+
+        {/* Slideshow Control Dots */}
+        <div className="absolute bottom-8 right-8 z-30 flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveSlide(index)}
+              className={`size-3 rounded-full transition-colors cursor-pointer ${
+                index === activeSlide ? "bg-gold" : "bg-offwhite/40 hover:bg-offwhite"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </header>
+
+      {/* Intro Context Section (placed below hero) */}
+      <section className="bg-stone-50 border-b border-border py-20 px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <ScrollReveal>
+            <p className="font-mono text-xs uppercase tracking-widest text-gold mb-4">Our Context & Commitment</p>
+            <blockquote className="font-display text-2xl md:text-3xl leading-relaxed text-charcoal italic">
+              "In rural communities across Cross River State - Nigeria, too many children are growing up without access to even the most basic education - a fundamental right and the first step toward breaking the cycle of poverty."
+            </blockquote>
+            <p className="mt-8 text-lg leading-relaxed text-charcoal/80 max-w-3xl mx-auto">
+              At My Shining Star Foundation (MSSF), we are changing that - one child at a time. In collaboration with our partners, My Shining Star Foundation (MSSF) launched a holistic educational initiative that reflects our belief in investing in the next generation.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Impact strip */}
       <section className="border-y border-offwhite/10 bg-green py-14">
