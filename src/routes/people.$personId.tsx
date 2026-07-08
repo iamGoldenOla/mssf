@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/people/$personId")({
   head: ({ params }) => {
@@ -97,45 +98,53 @@ function PersonProfilePage() {
 
         <div className="grid gap-12 lg:grid-cols-12 items-start">
           {/* Photo & Quote */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="overflow-hidden rounded-sm ring-1 ring-black/5 aspect-[4/5] shadow-lg">
-              <img
-                src={person.img}
-                alt={person.name}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            {person.quote && (
-              <blockquote className="border-l-2 border-gold pl-4 font-display text-lg italic text-charcoal/80">
-                "{person.quote}"
-              </blockquote>
-            )}
+          <div className="lg:col-span-4">
+            <ScrollReveal>
+              <div className="space-y-6">
+                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 aspect-[4/5] shadow-lg">
+                  <img
+                    src={person.img}
+                    alt={person.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                {person.quote && (
+                  <blockquote className="border-l-2 border-gold pl-4 font-display text-lg italic text-charcoal/80">
+                    "{person.quote}"
+                  </blockquote>
+                )}
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Detailed Biography */}
-          <div className="lg:col-span-8 space-y-6">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-gold mb-1">{person.shortRole}</p>
-              <h1 className="font-display text-4xl font-semibold leading-tight text-green lg:text-5xl">
-                {person.name}
-              </h1>
-              <p className="text-sm font-semibold text-charcoal/50 mt-1">{person.role}</p>
-            </div>
+          <div className="lg:col-span-8">
+            <ScrollReveal delay={150}>
+              <div className="space-y-6">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-widest text-gold mb-1">{person.shortRole}</p>
+                  <h1 className="font-display text-4xl font-semibold leading-tight text-green lg:text-5xl">
+                    {person.name}
+                  </h1>
+                  <p className="text-sm font-semibold text-charcoal/50 mt-1">{person.role}</p>
+                </div>
 
-            <div className="space-y-6 text-base leading-relaxed text-charcoal/80">
-              {person.bio.map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
-            </div>
+                <div className="space-y-6 text-base leading-relaxed text-charcoal/80">
+                  {person.bio.map((paragraph, idx) => (
+                    <p key={idx}>{paragraph}</p>
+                  ))}
+                </div>
 
-            <div className="pt-8 border-t border-border flex flex-wrap gap-4">
-              <Link to="/contact" className="rounded-sm bg-green px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
-                Get in Touch
-              </Link>
-              <Link to="/donate" className="rounded-sm border border-border px-6 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
-                Support MSSF
-              </Link>
-            </div>
+                <div className="pt-8 border-t border-border flex flex-wrap gap-4">
+                  <Link to="/contact" className="rounded-sm bg-green px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
+                    Get in Touch
+                  </Link>
+                  <Link to="/donate" className="rounded-sm border border-border px-6 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
+                    Support MSSF
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </article>

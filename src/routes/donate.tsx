@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { useState } from "react";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/donate")({
   head: () => ({
@@ -24,6 +25,18 @@ const tiers = [
 
 function DonatePage() {
   const [region, setRegion] = useState<"abroad" | "nigeria">("abroad");
+  const [activeRegion, setActiveRegion] = useState<"abroad" | "nigeria">("abroad");
+  const [isFading, setIsFading] = useState(false);
+
+  const handleRegionChange = (newRegion: "abroad" | "nigeria") => {
+    if (newRegion === activeRegion) return;
+    setIsFading(true);
+    setRegion(newRegion);
+    setTimeout(() => {
+      setActiveRegion(newRegion);
+      setIsFading(false);
+    }, 220); // 220ms matches the 200-250ms cross-fade spec
+  };
 
   return (
     <SiteShell>
@@ -40,7 +53,7 @@ function DonatePage() {
             </p>
           </div>
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-            <img src={IMG.childrenCloseup} alt="Cross River State student" className="h-full w-full object-cover" />
+            <img src={IMG.childrenCloseup} alt="Cross River State student" className="h-full w-full object-cover animate-ken-burns" />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
             <p className="absolute bottom-6 left-6 right-6 font-display text-2xl italic text-offwhite">
               "Your $5 keeps me in school."
@@ -54,16 +67,16 @@ function DonatePage() {
         <div className="mb-10 flex justify-center">
           <div className="inline-flex rounded-sm border border-border bg-offwhite p-1">
             <button
-              onClick={() => setRegion("abroad")}
-              className={`rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors ${
+              onClick={() => handleRegionChange("abroad")}
+              className={`rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer ${
                 region === "abroad" ? "bg-green text-offwhite" : "text-charcoal/60"
               }`}
             >
               Give from Abroad (USD)
             </button>
             <button
-              onClick={() => setRegion("nigeria")}
-              className={`rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors ${
+              onClick={() => handleRegionChange("nigeria")}
+              className={`rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer ${
                 region === "nigeria" ? "bg-green text-offwhite" : "text-charcoal/60"
               }`}
             >
@@ -72,88 +85,97 @@ function DonatePage() {
           </div>
         </div>
 
-        {region === "abroad" ? (
-          <div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {tiers.map((t) => (
-                <div
-                  key={t.amount}
-                  className={`relative flex flex-col items-center gap-6 p-8 text-center ${
-                    t.featured
-                      ? "-translate-y-2 bg-green text-offwhite shadow-2xl"
-                      : "border border-border bg-card"
-                  }`}
-                >
-                  {t.featured && (
-                    <div className="absolute -top-3 bg-gold px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-charcoal">
-                      Most Effective
+        <div className={`transition-opacity duration-220 ease-out ${isFading ? "opacity-0" : "opacity-100"}`}>
+          {activeRegion === "abroad" ? (
+            <div>
+              <div className="grid gap-6 md:grid-cols-3">
+                {tiers.map((t, idx) => (
+                  <ScrollReveal key={t.amount} delay={idx * 80} translateY={10}>
+                    <div
+                      className={`relative flex flex-col items-center gap-6 p-8 text-center h-full hover:scale-[1.01] transition-transform ${
+                        t.featured
+                          ? "bg-green text-offwhite shadow-2xl"
+                          : "border border-border bg-card"
+                      }`}
+                    >
+                      {t.featured && (
+                        <div className="absolute -top-3 bg-gold px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-charcoal">
+                          Most Effective
+                        </div>
+                      )}
+                      <span className={`font-mono text-[10px] uppercase tracking-widest ${t.featured ? "text-gold" : "text-gold"}`}>
+                        {t.label}
+                      </span>
+                      <div className="font-display text-5xl font-semibold">
+                        ${t.amount}
+                        <span className={`text-base font-normal ${t.featured ? "text-offwhite/50" : "text-charcoal/40"}`}>
+                          /mo
+                        </span>
+                      </div>
+                      <p className={`text-sm leading-relaxed ${t.featured ? "text-offwhite/70" : "text-charcoal/60"}`}>
+                        {t.outcome}
+                      </p>
+                      <button
+                        className={`w-full rounded-sm py-3 text-xs font-semibold uppercase tracking-widest transition-colors mt-auto ${
+                          t.featured
+                            ? "bg-gold text-charcoal hover:bg-gold-dark"
+                            : "border border-green text-green hover:bg-green hover:text-offwhite"
+                        }`}
+                      >
+                        Subscribe Monthly
+                      </button>
                     </div>
-                  )}
-                  <span className={`font-mono text-[10px] uppercase tracking-widest ${t.featured ? "text-gold" : "text-gold"}`}>
-                    {t.label}
-                  </span>
-                  <div className="font-display text-5xl font-semibold">
-                    ${t.amount}
-                    <span className={`text-base font-normal ${t.featured ? "text-offwhite/50" : "text-charcoal/40"}`}>
-                      /mo
-                    </span>
-                  </div>
-                  <p className={`text-sm leading-relaxed ${t.featured ? "text-offwhite/70" : "text-charcoal/60"}`}>
-                    {t.outcome}
-                  </p>
-                  <button
-                    className={`w-full rounded-sm py-3 text-xs font-semibold uppercase tracking-widest transition-colors ${
-                      t.featured
-                        ? "bg-gold text-charcoal hover:bg-gold-dark"
-                        : "border border-green text-green hover:bg-green hover:text-offwhite"
-                    }`}
-                  >
-                    Subscribe Monthly
-                  </button>
+                  </ScrollReveal>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <button className="text-sm font-semibold border-b border-border pb-1 hover:border-gold cursor-pointer">
+                  Or make a one-time donation →
+                </button>
+              </div>
+            </div>
+          ) : (
+            <ScrollReveal>
+              <div className="mx-auto max-w-2xl space-y-6 border border-border bg-card p-10 shadow-sm">
+                <h3 className="font-display text-2xl font-semibold">Zenith Bank Transfer</h3>
+                <div className="space-y-4">
+                  <Row label="Bank" value="Zenith Bank" />
+                  <Row label="Account Name" value="My Shining Star Foundation" />
+                  <Row label="Account Number" value="1016024813" mono />
+                  <Row label="Reference" value="Your name + purpose" />
                 </div>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <button className="text-sm font-semibold border-b border-border pb-1 hover:border-gold">
-                Or make a one-time donation →
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="mx-auto max-w-2xl space-y-6 border border-border bg-card p-10">
-            <h3 className="font-display text-2xl font-semibold">Zenith Bank Transfer</h3>
-            <div className="space-y-4">
-              <Row label="Bank" value="Zenith Bank" />
-              <Row label="Account Name" value="My Shining Star Foundation" />
-              <Row label="Account Number" value="1016024813" mono />
-              <Row label="Reference" value="Your name + purpose" />
-            </div>
-            <p className="text-xs text-charcoal/50">
-              Please email your transfer confirmation to <a href="mailto:info@mssf.com.ng" className="text-gold hover:underline">info@mssf.com.ng</a> so we can issue a formal receipt.
-            </p>
-            <p className="rounded-sm bg-stone-100 p-3 font-mono text-[10px] uppercase tracking-widest text-charcoal/60">
-              Paystack / Flutterwave NGN checkout — coming soon
-            </p>
-          </div>
-        )}
+                <p className="text-xs text-charcoal/50">
+                  Please email your transfer confirmation to <a href="mailto:info@mssf.com.ng" className="text-gold hover:underline">info@mssf.com.ng</a> so we can issue a formal receipt.
+                </p>
+                <p className="rounded-sm bg-stone-100 p-3 font-mono text-[10px] uppercase tracking-widest text-charcoal/60">
+                  Paystack / Flutterwave NGN checkout — coming soon
+                </p>
+              </div>
+            </ScrollReveal>
+          )}
+        </div>
       </section>
 
       {/* What your donation does */}
       <section className="border-y border-border bg-stone-50 px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Where It Goes</p>
-          <h2 className="mb-12 font-display text-4xl font-semibold">Every dollar, accounted for.</h2>
+          <ScrollReveal>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Where It Goes</p>
+            <h2 className="mb-12 font-display text-4xl font-semibold">Every dollar, accounted for.</h2>
+          </ScrollReveal>
           <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2 lg:grid-cols-4">
             {[
               { t: "Books & Supplies", b: "Exercise books, pens, and teacher instructional guides." },
               { t: "Renovated Classrooms", b: "Roofing, painting, desks, and solar power." },
               { t: "Teacher Support", b: "Stipends, training, and classroom resources." },
               { t: "Safe Environments", b: "Sanitation, clean water, and daily nutritional milk." },
-            ].map((x) => (
-              <div key={x.t} className="space-y-3 bg-offwhite p-8">
-                <h3 className="font-display text-lg font-semibold">{x.t}</h3>
-                <p className="text-sm text-charcoal/70">{x.b}</p>
-              </div>
+            ].map((x, i) => (
+              <ScrollReveal key={x.t} delay={i * 80} className="bg-offwhite h-full">
+                <div className="space-y-3 p-8 h-full">
+                  <h3 className="font-display text-lg font-semibold">{x.t}</h3>
+                  <p className="text-sm text-charcoal/70">{x.b}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -162,15 +184,17 @@ function DonatePage() {
       {/* What Your Donation Provides */}
       <section className="bg-stone-50 border-t border-border px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Impact Model</p>
-            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-              Your Donation Provides
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
-              MSSF coordinates holistic interventions that cover every aspect of a child's school experience. We cannot do it without you.
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Impact Model</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                Your Donation Provides
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+                MSSF coordinates holistic interventions that cover every aspect of a child's school experience. We cannot do it without you.
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               "Quality and passionate teaching staff",
@@ -182,10 +206,12 @@ function DonatePage() {
               "Safe and child-friendly classrooms",
               "A chance for children in rural communities to dream big!",
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-green font-bold text-lg">✓</span>
-                <p className="text-sm font-semibold text-charcoal">{item}</p>
-              </div>
+              <ScrollReveal key={idx} delay={idx * 60}>
+                <div className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow h-full">
+                  <span className="text-green font-bold text-lg">✓</span>
+                  <p className="text-sm font-semibold text-charcoal">{item}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -195,19 +221,27 @@ function DonatePage() {
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div className="space-y-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Promise</p>
-            <h2 className="font-display text-4xl font-semibold leading-tight">
-              We publish what we do — dated, itemized, verifiable.
-            </h2>
-            <p className="text-lg text-charcoal/70">
-              Every project. Every year. If you want the naira-level detail, ask us — we'll send
-              the log.
-            </p>
-            <a href="mailto:info@mssf.com.ng" className="inline-flex items-center gap-2 font-semibold text-gold">
-              Request the full impact log →
-            </a>
+            <ScrollReveal>
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Promise</p>
+              <h2 className="font-display text-4xl font-semibold leading-tight mt-2">
+                We publish what we do — dated, itemized, verifiable.
+              </h2>
+              <p className="text-lg text-charcoal/70 mt-4">
+                Every project. Every year. If you want the naira-level detail, ask us — we'll send
+                the log.
+              </p>
+              <div className="pt-2">
+                <a href="mailto:info@mssf.com.ng" className="inline-flex items-center gap-2 font-semibold text-gold">
+                  Request the full impact log →
+                </a>
+              </div>
+            </ScrollReveal>
           </div>
-          <img src={IMG.uniforms} alt="MSSF-supported students" className="rounded-sm ring-1 ring-black/5" loading="lazy" />
+          <div className="w-full">
+            <ScrollReveal delay={150}>
+              <img src={IMG.uniforms} alt="MSSF-supported students" className="rounded-sm ring-1 ring-black/5 w-full object-cover" loading="lazy" />
+            </ScrollReveal>
+          </div>
         </div>
       </section>
     </SiteShell>

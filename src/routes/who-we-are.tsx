@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/who-we-are")({
   head: () => ({
@@ -50,123 +51,141 @@ function WhoWeArePage() {
       {/* Our Story */}
       <section className="px-6 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-            <img src={IMG.schoolMural} alt="MSSF team at St. Peter's School" className="h-full w-full object-cover" loading="lazy" />
+          <div className="w-full">
+            <ScrollReveal>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                <img src={IMG.schoolMural} alt="MSSF team at St. Peter's School" className="h-full w-full object-cover" loading="lazy" />
+              </div>
+            </ScrollReveal>
           </div>
           <div className="space-y-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Story</p>
-            <h2 className="font-display text-4xl font-semibold leading-tight">
-              It started with one abandoned classroom.
-            </h2>
-            <div className="space-y-4 text-lg leading-relaxed text-charcoal/70">
-              <p>
-                In 2018, our founding team walked into St. Peter's Primary School in rural Cross River
-                State. The roof was open to the sky. The children — hundreds of them — had no desks,
-                no books, and no clean water within walking distance.
-              </p>
-              <p>
-                We didn't launch a campaign. We didn't post appeals. We started renovating, one
-                classroom at a time, and logged every naira spent and every child served.
-              </p>
-              <p>
-                Six years later, MSSF is a working blueprint: renovation + staffing + transport +
-                health + water, delivered together, at one real school first. Then the next.
-              </p>
-            </div>
+            <ScrollReveal delay={150}>
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Story</p>
+              <h2 className="font-display text-4xl font-semibold leading-tight">
+                It started with one abandoned classroom.
+              </h2>
+              <div className="space-y-4 text-lg leading-relaxed text-charcoal/70 mt-4">
+                <p>
+                  In 2018, our founding team walked into St. Peter's Primary School in rural Cross River
+                  State. The roof was open to the sky. The children — hundreds of them — had no desks,
+                  no books, and no clean water within walking distance.
+                </p>
+                <p>
+                  We didn't launch a campaign. We didn't post appeals. We started renovating, one
+                  classroom at a time, and logged every naira spent and every child served.
+                </p>
+                <p>
+                  Six years later, MSSF is a working blueprint: renovation + staffing + transport +
+                  health + water, delivered together, at one real school first. Then the next.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Vision / Mission */}
       <section className="border-y border-border bg-stone-50 px-6 py-24">
-        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
-          <div className="space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Vision</p>
-            <h3 className="font-display text-3xl font-semibold leading-tight text-green">
-              A world where every child has access to quality education and the opportunity to thrive.
-            </h3>
+        <ScrollReveal>
+          <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-2">
+            <div className="space-y-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Vision</p>
+              <h3 className="font-display text-3xl font-semibold leading-tight text-green">
+                A world where every child has access to quality education and the opportunity to thrive.
+              </h3>
+            </div>
+            <div className="space-y-4 lg:border-l lg:border-border lg:pl-12">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Mission</p>
+              <p className="text-lg leading-relaxed text-charcoal/70">
+                To bring education, dignity, and opportunity to underserved children in rural areas.
+              </p>
+            </div>
           </div>
-          <div className="space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Mission</p>
-            <p className="text-lg leading-relaxed text-charcoal/70">
-              To bring education, dignity, and opportunity to underserved children in rural areas.
-            </p>
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Values */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Core Values</p>
-          <h2 className="mb-12 max-w-2xl font-display text-4xl font-semibold">
-            Five commitments we hold to.
-          </h2>
+          <ScrollReveal>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Core Values</p>
+            <h2 className="mb-12 max-w-2xl font-display text-4xl font-semibold">
+              Five commitments we hold to.
+            </h2>
+          </ScrollReveal>
           <div className="divide-y divide-border border-y border-border">
             {values.map((v, i) => (
-              <div key={v.title} className="grid gap-6 py-8 md:grid-cols-12">
-                <div className="font-mono text-xs text-gold md:col-span-2">
-                  {String(i + 1).padStart(2, "0")}
+              <ScrollReveal key={v.title} delay={i * 80}>
+                <div className="grid gap-6 py-8 md:grid-cols-12">
+                  <div className="font-mono text-xs text-gold md:col-span-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="font-display text-xl font-semibold md:col-span-4">{v.title}</h3>
+                  <p className="text-charcoal/70 md:col-span-6">{v.body}</p>
                 </div>
-                <h3 className="font-display text-xl font-semibold md:col-span-4">{v.title}</h3>
-                <p className="text-charcoal/70 md:col-span-6">{v.body}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Partners Horizontal Scroll */}
-      <section className="border-b border-border bg-stone-50 py-16 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6">
-          <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
-          <div className="relative w-full overflow-x-auto flex gap-6 pb-4 scroll-smooth scrollbar-thin">
-            {[
-              { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
-              { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
-              { name: "Rotary Club International", desc: "Community service & fundraising" },
-              { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
-              { name: "Oban Community Committee", desc: "Local engagement & administration" }
-            ].map((partner) => (
-              <div key={partner.name} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
-                <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
-                <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
-              </div>
-            ))}
+      <ScrollReveal>
+        <section className="border-b border-border bg-stone-50 py-16 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6">
+            <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
+            <div className="relative w-full overflow-x-auto flex gap-6 pb-4 scroll-smooth scrollbar-thin">
+              {[
+                { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
+                { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
+                { name: "Rotary Club International", desc: "Community service & fundraising" },
+                { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
+                { name: "Oban Community Committee", desc: "Local engagement & administration" }
+              ].map((partner) => (
+                <div key={partner.name} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
+                  <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
+                  <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* People */}
-      <section className="bg-stone-50 px-6 py-24">
+      <section className="bg-stone-50 px-6 py-24" id="team">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Our People</p>
-          <h2 className="mb-12 font-display text-4xl font-semibold">The team on the ground.</h2>
+          <ScrollReveal>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Our People</p>
+            <h2 className="mb-12 font-display text-4xl font-semibold">The team on the ground.</h2>
+          </ScrollReveal>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {team.map((p) => (
-              <article key={p.name} className="flex h-full flex-col bg-card ring-1 ring-border hover:shadow-md transition-shadow">
-                <div className="aspect-[4/5] overflow-hidden">
-                  <img src={p.img} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
-                </div>
-                <div className="flex flex-1 flex-col space-y-3 p-6 justify-between">
-                  <div className="space-y-3">
-                    <div>
-                      <h3 className="font-display text-lg font-semibold">{p.name}</h3>
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-gold">{p.role}</p>
+            {team.map((p, i) => (
+              <ScrollReveal key={p.name} delay={i * 80}>
+                <article className="flex h-full flex-col bg-card ring-1 ring-border hover:shadow-md transition-shadow">
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img src={p.img} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="flex flex-1 flex-col space-y-3 p-6 justify-between">
+                    <div className="space-y-3">
+                      <div>
+                        <h3 className="font-display text-lg font-semibold">{p.name}</h3>
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-gold">{p.role}</p>
+                      </div>
+                      <p className="text-sm leading-relaxed text-charcoal/70">{p.bio}</p>
                     </div>
-                    <p className="text-sm leading-relaxed text-charcoal/70">{p.bio}</p>
+                    <div className="pt-2">
+                      <Link
+                        to="/people/$personId"
+                        params={{ personId: p.id }}
+                        className="text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold-dark"
+                      >
+                        Read Full Bio →
+                      </Link>
+                    </div>
                   </div>
-                  <div className="pt-2">
-                    <Link
-                      to="/people/$personId"
-                      params={{ personId: p.id }}
-                      className="text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold-dark"
-                    >
-                      Read Full Bio →
-                    </Link>
-                  </div>
-                </div>
-              </article>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>

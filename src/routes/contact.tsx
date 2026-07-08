@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { useState } from "react";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -39,110 +40,118 @@ function ContactPage() {
         <div className="grid gap-16 lg:grid-cols-12">
           {/* Details */}
           <div className="space-y-10 lg:col-span-4">
-            <div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Email</p>
-              <a href="mailto:info@mssf.com.ng" className="font-display text-xl text-charcoal hover:text-gold">
-                info@mssf.com.ng
-              </a>
-            </div>
-            <div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Phone</p>
-              <a href="tel:+234XXXXXXXXX" className="font-display text-xl text-charcoal hover:text-gold">
-                +234 XXX XXX XXXX
-              </a>
-            </div>
-            <div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Address</p>
-              <p className="text-charcoal/80 leading-relaxed">
-                Oban, Akamkpa II, Akamkpa LGA,<br />
-                Calabar, Cross River State,<br />
-                Nigeria 542102
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3 pt-4">
-              <a href="https://wa.me/234XXXXXXXXX" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
-                WhatsApp Chat
-              </a>
-              <a href="mailto:info@mssf.com.ng" className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
-                Email Us
-              </a>
-            </div>
-            <div className="overflow-hidden rounded-sm ring-1 ring-black/5">
-              <img src={IMG.teamEvent} alt="MSSF team" className="w-full object-cover" loading="lazy" />
-            </div>
+            <ScrollReveal>
+              <div className="space-y-10">
+                <div>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Email</p>
+                  <a href="mailto:info@mssf.com.ng" className="font-display text-xl text-charcoal hover:text-gold">
+                    info@mssf.com.ng
+                  </a>
+                </div>
+                <div>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Phone</p>
+                  <a href="tel:+234XXXXXXXXX" className="font-display text-xl text-charcoal hover:text-gold">
+                    +234 XXX XXX XXXX
+                  </a>
+                </div>
+                <div>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Address</p>
+                  <p className="text-charcoal/80 leading-relaxed">
+                    Oban, Akamkpa II, Akamkpa LGA,<br />
+                    Calabar, Cross River State,<br />
+                    Nigeria 542102
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 pt-4">
+                  <a href="https://wa.me/234XXXXXXXXX" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
+                    WhatsApp Chat
+                  </a>
+                  <a href="mailto:info@mssf.com.ng" className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
+                    Email Us
+                  </a>
+                </div>
+                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
+                  <img src={IMG.teamEvent} alt="MSSF team" className="w-full object-cover" loading="lazy" />
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-8">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="grid gap-6 border border-border bg-card p-8 md:grid-cols-2"
-            >
-              <Field label="Full Name" name="name" required />
-              <Field label="Email" name="email" type="email" required />
-              <Field label="Phone" name="phone" type="tel" />
-              <div className="flex flex-col gap-2">
-                <label className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60">Subject</label>
-                <select
-                  name="subject"
-                  className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
-                >
-                  <option>General Enquiry</option>
-                  <option>Volunteer</option>
-                  <option>Partnership</option>
-                  <option>Donation Support</option>
-                  <option>Media / Press</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60">Message</label>
-                <textarea
-                  name="message"
-                  rows={6}
-                  required
-                  className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  className="rounded-sm bg-gold px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal hover:bg-gold-dark"
-                >
-                  Send Message
-                </button>
-                {sent && (
-                  <span className="ml-4 text-sm text-green">Thanks — we'll be in touch shortly.</span>
-                )}
-              </div>
-            </form>
+          <div className="lg:col-span-8 space-y-8">
+            <ScrollReveal delay={150}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
+                className="grid gap-6 border border-border bg-card p-8 md:grid-cols-2 shadow-sm"
+              >
+                <Field label="Full Name" name="name" required />
+                <Field label="Email" name="email" type="email" required />
+                <Field label="Phone" name="phone" type="tel" />
+                <div className="flex flex-col gap-2">
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60">Subject</label>
+                  <select
+                    name="subject"
+                    className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
+                  >
+                    <option>General Enquiry</option>
+                    <option>Volunteer</option>
+                    <option>Partnership</option>
+                    <option>Donation Support</option>
+                    <option>Media / Press</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-2 md:col-span-2">
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-charcoal/60">Message</label>
+                  <textarea
+                    name="message"
+                    rows={6}
+                    required
+                    className="border border-border bg-offwhite px-3 py-3 text-sm focus:border-gold focus:outline-none"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <button
+                    type="submit"
+                    className="rounded-sm bg-gold px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal hover:bg-gold-dark cursor-pointer"
+                  >
+                    Send Message
+                  </button>
+                  {sent && (
+                    <span className="ml-4 text-sm text-green">Thanks — we'll be in touch shortly.</span>
+                  )}
+                </div>
+              </form>
+            </ScrollReveal>
 
-            <div className="grid gap-6 md:grid-cols-2">
-              {/* Map */}
-              <div className="mt-8 overflow-hidden rounded-sm ring-1 ring-black/5">
-                <iframe
-                  title="MSSF Calabar location"
-                  src="https://maps.google.com/maps?q=Oban,%20Akamkpa,%20Calabar,%20Cross%20River,%20Nigeria&t=&z=10&ie=UTF8&iwloc=&output=embed"
-                  className="h-64 w-full border-0"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
+            <ScrollReveal delay={200}>
+              <div className="grid gap-6 md:grid-cols-2">
+                {/* Map */}
+                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
+                  <iframe
+                    title="MSSF Calabar location"
+                    src="https://maps.google.com/maps?q=Oban,%20Akamkpa,%20Calabar,%20Cross%20River,%20Nigeria&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                    className="h-64 w-full border-0"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
 
-              {/* YouTube Video */}
-              <div className="mt-8 overflow-hidden rounded-sm ring-1 ring-black/5">
-                <iframe
-                  className="h-64 w-full border-0"
-                  src="https://www.youtube.com/embed/QfduBiaakRo"
-                  title="My Shining Star Oban Documentary"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                />
+                {/* YouTube Video */}
+                <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-sm">
+                  <iframe
+                    className="h-64 w-full border-0"
+                    src="https://www.youtube.com/embed/QfduBiaakRo"
+                    title="My Shining Star Oban Documentary"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

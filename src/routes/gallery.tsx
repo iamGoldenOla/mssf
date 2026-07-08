@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { useMemo, useState } from "react";
 import { BeforeAfter } from "@/components/before-after";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -81,22 +82,23 @@ function GalleryPage() {
 
         <div className="grid auto-rows-[220px] grid-cols-2 gap-3 md:grid-cols-4">
           {filtered.map((p, i) => (
-            <button
-              key={p.src}
-              onClick={() => setOpen(i)}
-              className={`group relative overflow-hidden rounded-sm bg-stone-200 ring-1 ring-black/5 ${p.span ?? ""}`}
-            >
-              <img
-                src={p.src}
-                alt={p.alt}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-charcoal/0 transition-colors group-hover:bg-charcoal/20" />
-              <div className="absolute bottom-2 left-2 rounded-sm bg-offwhite/85 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity group-hover:opacity-100">
-                {p.cat}
-              </div>
-            </button>
+            <ScrollReveal key={p.src} delay={i * 40} duration={600} translateY={12} className={p.span ?? ""}>
+              <button
+                onClick={() => setOpen(i)}
+                className="group relative overflow-hidden rounded-sm bg-stone-200 ring-1 ring-black/5 w-full h-full text-left"
+              >
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 transition-colors group-hover:bg-charcoal/20" />
+                <div className="absolute bottom-2 left-2 rounded-sm bg-offwhite/85 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-charcoal opacity-0 transition-opacity group-hover:opacity-100">
+                  {p.cat}
+                </div>
+              </button>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -104,24 +106,28 @@ function GalleryPage() {
       {/* Before & After Renovation */}
       <section className="bg-stone-50 border-t border-border px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Renovation Impact</p>
-            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-              Before & After Transformation
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
-              Drag the slider to see the structural transformation of St. Peter's Primary School, Oban, from a dilapidated state to a safe, vibrant learning environment.
-            </p>
-          </div>
-          <div className="mx-auto max-w-4xl shadow-2xl rounded-sm overflow-hidden bg-white">
-            <BeforeAfter
-              beforeSrc={IMG.schoolBefore}
-              afterSrc={IMG.schoolMural}
-              beforeLabel="Before Renovation"
-              afterLabel="After Renovation"
-              caption="St. Peter's School Renovation Project"
-            />
-          </div>
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Renovation Impact</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                Before & After Transformation
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+                Drag the slider to see the structural transformation of St. Peter's Primary School, Oban, from a dilapidated state to a safe, vibrant learning environment.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={150}>
+            <div className="mx-auto max-w-4xl shadow-2xl rounded-sm overflow-hidden bg-white">
+              <BeforeAfter
+                beforeSrc={IMG.schoolBefore}
+                afterSrc={IMG.schoolMural}
+                beforeLabel="Before Renovation"
+                afterLabel="After Renovation"
+                caption="St. Peter's School Renovation Project"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { CountUp } from "@/components/count-up";
 import { BeforeAfter } from "@/components/before-after";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { IMG } from "@/lib/images";
 import { useEffect, useState } from "react";
 
@@ -111,7 +112,7 @@ function HomePage() {
                   <img
                     src={slide.src}
                     alt={slide.caption}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover animate-ken-burns"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 z-20">
@@ -159,69 +160,83 @@ function HomePage() {
       {/* Who We Are */}
       <section className="mx-auto max-w-7xl px-6 py-24 border-b border-border">
         <div className="grid gap-12 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-5 space-y-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
-            <h2 className="font-display text-4xl font-semibold leading-tight">
-              A Nigerian NGO built on receipts, not rhetoric.
-            </h2>
-            <p className="text-lg leading-relaxed text-charcoal/70">
-              My Shining Star Foundation (MSSF) was born out of a deep desire to bridge the educational gap in underserved rural communities. We witnessed firsthand the struggles children face — broken classrooms, lack of materials, and limited opportunities — and chose to act.
-            </p>
-            <p className="text-charcoal/70">
-              In collaboration with our partners, we have launched a holistic educational initiative that reflects our belief in investing in the next generation. We don't just campaign; we renovate classrooms, hire qualified teachers, and deliver transport, clean water, and nutritional support.
-            </p>
-            <div>
-              <Link to="/who-we-are" className="group inline-flex items-center gap-2 font-semibold text-gold">
-                Learn more about our team
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
+          <div className="lg:col-span-5">
+            <ScrollReveal>
+              <div className="space-y-6">
+                <p className="font-mono text-xs uppercase tracking-widest text-gold">Who We Are</p>
+                <h2 className="font-display text-4xl font-semibold leading-tight">
+                  A Nigerian NGO built on receipts, not rhetoric.
+                </h2>
+                <p className="text-lg leading-relaxed text-charcoal/70">
+                  My Shining Star Foundation (MSSF) was born out of a deep desire to bridge the educational gap in underserved rural communities. We witnessed firsthand the struggles children face — broken classrooms, lack of materials, and limited opportunities — and chose to act.
+                </p>
+                <p className="text-charcoal/70">
+                  In collaboration with our partners, we have launched a holistic educational initiative that reflects our belief in investing in the next generation. We don't just campaign; we renovate classrooms, hire qualified teachers, and deliver transport, clean water, and nutritional support.
+                </p>
+                <div>
+                  <Link to="/who-we-are" className="group inline-flex items-center gap-2 font-semibold text-gold">
+                    Learn more about our team
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
-          <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden rounded-sm shadow-lg">
-            <img
-              src={IMG.schoolMural}
-              alt="MSSF team at school renovation project"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+          <div className="lg:col-span-7">
+            <ScrollReveal delay={150}>
+              <div className="relative aspect-[16/10] overflow-hidden rounded-sm shadow-lg">
+                <img
+                  src={IMG.schoolMural}
+                  alt="MSSF team at school renovation project"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Mission & Vision Banner */}
       <section className="bg-stone-50 border-b border-border px-6 py-20">
-        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-2 text-center lg:text-left">
-          <div className="space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
-            <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
-              "To bring education, dignity, and opportunity to underserved children in rural areas."
-            </h2>
+        <ScrollReveal>
+          <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-2 text-center lg:text-left">
+            <div className="space-y-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
+              <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
+                "To bring education, dignity, and opportunity to underserved children in rural areas."
+              </h2>
+            </div>
+            <div className="space-y-4 lg:border-l lg:border-border lg:pl-12">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Vision</p>
+              <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
+                "A world where every child has access to quality education and the opportunity to thrive."
+              </h2>
+            </div>
           </div>
-          <div className="space-y-4 lg:border-l lg:border-border lg:pl-12">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Vision</p>
-            <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
-              "A world where every child has access to quality education and the opportunity to thrive."
-            </h2>
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Core Values */}
       <section className="mx-auto max-w-7xl px-6 py-24 border-b border-border">
-        <div className="mb-16 space-y-4 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-gold">Core Values</p>
-          <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-            Five commitments we hold to.
-          </h2>
-        </div>
+        <ScrollReveal>
+          <div className="mb-16 space-y-4 text-center">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Core Values</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              Five commitments we hold to.
+            </h2>
+          </div>
+        </ScrollReveal>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {values.map((v, i) => (
-            <div key={v.title} className="space-y-4 border border-border p-6 bg-card rounded-sm hover:shadow-md transition-shadow">
-              <div className="font-mono text-xs text-gold">
-                {String(i + 1).padStart(2, "0")}
+            <ScrollReveal key={v.title} delay={i * 80}>
+              <div className="space-y-4 border border-border p-6 bg-card rounded-sm hover:shadow-md transition-shadow h-full">
+                <div className="font-mono text-xs text-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="font-display text-xl font-semibold text-green">{v.title}</h3>
+                <p className="text-sm leading-relaxed text-charcoal/70">{v.body}</p>
               </div>
-              <h3 className="font-display text-xl font-semibold text-green">{v.title}</h3>
-              <p className="text-sm leading-relaxed text-charcoal/70">{v.body}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -229,15 +244,17 @@ function HomePage() {
       {/* Your Donation Provides */}
       <section className="bg-stone-50 border-y border-border px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 space-y-4 text-center">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Direct Impact</p>
-            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-              But we can’t do it without You.
-            </h2>
-            <p className="mx-auto max-w-xl text-charcoal/60">
-              Your partnership and support directly power these critical components of our child support ecosystem:
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="mb-16 space-y-4 text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Direct Impact</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                But we can’t do it without You.
+              </h2>
+              <p className="mx-auto max-w-xl text-charcoal/60">
+                Your partnership and support directly power these critical components of our child support ecosystem:
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               "Quality and passionate teaching staff",
@@ -249,10 +266,12 @@ function HomePage() {
               "Safe and child-friendly classrooms",
               "A chance for children in rural communities to dream big!",
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-green font-bold text-lg">✓</span>
-                <p className="text-sm font-semibold text-charcoal">{item}</p>
-              </div>
+              <ScrollReveal key={idx} delay={idx * 60}>
+                <div className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow h-full">
+                  <span className="text-green font-bold text-lg">✓</span>
+                  <p className="text-sm font-semibold text-charcoal">{item}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -260,25 +279,29 @@ function HomePage() {
 
       {/* What we do */}
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-16 space-y-4 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
-          <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-            A Holistic Model of Dignity
-          </h2>
-          <p className="mx-auto max-w-xl text-charcoal/60">
-            We don't just build walls. We create the ecosystem required for a child to succeed
-            through graduation.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-16 space-y-4 text-center">
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">What We Do</p>
+            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+              A Holistic Model of Dignity
+            </h2>
+            <p className="mx-auto max-w-xl text-charcoal/60">
+              We don't just build walls. We create the ecosystem required for a child to succeed
+              through graduation.
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map((c) => (
-            <div key={c.n} className="space-y-4 bg-offwhite p-10 transition-colors hover:bg-stone-50">
-              <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
-                {c.n}
+          {capabilities.map((c, i) => (
+            <ScrollReveal key={c.n} delay={i * 80} className="bg-offwhite h-full">
+              <div className="space-y-4 p-10 transition-colors hover:bg-stone-50 h-full">
+                <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
+                  {c.n}
+                </div>
+                <h3 className="font-display text-xl font-semibold">{c.title}</h3>
+                <p className="text-sm leading-relaxed text-charcoal/70">{c.body}</p>
               </div>
-              <h3 className="font-display text-xl font-semibold">{c.title}</h3>
-              <p className="text-sm leading-relaxed text-charcoal/70">{c.body}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -287,80 +310,92 @@ function HomePage() {
       <section className="bg-stone-50 px-6 py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <div className="sticky top-32 space-y-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-gold">Proof of Progress</p>
-              <h2 className="font-display text-4xl font-semibold">Every intervention, itemized.</h2>
-              <p className="leading-relaxed text-charcoal/70">
-                Transparency is our commitment. Each project is logged with a date, a scope,
-                and the number of children served.
-              </p>
-              <Link to="/projects" className="group inline-flex items-center gap-2 font-semibold text-gold">
-                View full impact log
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
+            <ScrollReveal>
+              <div className="sticky top-32 space-y-6">
+                <p className="font-mono text-xs uppercase tracking-widest text-gold">Proof of Progress</p>
+                <h2 className="font-display text-4xl font-semibold">Every intervention, itemized.</h2>
+                <p className="leading-relaxed text-charcoal/70">
+                  Transparency is our commitment. Each project is logged with a date, a scope,
+                  and the number of children served.
+                </p>
+                <Link to="/projects" className="group inline-flex items-center gap-2 font-semibold text-gold">
+                  View full impact log
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
           <div className="space-y-4 lg:col-span-8">
-            {timeline.map((t) => (
-              <article key={t.title} className="flex items-start gap-8 border border-border bg-card p-6 transition-shadow hover:shadow-sm">
-                <div className="whitespace-nowrap py-1 font-mono text-xs text-gold">{t.date}</div>
-                <div className="space-y-2">
-                  <h3 className="font-semibold">{t.title}</h3>
-                  <p className="text-sm text-charcoal/70">{t.body}</p>
-                </div>
-              </article>
+            {timeline.map((t, i) => (
+              <ScrollReveal key={t.title} delay={i * 100}>
+                <article className="flex items-start gap-8 border border-border bg-card p-6 transition-shadow hover:shadow-sm">
+                  <div className="whitespace-nowrap py-1 font-mono text-xs text-gold">{t.date}</div>
+                  <div className="space-y-2">
+                    <h3 className="font-semibold">{t.title}</h3>
+                    <p className="text-sm text-charcoal/70">{t.body}</p>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Partners Horizontal Scroll */}
-      <section className="border-y border-border bg-stone-50 py-16 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6">
-          <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
-          <div className="relative w-full overflow-x-auto flex gap-6 pb-4 scroll-smooth scrollbar-thin">
-            {[
-              { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
-              { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
-              { name: "Rotary Club International", desc: "Community service & fundraising" },
-              { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
-              { name: "Oban Community Committee", desc: "Local engagement & administration" }
-            ].map((partner) => (
-              <div key={partner.name} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
-                <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
-                <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
-              </div>
-            ))}
+      <ScrollReveal>
+        <section className="border-y border-border bg-stone-50 py-16 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6">
+            <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
+            <div className="relative w-full overflow-x-auto flex gap-6 pb-4 scroll-smooth scrollbar-thin">
+              {[
+                { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
+                { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
+                { name: "Rotary Club International", desc: "Community service & fundraising" },
+                { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
+                { name: "Oban Community Committee", desc: "Local engagement & administration" }
+              ].map((partner) => (
+                <div key={partner.name} className="flex flex-col items-center justify-center border border-border p-6 bg-card rounded-sm shadow-sm w-72 text-center flex-shrink-0">
+                  <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
+                  <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* Final CTA */}
       <section className="bg-charcoal text-offwhite">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2">
           <div className="space-y-8">
-            <h2 className="font-display text-4xl font-semibold leading-tight lg:text-5xl">
-              Be the reason a child stays in school.
-            </h2>
-            <p className="text-lg text-offwhite/60">
-              Your $5 monthly gift is small to you, but transformative for a child in Cross River
-              State. Join us in building a legacy of learning.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/donate" className="rounded-sm bg-gold px-10 py-5 text-sm font-bold uppercase tracking-widest text-charcoal transition-colors hover:bg-gold-dark">
-                Donate Now
-              </Link>
-              <Link to="/get-involved" className="rounded-sm border border-offwhite/20 px-10 py-5 text-sm font-bold uppercase tracking-widest text-offwhite transition-colors hover:bg-offwhite/10">
-                Become a Partner
-              </Link>
-            </div>
+            <ScrollReveal>
+              <h2 className="font-display text-4xl font-semibold leading-tight lg:text-5xl">
+                Be the reason a child stays in school.
+              </h2>
+              <p className="text-lg text-offwhite/60">
+                Your $5 monthly gift is small to you, but transformative for a child in Cross River
+                State. Join us in building a legacy of learning.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-6">
+                <Link to="/donate" className="rounded-sm bg-gold px-10 py-5 text-sm font-bold uppercase tracking-widest text-charcoal transition-colors hover:bg-gold-dark">
+                  Donate Now
+                </Link>
+                <Link to="/get-involved" className="rounded-sm border border-offwhite/20 px-10 py-5 text-sm font-bold uppercase tracking-widest text-offwhite transition-colors hover:bg-offwhite/10">
+                  Become a Partner
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm ring-1 ring-offwhite/10">
-            <img src={IMG.boyThumbs} alt="Student in Cross River State" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="font-display text-lg italic text-offwhite">"Your $5 keeps me in school."</p>
-            </div>
+          <div className="w-full">
+            <ScrollReveal delay={150}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm ring-1 ring-offwhite/10">
+                <img src={IMG.boyThumbs} alt="Student in Cross River State" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="font-display text-lg italic text-offwhite">"Your $5 keeps me in school."</p>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -368,25 +403,29 @@ function HomePage() {
       {/* YouTube Documentary Section */}
       <section className="bg-stone-50 border-t border-border px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-12 text-center space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">Documentary Video</p>
-            <h2 className="font-display text-3xl font-semibold lg:text-4xl">
-              Watch the Oban School Project Journey
-            </h2>
-            <p className="mx-auto max-w-xl text-charcoal/60 text-sm">
-              See first-hand the impact of our partnership with JB Farms and Rotary International in Oban, Cross River State.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-2xl bg-white p-2">
-            <iframe
-              className="w-full aspect-video border-0"
-              src="https://www.youtube.com/embed/QfduBiaakRo"
-              title="My Shining Star Oban Documentary"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <ScrollReveal>
+            <div className="mb-12 text-center space-y-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Documentary Video</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                Watch the Oban School Project Journey
+              </h2>
+              <p className="mx-auto max-w-xl text-charcoal/60 text-sm">
+                See first-hand the impact of our partnership with JB Farms and Rotary International in Oban, Cross River State.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={150}>
+            <div className="overflow-hidden rounded-sm ring-1 ring-black/5 shadow-2xl bg-white p-2">
+              <iframe
+                className="w-full aspect-video border-0"
+                src="https://www.youtube.com/embed/QfduBiaakRo"
+                title="My Shining Star Oban Documentary"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </SiteShell>
@@ -406,8 +445,8 @@ function DonationModal() {
   };
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-charcoal/60 p-4 backdrop-blur-sm animate-fade-in md:items-center">
-      <div className="relative w-full max-w-md overflow-hidden rounded-sm bg-offwhite shadow-2xl">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/40 p-4 backdrop-blur-sm animate-fade-in transition-all duration-300">
+      <div className="relative w-full max-w-md overflow-hidden rounded-sm bg-offwhite shadow-2xl animate-fade-scale-in">
         <button onClick={dismiss} className="absolute right-3 top-3 z-10 grid size-8 place-items-center rounded-full bg-offwhite/90 text-charcoal hover:bg-offwhite" aria-label="Close">✕</button>
         <div className="relative h-48">
           <img src={IMG.childrenCloseup} alt="" className="h-full w-full object-cover" />

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const Route = createFileRoute("/get-involved")({
   head: () => ({
@@ -41,49 +42,57 @@ function GetInvolvedPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-px bg-border ring-1 ring-border md:grid-cols-2">
-          {paths.map((p) => (
-            <div key={p.n} className="flex flex-col justify-between gap-8 bg-offwhite p-10 transition-colors hover:bg-stone-50">
-              <div className="space-y-4">
-                <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
-                  {p.n}
+          {paths.map((p, i) => (
+            <ScrollReveal key={p.n} delay={i * 80} className="bg-offwhite h-full">
+              <div className="flex flex-col justify-between gap-8 p-10 transition-colors hover:bg-stone-50 h-full">
+                <div className="space-y-4">
+                  <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
+                    {p.n}
+                  </div>
+                  <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
+                  <p className="text-charcoal/70">{p.body}</p>
                 </div>
-                <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
-                <p className="text-charcoal/70">{p.body}</p>
+                <Link to={p.to} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mt-4">
+                  {p.cta} →
+                </Link>
               </div>
-              <Link to={p.to} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
-                {p.cta} →
-              </Link>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* Partners */}
-      <section className="border-y border-border bg-stone-50 px-6 py-24">
+      <section className="border-y border-border bg-stone-50 px-6 py-24" id="partners">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Partners</p>
-          <h2 className="mb-12 max-w-2xl font-display text-4xl font-semibold">
-            We don't work alone.
-          </h2>
+          <ScrollReveal>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Partners</p>
+            <h2 className="mb-12 max-w-2xl font-display text-4xl font-semibold">
+              We don't work alone.
+            </h2>
+          </ScrollReveal>
           <div className="grid gap-8 md:grid-cols-3">
             {[
               { name: "JB Farms / Agrinexus", desc: "Operational partner providing agricultural livelihoods to school-community families." },
               { name: "Rotary International", desc: "Co-funded programs and international volunteer coordination." },
               { name: "Local School Committees", desc: "Community-level governance and program feedback at every partner school." },
-            ].map((p) => (
-              <div key={p.name} className="border border-border bg-card p-8">
-                <div className="mb-4 grid h-14 place-items-center bg-stone-100 font-display text-xl font-semibold text-charcoal/60">
-                  {p.name.split(" ")[0]}
+            ].map((p, i) => (
+              <ScrollReveal key={p.name} delay={i * 80}>
+                <div className="border border-border bg-card p-8 shadow-sm h-full hover:shadow-md transition-shadow">
+                  <div className="mb-4 grid h-14 place-items-center bg-stone-100 font-display text-xl font-semibold text-charcoal/60">
+                    {p.name.split(" ")[0]}
+                  </div>
+                  <h3 className="font-display text-lg font-semibold">{p.name}</h3>
+                  <p className="mt-2 text-sm text-charcoal/70">{p.desc}</p>
                 </div>
-                <h3 className="font-display text-lg font-semibold">{p.name}</h3>
-                <p className="mt-2 text-sm text-charcoal/70">{p.desc}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link to="/contact" className="inline-block rounded-sm bg-green px-8 py-4 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
-              Become a Partner
-            </Link>
+            <ScrollReveal delay={300}>
+              <Link to="/contact" className="inline-block rounded-sm bg-green px-8 py-4 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
+                Become a Partner
+              </Link>
+            </ScrollReveal>
           </div>
         </div>
       </section>
