@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { useState } from "react";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -57,6 +58,8 @@ const YEARS: Year[] = [
 ];
 
 function ProjectsPage() {
+  const [activePhoto, setActivePhoto] = useState<string | null>(null);
+
   return (
     <SiteShell>
       <header className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
@@ -136,12 +139,29 @@ function ProjectsPage() {
                           <p className="text-sm text-charcoal/70">{e.remark}</p>
                         </div>
                         {e.img && (
-                          <div className="flex flex-wrap gap-3 mt-3">
-                            {(Array.isArray(e.img) ? e.img : [e.img]).map((imgSrc, imgIdx) => (
-                              <div key={imgIdx} className="overflow-hidden rounded-sm ring-1 ring-black/5 max-w-[200px] flex-1 min-w-[140px]">
-                                <img src={imgSrc} alt={`${e.item} - image ${imgIdx + 1}`} className="w-full h-[130px] object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-                              </div>
-                            ))}
+                          <div className="flex flex-wrap gap-4 mt-4">
+                            {(Array.isArray(e.img) ? e.img : [e.img]).map((imgSrc, imgIdx) => {
+                              const isMultiple = Array.isArray(e.img) && e.img.length > 1;
+                              return (
+                                <button
+                                  key={imgIdx}
+                                  onClick={() => setActivePhoto(imgSrc)}
+                                  className={`group relative overflow-hidden rounded-md border border-border/40 bg-stone-100 ring-1 ring-black/5 hover:border-gold/65 transition-all duration-300 hover:shadow-lg focus:outline-none cursor-zoom-in ${
+                                    isMultiple 
+                                      ? "max-w-[280px] w-full h-[180px] md:h-[200px] flex-1 min-w-[180px]" 
+                                      : "max-w-md w-full h-[250px] md:h-[270px]"
+                                  }`}
+                                >
+                                  <img 
+                                    src={imgSrc} 
+                                    alt={`${e.item} - image ${imgIdx + 1}`} 
+                                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" 
+                                    loading="lazy" 
+                                  />
+                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                </button>
+                              );
+                            })}
                           </div>
                         )}
                       </div>
@@ -202,6 +222,27 @@ function ProjectsPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {activePhoto && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/90 p-6 animate-fade-in animate-duration-300"
+          onClick={() => setActivePhoto(null)}
+        >
+          <img
+            src={activePhoto}
+            alt="Enlarged view"
+            className="max-h-[90vh] max-w-[90vw] rounded-sm object-contain shadow-2xl ring-1 ring-white/10"
+          />
+          <button
+            onClick={() => setActivePhoto(null)}
+            className="absolute right-6 top-6 grid size-10 place-items-center rounded-full bg-offwhite/10 text-offwhite hover:bg-offwhite/20 transition-colors"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </SiteShell>
   );
 }
