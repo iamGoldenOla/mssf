@@ -262,7 +262,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                         overflow: "hidden",
                         transformStyle: "preserve-3d",
                         transformOrigin: "center center",
-                        transform: `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`,
+                        transform: `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) scale(${sc})`,
                         transition: transitionCss,
                         opacity: visible ? 1 : 0,
                         cursor: "pointer",

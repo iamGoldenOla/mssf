@@ -26,14 +26,16 @@ const photos: { src: string; alt: string; cat: Exclude<Cat, "All">; span?: strin
   { src: IMG.uniforms, alt: "Students in blue uniforms", cat: "Classroom" },
   { src: IMG.childrenCloseup, alt: "Children close-up", cat: "Classroom" },
   { src: IMG.achievementBefore, alt: "Renovation of dilapidated school building (March 2024)", cat: "School Renovation" },
-  { src: IMG.achievementDilapidated, alt: "Ditch and foundations work at dilapidated school building (March 2024)", cat: "School Renovation" },
+  { src: IMG.classroomBoots, alt: "Classroom learning and teacher interaction at St. Peter's", cat: "Classroom" },
   { src: IMG.achievementQuarters, alt: "Renovation of teachers' quarters in progress (September 2024)", cat: "School Renovation", span: "md:col-span-2" },
   { src: IMG.achievementDrums, alt: "A set of school drums donated to pupils (May 2024)", cat: "Events" },
   { src: IMG.achievementChairs, alt: "5 tables & 6 chairs donated for teachers' use (June 2024)", cat: "Events" },
   { src: IMG.boyThumbs, alt: "Student giving a thumbs up on the path to school", cat: "Community", span: "md:row-span-2" },
   { src: IMG.threeBoys, alt: "Three schoolchildren on the palm-lined road", cat: "Community" },
   { src: IMG.twoBoys, alt: "Two children in the village", cat: "Community" },
-  { src: IMG.teamEvent, alt: "MSSF team at partner event", cat: "Events", span: "md:col-span-2" },
+  { src: IMG.classroomDenim, alt: "Volunteers and pupils outside the school building", cat: "Events", span: "md:col-span-2" },
+  { src: IMG.classroomDesk, alt: "Individual classroom support and Subeb intervention materials", cat: "Classroom" },
+  { src: IMG.classroomNurse, alt: "Deworming and healthcare administration at green classroom tables", cat: "Classroom" },
 ];
 
 const cats: Cat[] = ["All", "School Renovation", "Classroom", "Community", "Events"];

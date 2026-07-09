@@ -34,8 +34,16 @@ import classroomGreenTables from "@/assets/classroom-green-tables.jpg";
 import classroomTeaching from "@/assets/classroom-teaching.jpg";
 import shermal from "@/assets/shermal.jpg";
 import kingsley from "@/assets/kingsley.jpg";
+import classroomBoots from "@/assets/classroom-boots.jpg";
+import classroomDesk from "@/assets/classroom-desk.jpg";
+import classroomDenim from "@/assets/classroom-denim.jpg";
+import classroomNurse from "@/assets/classroom-nurse.jpg";
 
 export const IMG = {
+  classroomBoots,
+  classroomDesk,
+  classroomDenim,
+  classroomNurse,
   heroClassroom,
   schoolBefore,
   boyThumbs,

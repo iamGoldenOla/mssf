@@ -81,9 +81,10 @@ function GetInvolvedPage() {
               We don't work alone.
             </h2>
           </ScrollReveal>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "JB Farms / Agrinexus", desc: "Operational partner providing agricultural livelihoods to school-community families." },
+              { name: "JB Farms Oban", desc: "Primary renovation and infrastructure partner providing agricultural livelihoods to school-community families." },
+              { name: "Agrinexus International", desc: "Corporate social responsibility partner driving local logistical and ground operations." },
               { name: "Rotary International", desc: "Co-funded programs and international volunteer coordination." },
               { name: "Local School Committees", desc: "Community-level governance and program feedback at every partner school." },
             ].map((p, i) => (
