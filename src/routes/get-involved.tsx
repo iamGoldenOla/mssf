@@ -55,7 +55,7 @@ function GetInvolvedPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {paths.map((p, i) => (
             <ScrollReveal key={p.n} delay={i * 80} className="h-full">
-              <div className="flex flex-col justify-between gap-8 bg-card border border-border/80 p-10 rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
+              <div className={`flex flex-col justify-between gap-8 bg-card border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} p-10 rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full`}>
                 <div className="space-y-4">
                   <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
                     {p.n}
@@ -88,7 +88,7 @@ function GetInvolvedPage() {
               { name: "Local School Committees", desc: "Community-level governance and program feedback at every partner school." },
             ].map((p, i) => (
               <ScrollReveal key={p.name} delay={i * 80}>
-                <div className="border border-border/80 bg-card p-8 shadow-sm h-full rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                <div className={`border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card p-8 shadow-sm h-full rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300`}>
                   <div className="mb-4 grid h-14 place-items-center bg-stone-100 font-display text-xl font-semibold text-charcoal/60">
                     {p.name.split(" ")[0]}
                   </div>

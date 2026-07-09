@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ScrollRestoration,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -119,9 +120,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = decodeURIComponent(hash.replace("#", ""));
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // 300ms delay ensures layout has settled
+    }
+  }, [router.state.location]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollRestoration />
       <Outlet />
     </QueryClientProvider>
   );

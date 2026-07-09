@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import Smooth3DSlideshow from "@/components/smooth-3d-slideshow";
 
 export const Route = createFileRoute("/who-we-are")({
   head: () => ({
@@ -25,13 +26,66 @@ const values = [
 ];
 
 const team = [
-  { id: "shermal", name: "Dr. Shermal Perera", role: "Founder", img: IMG.teamEvent, bio: "Founder of Agrinexus International and My Shining Star Foundation, driving sustainable development and education in Cross River State." },
+  { id: "shermal", name: "Dr. Shermal Perera", role: "Founder", img: IMG.shermal, bio: "Founder of Agrinexus International and My Shining Star Foundation, driving sustainable development and education in Cross River State." },
   { id: "vijay", name: "Mr. Vijayakumar Sambanthar (Mr. Vijay)", role: "Program Director", img: IMG.vijay, bio: "General Manager at Agrinexus and Program Director of MSSF, coordinating on-ground operations with over 40 years of global experience." },
-  { id: "deborah", name: "Ms. Deborah Asuquo", role: "Program Coordinator", img: IMG.rebecca, bio: "Program Coordinator managing school partnerships, community relations, and material distribution logistics." },
-  { id: "kingsley", name: "Mr. Kingsley", role: "Volunteer Team Lead", img: IMG.teamEvent, bio: "Volunteer Team Lead directing student transport, local logistics, and community volunteer groups." },
+  { id: "rebecca", name: "Ms. Rebecca Asuquo", role: "Program Coordinator", img: IMG.rebecca, bio: "Program Coordinator managing school partnerships, community relations, and material distribution logistics." },
+  { id: "kingsley", name: "Mr. Kingsley Iwobi", role: "Volunteer Team Lead", img: IMG.kingsley, bio: "Volunteer Team Lead directing student transport, local logistics, and community volunteer groups." },
 ];
 
+import { useEffect, useRef, useState } from "react";
+
+export function CurtainReveal({ src, alt }: { src: string; alt: string }) {
+  const [revealed, setRevealed] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="relative aspect-[4/5] overflow-hidden rounded-sm bg-stone-900 shadow-xl w-full">
+      <img
+        src={src}
+        alt={alt}
+        className={`h-full w-full object-cover transition-transform duration-[1200ms] delay-300 ease-out ${
+          revealed ? "scale-100" : "scale-110"
+        }`}
+        loading="lazy"
+      />
+      {/* Left Curtain */}
+      <div
+        className="absolute inset-y-0 left-0 w-1/2 bg-stone-950 transition-transform duration-1000 ease-out-expo origin-left pointer-events-none"
+        style={{
+          transform: revealed ? "scaleX(0)" : "scaleX(1)",
+        }}
+      />
+      {/* Right Curtain */}
+      <div
+        className="absolute inset-y-0 right-0 w-1/2 bg-stone-950 transition-transform duration-1000 ease-out-expo origin-right pointer-events-none"
+        style={{
+          transform: revealed ? "scaleX(0)" : "scaleX(1)",
+        }}
+      />
+    </div>
+  );
+}
+
 function WhoWeArePage() {
+  const router = useRouter();
   return (
     <SiteShell>
       <header className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
@@ -64,11 +118,7 @@ function WhoWeArePage() {
       <section className="px-6 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
           <div className="w-full">
-            <ScrollReveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-                <img src={IMG.schoolMural} alt="MSSF team at St. Peter's School" className="h-full w-full object-cover" loading="lazy" />
-              </div>
-            </ScrollReveal>
+            <CurtainReveal src={IMG.schoolMural} alt="MSSF team at St. Peter's School" />
           </div>
           <div className="space-y-6">
             <ScrollReveal delay={150}>
@@ -191,37 +241,38 @@ function WhoWeArePage() {
       <section className="bg-stone-50 px-6 py-24" id="team">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Our People</p>
-            <h2 className="mb-12 font-display text-4xl font-semibold">The team on the ground.</h2>
+            <div className="text-center mb-12">
+              <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Our People</p>
+              <h2 className="font-display text-4xl font-semibold">The team on the ground.</h2>
+              <p className="text-charcoal/60 text-sm mt-3 max-w-md mx-auto">
+                Click any team member card to bring them to center, and click again to read their full profile biography.
+              </p>
+            </div>
           </ScrollReveal>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {team.map((p, i) => (
-              <ScrollReveal key={p.name} delay={i * 80}>
-                <article className="flex h-full flex-col bg-card border border-border/80 rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 overflow-hidden">
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <img src={p.img} alt={p.name} className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.02]" loading="lazy" />
-                  </div>
-                  <div className="flex flex-1 flex-col space-y-3 p-6 justify-between">
-                    <div className="space-y-3">
-                      <div>
-                        <h3 className="font-display text-lg font-semibold">{p.name}</h3>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-gold">{p.role}</p>
-                      </div>
-                      <p className="text-sm leading-relaxed text-charcoal/70">{p.bio}</p>
-                    </div>
-                    <div className="pt-2">
-                      <Link
-                        to="/people/$personId"
-                        params={{ personId: p.id }}
-                        className="text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold-dark"
-                      >
-                        Read Full Bio →
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
+
+          <div className="h-[480px] w-full mt-8">
+            <Smooth3DSlideshow
+              slides={team.map((member) => ({
+                id: member.id,
+                title: member.name,
+                role: member.role,
+                image: {
+                  src: member.img,
+                  alt: member.name,
+                },
+              }))}
+              cardWidth={340}
+              cardHeight={400}
+              radius={4}
+              gap={12}
+              opacity={60}
+              onCardClick={(id) => {
+                router.navigate({
+                  to: "/people/$personId",
+                  params: { personId: id },
+                });
+              }}
+            />
           </div>
         </div>
       </section>

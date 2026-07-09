@@ -81,7 +81,7 @@ function ContactPage() {
                     Email Us
                   </a>
                 </div>
-                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
+                <div className="overflow-hidden rounded-sm border-2 border-gold/50 p-2 bg-card shadow-sm hover:border-gold transition-all duration-300">
                   <img src={IMG.teamEvent} alt="MSSF team" className="w-full object-cover rounded-sm" loading="lazy" />
                 </div>
               </div>
@@ -96,7 +96,7 @@ function ContactPage() {
                   e.preventDefault();
                   setSent(true);
                 }}
-                className="grid gap-6 border border-border/80 bg-card p-8 md:grid-cols-2 shadow-md hover:border-gold/60 transition-all duration-300 rounded-sm"
+                className="grid gap-6 border-2 border-green/50 bg-card p-8 md:grid-cols-2 shadow-md hover:border-green transition-all duration-300 rounded-sm"
               >
                 <Field label="Full Name" name="name" required />
                 <Field label="Email" name="email" type="email" required />
@@ -140,7 +140,7 @@ function ContactPage() {
             <ScrollReveal delay={200}>
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Map */}
-                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
+                <div className="overflow-hidden rounded-sm border-2 border-gold/50 p-2 bg-card shadow-sm hover:border-gold transition-all duration-300">
                   <iframe
                     title="MSSF Calabar location"
                     src="https://maps.google.com/maps?q=Oban,%20Akamkpa,%20Calabar,%20Cross%20River,%20Nigeria&t=&z=10&ie=UTF8&iwloc=&output=embed"
@@ -151,7 +151,7 @@ function ContactPage() {
                 </div>
 
                 {/* YouTube Video */}
-                <div className="overflow-hidden rounded-sm border border-border/80 p-2 bg-card shadow-sm hover:border-gold/60 transition-all duration-300">
+                <div className="overflow-hidden rounded-sm border-2 border-green/50 p-2 bg-card shadow-sm hover:border-green transition-all duration-300">
                   <iframe
                     className="h-64 w-full border-0 rounded-sm"
                     src="https://www.youtube.com/embed/QfduBiaakRo"

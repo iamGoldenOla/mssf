@@ -59,7 +59,7 @@ function WhatWeDoPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c, i) => (
             <ScrollReveal key={c.n} delay={i * 80} className="h-full">
-              <div className="space-y-4 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between">
+              <div className={`space-y-4 p-8 border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between`}>
                 <div className="space-y-4">
                   <div className="grid size-10 place-items-center rounded-sm bg-gold/10 font-mono text-sm text-gold">
                     {c.n}

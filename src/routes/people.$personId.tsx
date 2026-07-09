@@ -22,7 +22,7 @@ const profileData = {
     name: "Dr. Shermal Perera",
     role: "Founder, My Shining Star Foundation",
     shortRole: "Founder & Visionary",
-    img: IMG.teamEvent,
+    img: IMG.shermal,
     quote: "Promise Made. Promise Kept.",
     bio: [
       "Dr. Shermal Perera is the founder of My Shining Star Foundation (MSSF) and the founder of Agrinexus International. Guided by a deep sense of philanthropy and community responsibility, he established MSSF to bridge the severe educational gap in the rural areas of Cross River State, Nigeria.",
@@ -43,28 +43,28 @@ const profileData = {
       "A leader of vision and purpose, he continues to empower communities, develop people, and deliver lasting impact on the ground in Cross River State.",
     ],
   },
-  deborah: {
-    name: "Ms. Deborah Asuquo",
+  rebecca: {
+    name: "Ms. Rebecca Asuquo",
     role: "Program Coordinator, My Shining Star Foundation",
     shortRole: "Program Coordinator",
     img: IMG.rebecca,
     quote: "Connecting schools, families, and resources for our children's success.",
     bio: [
-      "Ms. Deborah Asuquo is the Program Coordinator for My Shining Star Foundation, managing the day-to-day ground operations and coordination across all partner schools.",
-      "She acts as the primary liaison between MSSF, local school committees, head teachers, and student families. Deborah manages the logistics of termly material distributions, coordinates student records, and ensures that uniform, book, and stationery supplies are delivered seamlessly to every child.",
+      "Ms. Rebecca Asuquo is the Program Coordinator for My Shining Star Foundation, managing the day-to-day ground operations and coordination across all partner schools.",
+      "She acts as the primary liaison between MSSF, local school committees, head teachers, and student families. Rebecca manages the logistics of termly material distributions, coordinates student records, and ensures that uniform, book, and stationery supplies are delivered seamlessly to every child.",
       "Her dedication to community-level engagement and her local roots make her a trusted advocate for families in the Oban and Akamkpa II communities.",
     ],
   },
   kingsley: {
-    name: "Mr. Kingsley",
+    name: "Mr. Kingsley Iwobi",
     role: "Volunteer Team Lead, My Shining Star Foundation",
     shortRole: "Volunteer Team Lead",
-    img: IMG.teamEvent,
+    img: IMG.kingsley,
     quote: "Mobilizing local energy to keep our children safe and learning.",
     bio: [
-      "Mr. Kingsley leads the MSSF volunteer network, coordinating on-ground logistics, child transport safety, and student excursion activities.",
+      "Mr. Kingsley Iwobi leads the MSSF volunteer network, coordinating on-ground logistics, child transport safety, and student excursion activities.",
       "He manages the security and transport protocols that bring children safely from remote village settlements to school every day. Kingsley also coordinates local sports outreach, excursions to Calabar, and school health camps.",
-      "Through his energetic leadership, Mr. Kingsley has built a strong team of local volunteers dedicated to the safety, wellbeing, and physical education of the children in Cross River State.",
+      "Through his energetic leadership, Mr. Kingsley Iwobi has built a strong team of local volunteers dedicated to the safety, wellbeing, and physical education of the children in Cross River State.",
     ],
   },
 };

@@ -98,8 +98,8 @@ function DonatePage() {
                     <div
                       className={`relative flex flex-col items-center gap-6 p-8 text-center h-full rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 ${
                         t.featured
-                          ? "bg-green text-offwhite shadow-lg border border-green-deep"
-                          : "border border-border/80 bg-card hover:border-gold/60"
+                          ? "bg-green text-offwhite shadow-lg border-2 border-green-deep"
+                          : `border-2 ${idx % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card`
                       }`}
                     >
                       {t.featured && (
@@ -140,7 +140,7 @@ function DonatePage() {
             </div>
           ) : (
             <ScrollReveal>
-              <div className="mx-auto max-w-2xl space-y-6 border border-border/80 bg-card p-10 rounded-sm shadow-md hover:border-gold/60 transition-all duration-300">
+              <div className="mx-auto max-w-2xl space-y-6 border-2 border-gold/50 bg-card p-10 rounded-sm shadow-md hover:border-gold transition-all duration-300">
                 <h3 className="font-display text-2xl font-semibold text-green">Zenith Bank Transfer</h3>
                 <div className="space-y-4">
                   <Row label="Bank" value="Zenith Bank" />
@@ -175,7 +175,7 @@ function DonatePage() {
               { t: "Safe Environments", b: "Sanitation, clean water, and daily nutritional milk." },
             ].map((x, i) => (
               <ScrollReveal key={x.t} delay={i * 80} className="h-full">
-                <div className="space-y-3 p-8 border border-border/80 bg-card rounded-sm hover:border-gold/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full">
+                <div className={`space-y-3 p-8 border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 h-full`}>
                   <h3 className="font-display text-lg font-semibold">{x.t}</h3>
                   <p className="text-sm text-charcoal/70">{x.b}</p>
                 </div>
@@ -211,7 +211,7 @@ function DonatePage() {
               "A chance for children in rural communities to dream big!",
             ].map((item, idx) => (
               <ScrollReveal key={idx} delay={idx * 60}>
-                <div className="flex items-start gap-3 bg-card p-6 border border-border rounded-sm shadow-sm hover:shadow-md transition-shadow h-full">
+                <div className={`flex items-start gap-3 bg-card p-6 border-2 ${idx % 2 === 0 ? 'border-gold/50' : 'border-green/50'} rounded-sm shadow-sm hover:shadow-md transition-shadow h-full`}>
                   <span className="text-green font-bold text-lg">✓</span>
                   <p className="text-sm font-semibold text-charcoal">{item}</p>
                 </div>

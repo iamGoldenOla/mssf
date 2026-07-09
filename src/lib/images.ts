@@ -32,6 +32,8 @@ import sportField from "@/assets/sport-field.jpg";
 import classroomAssembly from "@/assets/classroom-assembly.jpg";
 import classroomGreenTables from "@/assets/classroom-green-tables.jpg";
 import classroomTeaching from "@/assets/classroom-teaching.jpg";
+import shermal from "@/assets/shermal.jpg";
+import kingsley from "@/assets/kingsley.jpg";
 
 export const IMG = {
   heroClassroom,
@@ -68,5 +70,7 @@ export const IMG = {
   classroomAssembly,
   classroomGreenTables,
   classroomTeaching,
+  shermal,
+  kingsley,
 };
 
