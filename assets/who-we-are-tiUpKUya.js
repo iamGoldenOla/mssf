@@ -1,4 +1,4 @@
-import{a as e,c as t,n,o as r,s as i}from"./index-S8m9qcjT.js";import{n as a,t as o}from"./scroll-reveal-7uFrX7XD.js";var s=t(i(),1),c=r(),l=()=>!1,u=[{image:{src:`https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/316d1761-fd79-4ca9-b8d4-f2bb20521a00/w=800`},title:`For Sitting
+import{a as e,c as t,n,o as r,s as i}from"./index-C9UA42K0.js";import{n as a,t as o}from"./scroll-reveal-1ilsP_DQ.js";var s=t(i(),1),c=r(),l=()=>!1,u=[{image:{src:`https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/316d1761-fd79-4ca9-b8d4-f2bb20521a00/w=800`},title:`For Sitting
 Metal
 Minimal`},{image:{src:`https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/aeaa0756-9647-4f6c-d900-204bd25e4a00/w=800`},title:`For Living
 Concrete
