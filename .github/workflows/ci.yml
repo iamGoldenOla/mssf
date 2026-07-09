@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,40 +31,15 @@ jobs:
       - name: Build Application
         run: bun run build
 
-      # (Optional) Upload build artifact for backup/verification
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        if: success()
+      # Deploying to cPanel via FTP on merge to main
+      - name: 📂 Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
-          name: dist-production
-          path: dist/
-          retention-days: 7
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /public_html/
+          state-name: .ftp-deploy-sync-state.json
 
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Bun Environment
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install Dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Build Application
-        run: bun run build
-
-      # Deploying to Cloudflare Pages using Wrangler
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=iamgoldenola-mssf
-        continue-on-error: true
