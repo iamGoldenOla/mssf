@@ -64,8 +64,36 @@ Added clean, structured borders to all page cards and enabled premium hover inte
 
 ---
 
-## 8. Verification & Dev Status
+## 8. Alternating Gold/Green Card Borders & Branding Updates
+
+- **Gold & Green Alternating Borders**: Cards now alternate between `border-gold/50` (gold) and `border-green/50` (green), creating a beautiful, cohesive "carpet" grid layout pattern across Core Values, Donations, Capabilities, Timelines, and Partners.
+- **Removed Subtitle**: Removed the redundant "Shining Star" text underneath "MSSF" in both the header and footer logo areas to clean up the typography.
+- **MSSF Cursive Marquee Ticker**: Added a beautiful, infinite horizontal scrolling marquee ribbon directly below the Homepage hero that says *"MSSF · My Shining Star Foundation ✦"* in elegant **Playfair Display italic** on a green background.
+- **Black Hero Overlays**: Replaced all charcoal overlays in page hero headers with clean `bg-black/40` and `from-black/70` gradients, making the background imagery much sharper and highly legible.
+
+---
+
+## 9. Parallax Quote Banners
+
+Added professional, full-width parallax quote sections to key editorial pages to pause the scroll-pace and transfer emotional weight:
+- **Homepage (`src/routes/index.tsx`)**: Parallax banner showing the school mural: *"Building a brighter, more sustainable future for the next generation."*
+- **Who We Are (`src/routes/who-we-are.tsx`)**: Parallax banner showing a close-up of students: *"We believe every child has a unique star that deserves to shine."*
+- **What We Do (`src/routes/what-we-do.tsx`)**: Parallax banner showing three boys walking to school: *"We don't just build classrooms. We create the entire support system a child needs to succeed."*
+
+---
+
+## 10. Gallery Image Swaps
+
+- **Classroom Photo Replacements**: Removed the strategic partner scrollbar screenshots and replaced them with 3 new high-quality classroom photos in the bottom row:
+  - **School Assembly**: Children gathered in the assembly hall.
+  - **New Classroom Furniture**: Brand-new green tables and chairs.
+  - **Classroom Teaching**: Staff and children working at the blackboard.
+
+---
+
+## 11. Verification & Dev Status
 
 - **Build**: Successfully built the application (`bun run build`). No typescript or bundle compiler errors.
 - **Dev Server**: Autoloaded server is actively running on [http://localhost:8080/](http://localhost:8080/).
 - **GitHub Sync**: All commits have been pushed and are live on the repository `https://github.com/iamGoldenOla/mssf.git` on the `main` branch.
+
