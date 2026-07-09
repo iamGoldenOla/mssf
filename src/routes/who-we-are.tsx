@@ -245,7 +245,7 @@ function WhoWeArePage() {
               <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">Our People</p>
               <h2 className="font-display text-4xl font-semibold">The team on the ground.</h2>
               <p className="text-charcoal/60 text-sm mt-3 max-w-md mx-auto">
-                Click any team member card to bring them to center, and click again to read their full profile biography.
+                Hover to view, or click the active central card to read their full profile biography.
               </p>
             </div>
           </ScrollReveal>
@@ -266,6 +266,7 @@ function WhoWeArePage() {
               radius={4}
               gap={12}
               opacity={60}
+              autoplay={true}
               onCardClick={(id) => {
                 router.navigate({
                   to: "/people/$personId",
