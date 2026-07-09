@@ -76,6 +76,21 @@ function WhatWeDoPage() {
         </div>
       </section>
 
+      {/* Parallax Quote Section */}
+      <section className="relative h-[45vh] min-h-[300px] w-full overflow-hidden parallax-bg flex items-center justify-center text-center px-6" style={{ backgroundImage: `url(${IMG.threeBoys})` }}>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25" />
+        <div className="relative z-10 max-w-4xl space-y-4 text-offwhite">
+          <ScrollReveal translateY={12}>
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Impact Blueprint</p>
+            <h2 className="font-display text-3xl font-semibold md:text-5xl text-offwhite leading-tight mt-2">
+              "We don't just build classrooms. We create the entire support system a child needs to succeed."
+            </h2>
+            <div className="h-0.5 w-16 bg-gold mx-auto mt-6" />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Feature story: St. Peter's */}
       <section className="border-y border-border bg-stone-50 px-6 py-24">
         <div className="mx-auto max-w-7xl">

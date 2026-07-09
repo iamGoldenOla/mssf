@@ -400,6 +400,21 @@ function HomePage() {
         </section>
       </ScrollReveal>
 
+      {/* Parallax Quote Section */}
+      <section className="relative h-[45vh] min-h-[300px] w-full overflow-hidden parallax-bg flex items-center justify-center text-center px-6" style={{ backgroundImage: `url(${IMG.schoolMural})` }}>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25" />
+        <div className="relative z-10 max-w-4xl space-y-4 text-offwhite">
+          <ScrollReveal translateY={12}>
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Vision In Action</p>
+            <h2 className="font-display text-3xl font-semibold md:text-5xl text-offwhite leading-tight mt-2">
+              Building a brighter, more sustainable future for the next generation.
+            </h2>
+            <div className="h-0.5 w-16 bg-gold mx-auto mt-6" />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="bg-charcoal text-offwhite">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2">

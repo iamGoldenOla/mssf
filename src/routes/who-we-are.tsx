@@ -116,6 +116,21 @@ function WhoWeArePage() {
         </ScrollReveal>
       </section>
 
+      {/* Parallax Quote Section */}
+      <section className="relative h-[45vh] min-h-[300px] w-full overflow-hidden parallax-bg flex items-center justify-center text-center px-6" style={{ backgroundImage: `url(${IMG.childrenCloseup})` }}>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25" />
+        <div className="relative z-10 max-w-4xl space-y-4 text-offwhite">
+          <ScrollReveal translateY={12}>
+            <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Belief</p>
+            <h2 className="font-display text-3xl font-semibold md:text-5xl text-offwhite leading-tight mt-2">
+              "We believe every child has a unique star that deserves to shine."
+            </h2>
+            <div className="h-0.5 w-16 bg-gold mx-auto mt-6" />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl">

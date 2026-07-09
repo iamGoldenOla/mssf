@@ -97,6 +97,28 @@
   100% { transform: translateX(-50%); }
 }
 
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.pause-marquee:hover {
+  animation-play-state: paused;
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
 @utility animate-fade-up {
   animation: fadeUp 0.8s var(--ease-out-expo) both;
 }
@@ -109,13 +131,6 @@
 @utility animate-ken-burns {
   animation: kenBurns 20s ease-in-out infinite;
 }
-@utility animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-@utility pause-marquee {
-  animation-play-state: paused;
-}
-
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }
