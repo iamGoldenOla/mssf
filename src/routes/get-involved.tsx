@@ -83,15 +83,19 @@ function GetInvolvedPage() {
           </ScrollReveal>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "JB Farms Oban", desc: "Primary renovation and infrastructure partner providing agricultural livelihoods to school-community families." },
-              { name: "Agrinexus International", desc: "Corporate social responsibility partner driving local logistical and ground operations." },
-              { name: "Rotary International", desc: "Co-funded programs and international volunteer coordination." },
-              { name: "Local School Committees", desc: "Community-level governance and program feedback at every partner school." },
+              { name: "JB Farms Oban", logo: IMG.logoJbfarms, desc: "Primary renovation and infrastructure partner providing agricultural livelihoods to school-community families." },
+              { name: "Agrinexus International", logo: IMG.logoAgrinexus, desc: "Corporate social responsibility partner driving local logistical and ground operations." },
+              { name: "Rotary International", logo: IMG.logoRotary, desc: "Co-funded programs and international volunteer coordination." },
+              { name: "Local School Committees", logo: null, desc: "Community-level governance and program feedback at every partner school." },
             ].map((p, i) => (
               <ScrollReveal key={p.name} delay={i * 80}>
                 <div className={`border-2 ${i % 2 === 0 ? 'border-gold/50' : 'border-green/50'} bg-card p-8 shadow-sm h-full rounded-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300`}>
-                  <div className="mb-4 grid h-14 place-items-center bg-stone-100 font-display text-xl font-semibold text-charcoal/60">
-                    {p.name.split(" ")[0]}
+                  <div className="mb-6 flex h-16 items-center justify-center bg-stone-50 p-2 rounded-sm overflow-hidden border border-border/40">
+                    {p.logo ? (
+                      <img src={p.logo} alt={p.name} className="max-h-full max-w-full object-contain" />
+                    ) : (
+                      <span className="font-display text-lg font-semibold text-charcoal/40 uppercase">{p.name.split(" ")[0]}</span>
+                    )}
                   </div>
                   <h3 className="font-display text-lg font-semibold">{p.name}</h3>
                   <p className="mt-2 text-sm text-charcoal/70">{p.desc}</p>

@@ -38,8 +38,36 @@ import classroomBoots from "@/assets/classroom-boots.jpg";
 import classroomDesk from "@/assets/classroom-desk.jpg";
 import classroomDenim from "@/assets/classroom-denim.jpg";
 import classroomNurse from "@/assets/classroom-nurse.jpg";
+import galleryNew1 from "@/assets/gallery-new-1.jpg";
+import galleryNew2 from "@/assets/gallery-new-2.jpg";
+import galleryNew3 from "@/assets/gallery-new-3.jpg";
+import galleryNew4 from "@/assets/gallery-new-4.jpg";
+import galleryNew5 from "@/assets/gallery-new-5.jpg";
+import galleryNew6 from "@/assets/gallery-new-6.jpg";
+import galleryNew7 from "@/assets/gallery-new-7.jpg";
+import galleryNew8 from "@/assets/gallery-new-8.jpg";
+import galleryNew9 from "@/assets/gallery-new-9.jpg";
+import galleryNew10 from "@/assets/gallery-new-10.jpg";
+import logoAgrinexus from "@/assets/logo-agrinexus.jpg";
+import logoIsp from "@/assets/logo-isp.png";
+import logoJbfarms from "@/assets/logo-jbfarms.png";
+import logoRotary from "@/assets/logo-rotary.png";
 
 export const IMG = {
+  logoAgrinexus,
+  logoIsp,
+  logoJbfarms,
+  logoRotary,
+  galleryNew1,
+  galleryNew2,
+  galleryNew3,
+  galleryNew4,
+  galleryNew5,
+  galleryNew6,
+  galleryNew7,
+  galleryNew8,
+  galleryNew9,
+  galleryNew10,
   classroomBoots,
   classroomDesk,
   classroomDenim,

@@ -214,21 +214,27 @@ function WhoWeArePage() {
             <div className="relative w-full overflow-hidden">
               <div className="flex gap-6 animate-marquee pause-marquee py-2">
                 {[
-                  { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
-                  { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
-                  { name: "Rotary Club International", desc: "Community service & fundraising" },
-                  { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
-                  { name: "Oban Community Committee", desc: "Local engagement & administration" },
+                  { name: "JB Farms Oban", logo: IMG.logoJbfarms, desc: "Primary renovation & infrastructure partner" },
+                  { name: "Agrinexus International", logo: IMG.logoAgrinexus, desc: "Corporate social responsibility driver" },
+                  { name: "Rotary Club International", logo: IMG.logoRotary, desc: "Community service & fundraising" },
+                  { name: "Incorporated Society of Planters", logo: IMG.logoIsp, desc: "Agricultural network & support" },
+                  { name: "Oban Community Committee", logo: null, desc: "Local engagement & administration" },
                   // Duplicate for seamless infinite loop
-                  { name: "JB Farms Oban", desc: "Primary renovation & infrastructure partner" },
-                  { name: "Agrinexus International", desc: "Corporate social responsibility driver" },
-                  { name: "Rotary Club International", desc: "Community service & fundraising" },
-                  { name: "Incorporated Society of Planters", desc: "Agricultural network & support" },
-                  { name: "Oban Community Committee", desc: "Local engagement & administration" }
+                  { name: "JB Farms Oban", logo: IMG.logoJbfarms, desc: "Primary renovation & infrastructure partner" },
+                  { name: "Agrinexus International", logo: IMG.logoAgrinexus, desc: "Corporate social responsibility driver" },
+                  { name: "Rotary Club International", logo: IMG.logoRotary, desc: "Community service & fundraising" },
+                  { name: "Incorporated Society of Planters", logo: IMG.logoIsp, desc: "Agricultural network & support" },
+                  { name: "Oban Community Committee", logo: null, desc: "Local engagement & administration" }
                 ].map((partner, idx) => (
-                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-6 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 text-center flex-shrink-0">
-                    <div className="font-display font-bold text-green tracking-wide text-sm">{partner.name}</div>
-                    <div className="text-[9px] uppercase tracking-widest text-charcoal/50 mt-1.5">{partner.desc}</div>
+                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-5 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 h-36 text-center flex-shrink-0">
+                    {partner.logo ? (
+                      <div className="h-12 flex items-center justify-center mb-2">
+                        <img src={partner.logo} alt={partner.name} className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" />
+                      </div>
+                    ) : (
+                      <div className="font-display font-bold text-green tracking-wide text-sm mb-1">{partner.name}</div>
+                    )}
+                    <div className="text-[9px] uppercase tracking-widest text-charcoal/50">{partner.desc}</div>
                   </div>
                 ))}
               </div>

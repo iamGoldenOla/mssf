@@ -36,6 +36,16 @@ const photos: { src: string; alt: string; cat: Exclude<Cat, "All">; span?: strin
   { src: IMG.classroomDenim, alt: "Volunteers and pupils outside the school building", cat: "Events", span: "md:col-span-2" },
   { src: IMG.classroomDesk, alt: "Individual classroom support and Subeb intervention materials", cat: "Classroom" },
   { src: IMG.classroomNurse, alt: "Deworming and healthcare administration at green classroom tables", cat: "Classroom" },
+  { src: IMG.galleryNew1, alt: "School building exterior and renovation view", cat: "School Renovation" },
+  { src: IMG.galleryNew2, alt: "Renovated classrooms and courtyard", cat: "School Renovation" },
+  { src: IMG.galleryNew3, alt: "School building side view and landscaping", cat: "School Renovation" },
+  { src: IMG.galleryNew4, alt: "Clean school building pathways", cat: "School Renovation" },
+  { src: IMG.galleryNew5, alt: "Dilapidated building structure before transformation", cat: "School Renovation" },
+  { src: IMG.galleryNew6, alt: "Pupils learning at desks inside the classroom", cat: "Classroom" },
+  { src: IMG.galleryNew7, alt: "Classroom activity and student participation", cat: "Classroom" },
+  { src: IMG.galleryNew8, alt: "Deworming activity inside the school camp", cat: "Classroom" },
+  { src: IMG.galleryNew9, alt: "Pupils lined up for health checkups", cat: "Classroom" },
+  { src: IMG.galleryNew10, alt: "Students assembled at new green tables", cat: "Classroom" },
 ];
 
 const cats: Cat[] = ["All", "School Renovation", "Classroom", "Community", "Events"];
