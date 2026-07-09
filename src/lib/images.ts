@@ -54,6 +54,7 @@ import logoJbfarms from "@/assets/logo-jbfarms.png";
 import logoRotary from "@/assets/logo-rotary.png";
 import mssfDrum from "@/assets/mssf-drum.png";
 import dilapitatedBuilding from "@/assets/dilapitated-building.png";
+import quartersRenovated from "@/assets/quarters-renovated.jpg";
 
 export const IMG = {
   logoAgrinexus,
@@ -112,6 +113,7 @@ export const IMG = {
   kingsley,
   mssfDrum,
   dilapitatedBuilding,
+  quartersRenovated,
 };
 
 

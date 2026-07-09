@@ -46,7 +46,7 @@ const YEARS: Year[] = [
   {
     year: "2024",
     entries: [
-      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture.", img: IMG.achievementQuarters },
+      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture.", img: IMG.quartersRenovated },
       { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use.", img: IMG.achievementChairs },
       { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students.", img: IMG.mssfDrum },
       { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment.", img: [IMG.dilapitatedBuilding, IMG.achievementBefore] },
