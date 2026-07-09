@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write # Required for pushing build output to the build branch
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -31,15 +34,19 @@ jobs:
       - name: Build Application
         run: bun run build
 
-      # Deploying to cPanel via FTP on merge to main
-      - name: 📂 Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # Deploy compiled dist folder to 'build' branch on GitHub
+      - name: 🚀 Push Build to Branch
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /public_html/
-          state-name: .ftp-deploy-sync-state.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: build
+          folder: dist
+
+      # Trigger cPanel Auto-Deployment via HTTPS Webhook call
+      - name: 🔔 Trigger cPanel Auto-Deploy Hook
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          curl -sS "https://mssf.com.ng/deploy.php?key=mssf_deploy_key_2026"
+
 
