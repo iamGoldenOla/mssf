@@ -75,16 +75,18 @@ function RootComponent() {
 
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash) {
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
       const id = decodeURIComponent(hash.replace("#", ""));
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
         }
-      }, 300); // 300ms delay ensures layout has settled
+      }, 300);
     }
-  }, [router.state.location]);
+  }, [router.state.location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>

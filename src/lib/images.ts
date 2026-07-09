@@ -52,6 +52,8 @@ import logoAgrinexus from "@/assets/logo-agrinexus.jpg";
 import logoIsp from "@/assets/logo-isp.png";
 import logoJbfarms from "@/assets/logo-jbfarms.png";
 import logoRotary from "@/assets/logo-rotary.png";
+import mssfDrum from "@/assets/mssf-drum.png";
+import dilapitatedBuilding from "@/assets/dilapitated-building.png";
 
 export const IMG = {
   logoAgrinexus,
@@ -108,5 +110,8 @@ export const IMG = {
   classroomTeaching,
   shermal,
   kingsley,
+  mssfDrum,
+  dilapitatedBuilding,
 };
+
 

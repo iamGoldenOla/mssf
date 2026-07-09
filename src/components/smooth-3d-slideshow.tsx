@@ -112,14 +112,30 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
         onCardClick,
     } = props
 
+    const [windowWidth, setWindowWidth] = useState(
+        typeof window !== "undefined" ? window.innerWidth : 1200
+    )
+
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        const handleResize = () => setWindowWidth(window.innerWidth)
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
+    // Scale card dimensions dynamically on screens smaller than cardWidth
+    const scaleFactor = windowWidth < (cardWidth + 40) ? Math.max(0.5, (windowWidth - 40) / cardWidth) : 1
+    const responsiveCardWidth = cardWidth * scaleFactor
+    const responsiveCardHeight = cardHeight * scaleFactor
+
     const tp = titlePosition || {}
     const corner: TitleCorner = tp.position || "bottomLeft"
     const isTop = corner === "topLeft" || corner === "topRight"
     const isRight = corner === "topRight" || corner === "bottomRight"
-    const padLeft = tp.paddingLeft ?? 22
-    const padRight = tp.paddingRight ?? 22
-    const padTop = tp.paddingTop ?? 24
-    const padBottom = tp.paddingBottom ?? 24
+    const padLeft = (tp.paddingLeft ?? 22) * scaleFactor
+    const padRight = (tp.paddingRight ?? 22) * scaleFactor
+    const padTop = (tp.paddingTop ?? 24) * scaleFactor
+    const padBottom = (tp.paddingBottom ?? 24) * scaleFactor
 
     const isStatic = useIsStaticRenderer()
     const list = slides && slides.length ? slides : DEFAULT_SLIDES
@@ -202,7 +218,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
 
     const effectiveRadius =
         (Math.max(0, Math.min(20, radius)) / 20) *
-        (Math.min(cardWidth, cardHeight) / 2)
+        (Math.min(responsiveCardWidth, responsiveCardHeight) / 2)
     const dim = 1 - Math.max(0, Math.min(100, opacity)) / 100
 
     const rootStyle: CSSProperties = {
@@ -210,8 +226,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
         position: "relative",
         width: "100%",
         height: "100%",
-        minWidth: 320,
-        minHeight: 360,
+        minWidth: 280,
+        minHeight: 340,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -231,8 +247,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
             <div
                 style={{
                     position: "relative",
-                    width: cardWidth,
-                    height: cardHeight,
+                    width: responsiveCardWidth,
+                    height: responsiveCardHeight,
                     transformStyle: "preserve-3d",
                 }}
             >
@@ -246,8 +262,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                     const visible = ax <= MAX_VISIBLE
                     const isActive = rel === 0
                     const sc = Math.max(0.4, 1 - ax * SCALE_STEP)
-                    const tx = rel * (gap * 30)
-                    const tz = -ax * DEPTH
+                    const tx = rel * (gap * 30) * scaleFactor
+                    const tz = -ax * DEPTH * scaleFactor
                     const ry = -rel * tilt
                     const rz = rel * sideTilt
                     const src = slide.image?.src || ""
@@ -256,8 +272,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                         position: "absolute",
                         left: "50%",
                         top: "50%",
-                        width: cardWidth,
-                        height: cardHeight,
+                        width: responsiveCardWidth,
+                        height: responsiveCardHeight,
                         borderRadius: effectiveRadius,
                         overflow: "hidden",
                         transformStyle: "preserve-3d",

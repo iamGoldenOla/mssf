@@ -48,11 +48,23 @@ const photos: { src: string; alt: string; cat: Exclude<Cat, "All">; span?: strin
   { src: IMG.galleryNew10, alt: "Students assembled at new green tables", cat: "Classroom" },
 ];
 
+const videos = [
+  { id: "1", title: "School Renovation Journey", desc: "Before and after overview of the school infrastructure project.", youtubeId: "dQw4w9WgXcQ", img: IMG.schoolMural },
+  { id: "2", title: "Interhouse Sports Day", desc: "Highlights of the track, field, and march-past competitions.", youtubeId: "dQw4w9WgXcQ", img: IMG.sportAllTeams },
+  { id: "3", title: "Daily Nutritional Milk Program", desc: "Providing clean drinking water and milk to students every morning.", youtubeId: "dQw4w9WgXcQ", img: IMG.childrenCloseup },
+  { id: "4", title: "Student Excursions", desc: "Taking pupils from rural Cross River State to Calabar on educational tours.", youtubeId: "dQw4w9WgXcQ", img: IMG.boyThumbs },
+  { id: "5", title: "Community Deworming Program", desc: "Healthcare, deworming, and sanitary kits distribution.", youtubeId: "dQw4w9WgXcQ", img: IMG.classroomNurse },
+  { id: "6", title: "Teachers' Quarters Progress", desc: "Ongoing construction work and upgrades for resident teachers.", youtubeId: "dQw4w9WgXcQ", img: IMG.achievementQuarters },
+  { id: "7", title: "Daily Bus Ride to School", desc: "Our safe student transport program driving children to school.", youtubeId: "dQw4w9WgXcQ", img: IMG.threeBoys },
+  { id: "8", title: "School Drums & Music Donation", desc: "The impact of the new school drums and music lessons.", youtubeId: "dQw4w9WgXcQ", img: IMG.achievementDrums },
+];
+
 const cats: Cat[] = ["All", "School Renovation", "Classroom", "Community", "Events"];
 
 function GalleryPage() {
   const [cat, setCat] = useState<Cat>("All");
   const [open, setOpen] = useState<number | null>(null);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const filtered = useMemo(
     () => (cat === "All" ? photos : photos.filter((p) => p.cat === cat)),
@@ -283,6 +295,93 @@ function GalleryPage() {
           </div>
         </div>
       </section>
+
+
+      {/* Video Documentation Section */}
+      <section className="border-t border-border bg-stone-50 px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-gold">Video Documentation</p>
+              <h2 className="font-display text-3xl font-semibold lg:text-4xl">
+                MSSF in Action
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-charcoal/60">
+                Watch our programs, student activities, and school renovations on the ground in rural Cross River State.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {videos.map((vid, i) => (
+              <ScrollReveal key={vid.id} delay={i * 50} translateY={12}>
+                <div className="group relative overflow-hidden rounded-md border border-border bg-card shadow-xs transition-all duration-300 hover:border-gold/60 hover:-translate-y-1 hover:shadow-md">
+                  {/* Thumbnail Container */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-stone-100">
+                    <img
+                      src={vid.img}
+                      alt={vid.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    {/* Play Button Overlay */}
+                    <button
+                      onClick={() => setActiveVideo(vid.youtubeId)}
+                      className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-colors duration-300"
+                      aria-label={`Play ${vid.title}`}
+                    >
+                      <div className="flex size-12 items-center justify-center rounded-full bg-gold/90 text-offwhite shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-gold animate-pulse-subtle">
+                        <svg className="ml-1 size-5 fill-current" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                  
+                  {/* Text Details */}
+                  <div className="p-5">
+                    <h3 className="font-display text-base font-semibold text-charcoal leading-snug group-hover:text-gold transition-colors duration-300">
+                      {vid.title}
+                    </h3>
+                    <p className="mt-2 text-xs text-charcoal/60 line-clamp-2">
+                      {vid.desc}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Lightbox Modal */}
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-4 animate-fade-in"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-4xl aspect-video rounded-md overflow-hidden bg-black shadow-2xl ring-1 ring-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+            <button
+              onClick={() => setActiveVideo(null)}
+              className="absolute -top-10 right-0 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-offwhite/75 hover:text-offwhite"
+              aria-label="Close video"
+            >
+              Close ✕
+            </button>
+          </div>
+        </div>
+      )}
 
 
       {open !== null && (

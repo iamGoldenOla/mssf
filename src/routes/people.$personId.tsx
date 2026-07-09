@@ -39,7 +39,7 @@ const profileData = {
     bio: [
       "Mr. Vijayakumar Sambanthar (Mr. Vijay) is a seasoned plantation executive with over four decades of global experience across Asia and Africa. As General Manager at Agrinexus International, he leads the JB Farms Oban operations in Cross River State, driving operational excellence and sustainable growth.",
       "He also serves as Program Director of My Shining Star Foundation, where he has transformed the organisation through the renovation of school infrastructure and the advancement of quality education for underserved children.",
-      "Inspired by his leadership within Rotary Club International, Mr. Vijay is deeply committed to humanitarian service. His distinguished career spans senior roles at Trengganu Development Berhad, Technopalm Services Sdn Bhd, Kwantas Plantation Berhad, Goodhope Asia Holdings, and Kuala Lumpur Kepong Berhad, alongside impactful fundraising efforts across Africa, including the ISP Africa Symposium in Ghana.",
+      "Inspired by his leadership within Rotary International, Mr. Vijay is deeply committed to humanitarian service. His distinguished career spans senior roles at Trengganu Development Berhad, Technopalm Services Sdn Bhd, Kwantas Plantation Berhad, Goodhope Asia Holdings, and Kuala Lumpur Kepong Berhad, alongside impactful fundraising efforts across Africa, including the ISP Africa Symposium in Ghana.",
       "A leader of vision and purpose, he continues to empower communities, develop people, and deliver lasting impact on the ground in Cross River State.",
     ],
   },

@@ -45,12 +45,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-offwhite/5">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-[10px] font-mono uppercase tracking-[0.2em] text-offwhite/40 md:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 px-6 py-6 text-[10px] font-mono uppercase tracking-[0.2em] text-offwhite/40">
           <div>© {new Date().getFullYear()} My Shining Star Foundation</div>
-          <div className="flex gap-6">
-            <a href="#">Transparency</a>
-            <a href="#">Privacy</a>
-          </div>
         </div>
       </div>
     </footer>

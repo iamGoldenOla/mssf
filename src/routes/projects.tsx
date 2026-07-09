@@ -16,7 +16,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-type Entry = { date: string; item: string; qty?: string; remark: string; img?: string };
+type Entry = { date: string; item: string; qty?: string; remark: string; img?: string | string[] };
 type Year = { year: string; entries: Entry[] };
 
 const YEARS: Year[] = [
@@ -48,8 +48,8 @@ const YEARS: Year[] = [
     entries: [
       { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture.", img: IMG.achievementQuarters },
       { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use.", img: IMG.achievementChairs },
-      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students.", img: IMG.achievementDrums },
-      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment.", img: IMG.achievementBefore },
+      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students.", img: IMG.mssfDrum },
+      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment.", img: [IMG.dilapitatedBuilding, IMG.achievementBefore] },
       { date: "01 / 2024", item: "Writing materials distribution", qty: "500 Books, 3 Pkts, 2 Containers", remark: "Distributed 500 copies of 40 leaves exercise books, 3 packets of pencils, and 2 containers of erasers." },
       { date: "01 / 2024", item: "Recruitment of teachers", qty: "4 Educators", remark: "Recruitment of 4 qualified and passionate teachers for the school." },
     ],
@@ -136,8 +136,12 @@ function ProjectsPage() {
                           <p className="text-sm text-charcoal/70">{e.remark}</p>
                         </div>
                         {e.img && (
-                          <div className="overflow-hidden rounded-sm ring-1 ring-black/5 max-w-sm mt-3">
-                            <img src={e.img} alt={e.item} className="w-full object-cover max-h-[180px]" loading="lazy" />
+                          <div className="flex flex-wrap gap-3 mt-3">
+                            {(Array.isArray(e.img) ? e.img : [e.img]).map((imgSrc, imgIdx) => (
+                              <div key={imgIdx} className="overflow-hidden rounded-sm ring-1 ring-black/5 max-w-[200px] flex-1 min-w-[140px]">
+                                <img src={imgSrc} alt={`${e.item} - image ${imgIdx + 1}`} className="w-full h-[130px] object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                              </div>
+                            ))}
                           </div>
                         )}
                       </div>
