@@ -2,10 +2,16 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { getTeam } from "@/lib/cms";
 
 export const Route = createFileRoute("/people/$personId")({
   head: ({ params }) => {
-    const details = profileData[params.personId as keyof typeof profileData];
+    const cmsPerson = getTeam().find(t => t.id === params.personId);
+    const details = cmsPerson ? {
+      name: cmsPerson.name,
+      shortRole: cmsPerson.role,
+    } : profileData[params.personId as keyof typeof profileData];
+
     return {
       meta: [
         { title: `${details?.name || "Profile"} — My Shining Star Foundation` },
@@ -71,7 +77,20 @@ const profileData = {
 
 function PersonProfilePage() {
   const { personId } = useParams({ from: "/people/$personId" });
-  const person = profileData[personId as keyof typeof profileData];
+  
+  // Find in CMS team data first
+  const cmsTeam = getTeam();
+  const cmsPerson = cmsTeam.find(t => t.id === personId);
+
+  // If found in CMS, map it to the profileData structure
+  const person = cmsPerson ? {
+    name: cmsPerson.name,
+    role: cmsPerson.role + ", My Shining Star Foundation",
+    shortRole: cmsPerson.role,
+    img: cmsPerson.img,
+    quote: cmsPerson.isFounder ? "Promise Made. Promise Kept." : "",
+    bio: [cmsPerson.bio],
+  } : profileData[personId as keyof typeof profileData];
 
   if (!person) {
     return (

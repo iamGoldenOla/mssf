@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { useState } from "react";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { WP_API_URL, getSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,6 +20,58 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const phoneBlock = getSiteContent("contact-phone-number");
+  const emailBlock = getSiteContent("contact-email");
+  const addressBlock = getSiteContent("contact-address");
+  const whatsappBlock = getSiteContent("whatsapp-link");
+
+  const phoneNumber = phoneBlock?.content ? phoneBlock.content.replace(/<[^>]*>/g, '').trim() : "+234 XXX XXX XXXX";
+  const emailAddress = emailBlock?.content ? emailBlock.content.replace(/<[^>]*>/g, '').trim() : "info@mssf.com.ng";
+  const addressHtml = addressBlock?.content || "Oban, Akamkpa II, Akamkpa LGA,<br />Calabar, Cross River State,<br />Nigeria 542102";
+  const whatsappUrl = whatsappBlock?.content ? whatsappBlock.content.replace(/<[^>]*>/g, '').trim() : "https://wa.me/234XXXXXXXXX";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    setSent(false);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      website: formData.get("website"), // honeypot
+    };
+
+    try {
+      const response = await fetch(`${WP_API_URL}/mssf/v1/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.message || "Failed to send your message. Please try again.");
+      }
+
+      setSent(true);
+      e.currentTarget.reset();
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "An unexpected error occurred.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <SiteShell>
@@ -55,29 +108,25 @@ function ContactPage() {
               <div className="space-y-10">
                 <div>
                   <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Email</p>
-                  <a href="mailto:info@mssf.com.ng" className="font-display text-xl text-charcoal hover:text-gold">
-                    info@mssf.com.ng
+                  <a href={`mailto:${emailAddress}`} className="font-display text-xl text-charcoal hover:text-gold">
+                    {emailAddress}
                   </a>
                 </div>
                 <div>
                   <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Phone</p>
-                  <a href="tel:+234XXXXXXXXX" className="font-display text-xl text-charcoal hover:text-gold">
-                    +234 XXX XXX XXXX
+                  <a href={`tel:${phoneNumber.replace(/\s+/g, '')}`} className="font-display text-xl text-charcoal hover:text-gold">
+                    {phoneNumber}
                   </a>
                 </div>
                 <div>
                   <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-gold">Address</p>
-                  <p className="text-charcoal/80 leading-relaxed">
-                    Oban, Akamkpa II, Akamkpa LGA,<br />
-                    Calabar, Cross River State,<br />
-                    Nigeria 542102
-                  </p>
+                  <p className="text-charcoal/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: addressHtml }} />
                 </div>
                 <div className="flex flex-wrap gap-3 pt-4">
-                  <a href="https://wa.me/234XXXXXXXXX" className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
+                  <a href={whatsappUrl} className="rounded-sm bg-green px-5 py-3 text-xs font-semibold uppercase tracking-widest text-offwhite hover:bg-green-deep">
                     WhatsApp Chat
                   </a>
-                  <a href="mailto:info@mssf.com.ng" className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
+                  <a href={`mailto:${emailAddress}`} className="rounded-sm border border-border px-5 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-black/5">
                     Email Us
                   </a>
                 </div>
@@ -92,12 +141,14 @@ function ContactPage() {
           <div className="lg:col-span-8 space-y-8">
             <ScrollReveal delay={150}>
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
+                onSubmit={handleSubmit}
                 className="grid gap-6 border-2 border-green/50 bg-card p-8 md:grid-cols-2 shadow-md hover:border-green transition-all duration-300 rounded-sm"
               >
+                {/* Honeypot field (hidden from screen readers & users) */}
+                <div className="hidden" aria-hidden="true">
+                  <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 <Field label="Full Name" name="name" required />
                 <Field label="Email" name="email" type="email" required />
                 <Field label="Phone" name="phone" type="tel" />
@@ -123,19 +174,26 @@ function ContactPage() {
                     className="border border-border/80 bg-offwhite px-3.5 py-3 text-sm focus:border-gold focus:ring-1 focus:ring-gold/30 rounded-sm focus:outline-none transition-all duration-200"
                   />
                 </div>
-                <div className="md:col-span-2">
-                  <button
-                    type="submit"
-                    className="rounded-sm bg-gold px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal hover:bg-gold-dark cursor-pointer"
-                  >
-                    Send Message
-                  </button>
-                  {sent && (
-                    <span className="ml-4 text-sm text-green">Thanks — we'll be in touch shortly.</span>
+                <div className="md:col-span-2 flex flex-col gap-3">
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="rounded-sm bg-gold px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal hover:bg-gold-dark cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {submitting ? "Sending..." : "Send Message"}
+                    </button>
+                    {sent && (
+                      <span className="text-sm text-green font-semibold">Thanks — we'll be in touch shortly.</span>
+                    )}
+                  </div>
+                  {error && (
+                    <span className="text-sm text-red-600 font-semibold">{error}</span>
                   )}
                 </div>
               </form>
             </ScrollReveal>
+          </div>
 
             <ScrollReveal delay={200}>
               <div className="grid gap-6 md:grid-cols-2">
@@ -164,7 +222,6 @@ function ContactPage() {
               </div>
             </ScrollReveal>
           </div>
-        </div>
       </section>
     </SiteShell>
   );

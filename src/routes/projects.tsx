@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { useState } from "react";
+import { getTimeline, type TimelineYear, type TimelineEntry } from "@/lib/cms";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -17,45 +18,10 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-type Entry = { date: string; item: string; qty?: string; remark: string; img?: string | string[] };
-type Year = { year: string; entries: Entry[] };
+type Entry = TimelineEntry;
+type Year = TimelineYear;
 
-const YEARS: Year[] = [
-  {
-    year: "2026",
-    entries: [
-      { date: "03 / 2026", item: "Donation of First Aid Box with kits inside", qty: "1 Box", remark: "Delivered to the school for safety and basic health support." },
-      { date: "02 / 2026", item: "Donation of Empty Water Kegs & Trash Bins", qty: "8 Kegs, 4 Bins", remark: "Brought to facilitate fetching of clean water and school hygiene." },
-      { date: "02 / 2026", item: "Donation of GP Tank for Water", qty: "1 GP Tank", remark: "Installation of a large GP tank to store clean borehole water." },
-      { date: "02 / 2026", item: "Completed 3 Rooms of School Toilets", qty: "3 Rooms", remark: "New school toilet facilities completed and keys handed over to the Head Teacher." },
-    ],
-  },
-  {
-    year: "2025",
-    entries: [
-      { date: "10 / 2025", item: "Donation of class registers for teachers", qty: "6 Registers", remark: "Supplied to teachers to track and manage student attendance." },
-      { date: "08 / 2025", item: "Donation of Foldable teachers' tables, seats & Football", qty: "4 Tables, 6 Seats, 1 Football", remark: "Delivered to the school; Mr. Christopher received it on behalf of the school." },
-      { date: "07 / 2025", item: "Donation of wooden benches without tops for ECCDE writing", qty: "6 Benches", remark: "Benches without tops provided for Early Child Care writing." },
-      { date: "06 / 2025", item: "Donation of Colour Books & Pencil Crayons for ECCDE", qty: "4 Books, 2 Pkts", remark: "Supplied for ECCDE early childhood learning usage." },
-      { date: "06 / 2025", item: "Donation of exercise books, pencils and pens by Rotary Club", qty: "1000 Books, 4 Pkts, 1 Container", remark: "Rotary Club donated 1000pcs of writing materials, 4 packets of pencils, and 1 container of pens." },
-      { date: "05 / 2025", item: "Issuance of class register for the head teacher", qty: "1 Register", remark: "Attendance register issued for the Head Teacher." },
-      { date: "03 / 2025", item: "Donation of mattress for teachers", qty: "6 Mattresses", remark: "Donation of mattresses for the 2nd batch of teachers to upgrade living quarters." },
-      { date: "03 / 2025", item: "Donation of Hausa mat for ECCDE", qty: "1 Mat", remark: "Provided for early childhood learning environment." },
-      { date: "02 / 2025", item: "Donation of wooden benches without tops for ECCDE writing", qty: "3 Benches", remark: "The Head Teacher received the benches." },
-    ],
-  },
-  {
-    year: "2024",
-    entries: [
-      { date: "09 / 2024", item: "Renovation of teachers' quarters", qty: "1 Building", remark: "Upgraded living quarters for teachers, providing mattresses and furniture.", img: IMG.quartersRenovated },
-      { date: "06 / 2024", item: "Donation of tables & chairs for teacher's use", qty: "5 Tables, 6 Chairs", remark: "Provided for teacher classroom use.", img: IMG.achievementChairs },
-      { date: "05 / 2024", item: "Donation of school drums", qty: "1 Set", remark: "A set of school drums donated to the students.", img: IMG.mssfDrum },
-      { date: "03 / 2024", item: "Renovation of dilapidated school building", qty: "St. Peter's School", remark: "Transformation of dilapidated school structure into a safe learning environment.", img: [IMG.dilapitatedBuilding, IMG.achievementBefore] },
-      { date: "01 / 2024", item: "Writing materials distribution", qty: "500 Books, 3 Pkts, 2 Containers", remark: "Distributed 500 copies of 40 leaves exercise books, 3 packets of pencils, and 2 containers of erasers." },
-      { date: "01 / 2024", item: "Recruitment of teachers", qty: "4 Educators", remark: "Recruitment of 4 qualified and passionate teachers for the school." },
-    ],
-  },
-];
+const YEARS: Year[] = getTimeline();
 
 function ProjectsPage() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);

@@ -2,7 +2,15 @@
 // Simple & Secure cPanel deployment script for MSSF
 // Bypasses cPanel FTP firewalls by downloading the build directly from GitHub via HTTPS.
 
-$secret_key = "mssf_deploy_key_2026"; // Secret token to prevent unauthorized triggers
+// Load secret key securely from outside web root if present
+$secret_key = "mssf_deploy_key_2026"; // Fallback default
+$config_file = dirname(dirname(__FILE__)) . '/deploy_config.php';
+if (file_exists($config_file)) {
+    include($config_file);
+    if (defined('MSSF_DEPLOY_KEY')) {
+        $secret_key = MSSF_DEPLOY_KEY;
+    }
+}
 
 if (!isset($_GET['key']) || $_GET['key'] !== $secret_key) {
     header('HTTP/1.0 403 Forbidden');

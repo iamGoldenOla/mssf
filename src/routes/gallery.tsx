@@ -4,6 +4,7 @@ import { IMG } from "@/lib/images";
 import { useMemo, useState } from "react";
 import { BeforeAfter } from "@/components/before-after";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { getGallery } from "@/lib/cms";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -20,33 +21,7 @@ export const Route = createFileRoute("/gallery")({
 
 type Cat = "All" | "School Renovation" | "Classroom" | "Community" | "Events";
 
-const photos: { src: string; alt: string; cat: Exclude<Cat, "All">; span?: string }[] = [
-  { src: IMG.schoolMural, alt: "St. Peter's School mural and students", cat: "School Renovation", span: "md:col-span-2 md:row-span-2" },
-  { src: IMG.schoolGroup, alt: "Full school group photo", cat: "Classroom" },
-  { src: IMG.uniforms, alt: "Students in blue uniforms", cat: "Classroom" },
-  { src: IMG.childrenCloseup, alt: "Children close-up", cat: "Classroom" },
-  { src: IMG.achievementBefore, alt: "Renovation of dilapidated school building (March 2024)", cat: "School Renovation" },
-  { src: IMG.classroomBoots, alt: "Classroom learning and teacher interaction at St. Peter's", cat: "Classroom" },
-  { src: IMG.achievementQuarters, alt: "Renovation of teachers' quarters in progress (September 2024)", cat: "School Renovation", span: "md:col-span-2" },
-  { src: IMG.achievementDrums, alt: "A set of school drums donated to pupils (May 2024)", cat: "Events" },
-  { src: IMG.achievementChairs, alt: "5 tables & 6 chairs donated for teachers' use (June 2024)", cat: "Events" },
-  { src: IMG.boyThumbs, alt: "Student giving a thumbs up on the path to school", cat: "Community", span: "md:row-span-2" },
-  { src: IMG.threeBoys, alt: "Three schoolchildren on the palm-lined road", cat: "Community" },
-  { src: IMG.twoBoys, alt: "Two children in the village", cat: "Community" },
-  { src: IMG.classroomDenim, alt: "Volunteers and pupils outside the school building", cat: "Events", span: "md:col-span-2" },
-  { src: IMG.classroomDesk, alt: "Individual classroom support and Subeb intervention materials", cat: "Classroom" },
-  { src: IMG.classroomNurse, alt: "Deworming and healthcare administration at green classroom tables", cat: "Classroom" },
-  { src: IMG.galleryNew1, alt: "School building exterior and renovation view", cat: "School Renovation" },
-  { src: IMG.galleryNew2, alt: "Renovated classrooms and courtyard", cat: "School Renovation" },
-  { src: IMG.galleryNew3, alt: "School building side view and landscaping", cat: "School Renovation" },
-  { src: IMG.galleryNew4, alt: "Clean school building pathways", cat: "School Renovation" },
-  { src: IMG.galleryNew5, alt: "Dilapidated building structure before transformation", cat: "School Renovation" },
-  { src: IMG.galleryNew6, alt: "Pupils learning at desks inside the classroom", cat: "Classroom" },
-  { src: IMG.galleryNew7, alt: "Classroom activity and student participation", cat: "Classroom" },
-  { src: IMG.galleryNew8, alt: "Deworming activity inside the school camp", cat: "Classroom" },
-  { src: IMG.galleryNew9, alt: "Pupils lined up for health checkups", cat: "Classroom" },
-  { src: IMG.galleryNew10, alt: "Students assembled at new green tables", cat: "Classroom" },
-];
+const photos = getGallery();
 
 const videos = [
   { id: "1", title: "School Renovation Journey", desc: "Before and after overview of the school infrastructure project.", youtubeId: "dQw4w9WgXcQ", img: IMG.schoolMural },

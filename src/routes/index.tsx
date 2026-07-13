@@ -5,6 +5,7 @@ import { BeforeAfter } from "@/components/before-after";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { IMG } from "@/lib/images";
 import { useEffect, useState } from "react";
+import { getStats, getCapabilities, getValues, getSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,21 +26,9 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const stats = [
-  { end: 2000, suffix: "+", label: "Children Impacted" },
-  { end: 10, suffix: "+", label: "Projects Completed" },
-  { end: 500, suffix: "+", label: "Learning Materials" },
-  { end: 5, suffix: "+", label: "Schools Revitalized" },
-];
+const stats = getStats();
 
-const capabilities = [
-  { n: "01", title: "Education Support", body: "Notebooks, uniforms, and tuition assistance so no child is sent home for lack of funds." },
-  { n: "02", title: "School Renovation", body: "Transforming dilapidated structures into safe, bright learning environments." },
-  { n: "03", title: "Free Transportation", body: "Our transport reaches children in remote settlements safely, every school day." },
-  { n: "04", title: "Healthcare Support", body: "Regular check-ups and first-aid at school to catch illness before it disrupts learning." },
-  { n: "05", title: "Clean Water & Milk", body: "Daily nutritional milk and borehole water to combat malnutrition and waterborne disease." },
-  { n: "06", title: "Poverty Alleviation", body: "Working with families through JB Farms to build household stability around the child." },
-];
+const capabilities = getCapabilities();
 
 const timeline = [
   { date: "03 / 2024", title: "St. Peter's Primary — Renovation Phase II", body: "Roofing completion, solar installation, and internal painting for 4 classrooms. Served 120 students." },
@@ -55,16 +44,16 @@ const slides = [
   { src: IMG.childrenCloseup, caption: "A chance for children in rural communities to dream big!" },
 ];
 
-const values = [
-  { title: "Compassion", body: "Deeply caring about the welfare, growth, and future of every child." },
-  { title: "Integrity", body: "Honoring every promise and maintaining absolute transparency in all we do." },
-  { title: "Impact", body: "Creating tangible, measurable improvements in rural school systems." },
-  { title: "Inclusion", body: "Ensuring no child is left behind due to location, gender, or family income." },
-  { title: "Sustainability", body: "Building long-term community capacity so positive changes last for generations." },
-];
+const values = getValues();
 
 function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const missionBlock = getSiteContent("our-mission");
+  const visionBlock = getSiteContent("our-vision");
+
+  const missionText = missionBlock?.content ? missionBlock.content.replace(/<[^>]*>/g, '').trim() : "To bring education, dignity, and opportunity to underserved children in rural areas.";
+  const visionText = visionBlock?.content ? visionBlock.content.replace(/<[^>]*>/g, '').trim() : "A world where every child has access to quality education and the opportunity to thrive.";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -231,13 +220,13 @@ function HomePage() {
             <div className="space-y-4">
               <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Mission</p>
               <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
-                "To bring education, dignity, and opportunity to underserved children in rural areas."
+                "{missionText}"
               </h2>
             </div>
             <div className="space-y-4 lg:border-l lg:border-border lg:pl-12">
               <p className="font-mono text-xs uppercase tracking-widest text-gold">Our Vision</p>
               <h2 className="font-display text-2xl font-semibold leading-relaxed text-green">
-                "A world where every child has access to quality education and the opportunity to thrive."
+                "{visionText}"
               </h2>
             </div>
           </div>

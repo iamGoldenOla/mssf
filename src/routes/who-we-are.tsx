@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { IMG } from "@/lib/images";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import Smooth3DSlideshow from "@/components/smooth-3d-slideshow";
+import { getWhoWeAreValues, getTeam, getPartners } from "@/lib/cms";
 
 export const Route = createFileRoute("/who-we-are")({
   head: () => ({
@@ -17,20 +18,8 @@ export const Route = createFileRoute("/who-we-are")({
   component: WhoWeArePage,
 });
 
-const values = [
-  { title: "Dignity First", body: "Every child, every family, every partner treated with respect. No pity narratives." },
-  { title: "Radical Transparency", body: "Every intervention is dated, itemized, and traceable. Trust is earned in receipts." },
-  { title: "Local Roots", body: "Nigerian-led, community-embedded. We build with, never for." },
-  { title: "Replicable, Not Charitable", body: "We're building a blueprint other communities can copy. Handouts don't scale." },
-  { title: "Long-term Presence", body: "We return to the same schools year after year. Consistency compounds." },
-];
-
-const team = [
-  { id: "shermal", name: "Dr. Shermal Perera", role: "Founder", img: IMG.shermal, bio: "Founder of Agrinexus International and My Shining Star Foundation, driving sustainable development and education in Cross River State." },
-  { id: "vijay", name: "Mr. Vijayakumar Sambanthar (Mr. Vijay)", role: "Program Director", img: IMG.vijay, bio: "General Manager at Agrinexus and Program Director of MSSF, coordinating on-ground operations with over 40 years of global experience." },
-  { id: "rebecca", name: "Ms. Rebecca Asuquo", role: "Program Coordinator", img: IMG.rebecca, bio: "Program Coordinator managing school partnerships, community relations, and material distribution logistics." },
-  { id: "kingsley", name: "Mr. Kingsley Iwobi", role: "Volunteer Team Lead", img: IMG.kingsley, bio: "Volunteer Team Lead directing student transport, local logistics, and community volunteer groups." },
-];
+const values = getWhoWeAreValues();
+const team = getTeam();
 
 import { useEffect, useRef, useState } from "react";
 
@@ -213,30 +202,24 @@ function WhoWeArePage() {
             <p className="mb-8 text-center font-mono text-[10px] uppercase tracking-widest text-gold">Our Strategic Partners</p>
             <div className="relative w-full overflow-hidden">
               <div className="flex gap-6 animate-marquee pause-marquee py-2">
-                {[
-                  { name: "JB Farms Oban", logo: IMG.logoJbfarms, desc: "Primary renovation & infrastructure partner" },
-                  { name: "Agrinexus International", logo: IMG.logoAgrinexus, desc: "Corporate social responsibility driver" },
-                  { name: "Rotary Club International", logo: IMG.logoRotary, desc: "Community service & fundraising" },
-                  { name: "Incorporated Society of Planters", logo: IMG.logoIsp, desc: "Agricultural network & support" },
-                  { name: "Oban Community Committee", logo: null, desc: "Local engagement & administration" },
-                  // Duplicate for seamless infinite loop
-                  { name: "JB Farms Oban", logo: IMG.logoJbfarms, desc: "Primary renovation & infrastructure partner" },
-                  { name: "Agrinexus International", logo: IMG.logoAgrinexus, desc: "Corporate social responsibility driver" },
-                  { name: "Rotary Club International", logo: IMG.logoRotary, desc: "Community service & fundraising" },
-                  { name: "Incorporated Society of Planters", logo: IMG.logoIsp, desc: "Agricultural network & support" },
-                  { name: "Oban Community Committee", logo: null, desc: "Local engagement & administration" }
-                ].map((partner, idx) => (
-                  <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-5 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 h-36 text-center flex-shrink-0">
-                    {partner.logo ? (
-                      <div className="h-12 flex items-center justify-center mb-2">
-                        <img src={partner.logo} alt={partner.name} className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" />
+                {(() => {
+                  const partners = getPartners();
+                  const marqueeItems = [...partners, ...partners];
+                  return marqueeItems.map((partner, idx) => (
+                    <div key={`${partner.name}-${idx}`} className="flex flex-col items-center justify-center border border-border/80 p-5 bg-card rounded-sm shadow-sm hover:border-gold/60 hover:-translate-y-0.5 transition-all duration-300 w-72 h-36 text-center flex-shrink-0">
+                      {partner.logo ? (
+                        <div className="h-12 flex items-center justify-center mb-2">
+                          <img src={partner.logo} alt={partner.name} className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" />
+                        </div>
+                      ) : (
+                        <div className="font-display font-bold text-green tracking-wide text-sm mb-1">{partner.name}</div>
+                      )}
+                      <div className="text-[9px] uppercase tracking-widest text-charcoal/50">
+                        {partner.description || "Strategic Partner"}
                       </div>
-                    ) : (
-                      <div className="font-display font-bold text-green tracking-wide text-sm mb-1">{partner.name}</div>
-                    )}
-                    <div className="text-[9px] uppercase tracking-widest text-charcoal/50">{partner.desc}</div>
-                  </div>
-                ))}
+                    </div>
+                  ));
+                })()}
               </div>
             </div>
           </div>

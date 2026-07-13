@@ -1,3 +1,35 @@
+# MSSF Apache Server Configuration
+
+# 1. Security Headers
+<IfModule mod_headers.c>
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
+
+# 2. Caching Headers (Leverage Browser Caching)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  
+  # Images, Favicons
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # HTML files (don't cache HTML permanently so users get content updates instantly)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# 3. SPA Rewrite Rules (Fallback if static pre-rendered file does not exist)
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /

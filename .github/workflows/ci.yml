@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: MSSF CI/CD Pipeline
 
 on:
   push:
@@ -7,46 +7,70 @@ on:
   pull_request:
     branches:
       - main
+  repository_dispatch:
+    types: [wp-content-updated]
+  workflow_dispatch:
 
 permissions:
-  contents: write # Required for pushing build output to the build branch
+  contents: write # Required for pushing build output to the build branch if needed
 
 jobs:
-  build-and-deploy:
+  build-and-package:
+    name: Build & Package Static Site (SSG)
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun Environment
+      - name: ☀️ Setup Bun Environment
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
-      - name: Install Dependencies
+      - name: 📦 Install Dependencies
         run: bun install --frozen-lockfile
 
-      - name: Run Linting
+      - name: 📝 Run Linting
         run: bun run lint
-        continue-on-error: true
+        continue-on-error: true # Warning only, do not block builds for style rules
 
-      - name: Build Application
+      - name: 🔌 Fetch Fresh Content from Headless WordPress API
+        run: bun run scripts/fetch-content.mjs
+        env:
+          VITE_WP_API_URL: ${{ secrets.VITE_WP_API_URL || 'https://cms.mssf.com.ng/wp-json' }}
+
+      - name: 🚀 Build Frontend Application (SPA Compilation)
         run: bun run build
 
-      # Deploy compiled dist folder to 'build' branch on GitHub
-      - name: 🚀 Push Build to Branch
+      - name: 🌐 Run SSG / Prerender Pass (Puppeteer)
+        run: bun run scripts/prerender.mjs
+        env:
+          VITE_WP_API_URL: ${{ secrets.VITE_WP_API_URL || 'https://cms.mssf.com.ng/wp-json' }}
+
+      - name: 🔍 Health Check & Validation
+        run: |
+          echo "Verifying pre-rendered outputs..."
+          test -f dist/index.html && echo "✓ index.html exists" || (echo "✗ index.html is missing" && exit 1)
+          test -f dist/who-we-are/index.html && echo "✓ who-we-are/index.html exists" || (echo "✗ who-we-are/index.html is missing" && exit 1)
+          test -f dist/projects/index.html && echo "✓ projects/index.html exists" || (echo "✗ projects/index.html is missing" && exit 1)
+          test -f dist/sitemap.xml && echo "✓ sitemap.xml exists" || (echo "✗ sitemap.xml is missing" && exit 1)
+          test -f dist/robots.txt && echo "✓ robots.txt exists" || (echo "✗ robots.txt is missing" && exit 1)
+          echo "✓ All sanity checks passed successfully!"
+
+      # Zip and Upload the build output as a GitHub Actions Artifact
+      - name: 📦 Upload Build Artifact (.zip)
+        uses: actions/upload-artifact@v4
+        with:
+          name: mssf-site-build-${{ github.run_id }}
+          path: dist/
+          if-no-files-found: error
+
+      # Optional fallback: Still push compiled files to build branch (matches legacy deploy.php auto-hooks)
+      - name: 🚀 Push Build to Branch (Backward Compatibility)
         uses: JamesIves/github-pages-deploy-action@v4.5.0
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: build
           folder: dist
-
-      # Trigger cPanel Auto-Deployment via HTTPS Webhook call
-      - name: 🔔 Trigger cPanel Auto-Deploy Hook
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: |
-          curl -sS "https://mssf.com.ng/deploy.php?key=mssf_deploy_key_2026"
-
-

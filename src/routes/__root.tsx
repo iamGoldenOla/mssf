@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { getOrganizationSchema, getWebSiteSchema } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -90,6 +91,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: getOrganizationSchema() }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: getWebSiteSchema() }}
+      />
       <ScrollRestoration />
       <Outlet />
     </QueryClientProvider>

@@ -91,7 +91,7 @@ function cssTransition(t: any): { dur: number; ease: string } {
 }
 
 export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
-    props = { ...COMPONENT_DEFAULTS, ...props }
+    props = { ...COMPONENT_DEFAULTS, ...props } as Smooth3DSlideshowProps
     const {
         slides = DEFAULT_SLIDES,
         cardWidth = 557,

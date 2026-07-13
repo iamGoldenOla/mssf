@@ -1,14 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type {} from "@tanstack/react-start";
+import { getBlogPosts } from "@/lib/cms";
 
-const BASE_URL = "";
+const BASE_URL = "https://mssf.com.ng";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const paths = ["/", "/who-we-are", "/what-we-do", "/projects", "/gallery", "/donate", "/get-involved", "/contact"];
-        const urls = paths
+        const staticPaths = [
+          "/",
+          "/who-we-are",
+          "/what-we-do",
+          "/projects",
+          "/gallery",
+          "/donate",
+          "/get-involved",
+          "/contact",
+          "/blog"
+        ];
+        
+        // Add dynamic blog posts
+        let blogPosts: any[] = [];
+        try {
+          blogPosts = getBlogPosts();
+        } catch (e) {
+          console.error("Sitemap load error:", e);
+        }
+        
+        const blogPaths = blogPosts.map(p => `/blog/${p.slug}`);
+        const allPaths = [...staticPaths, ...blogPaths];
+
+        const urls = allPaths
           .map(
             (p) =>
               `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`
