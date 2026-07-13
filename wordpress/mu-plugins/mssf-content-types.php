@@ -593,7 +593,7 @@ function mssf_render_webhook_log() {
 |--------------------------------------------------------------------------
 |
 | Obscures the standard /wp-admin and wp-login.php login pages.
-| Visiting /star will drop a session cookie and redirect to the login form.
+| Visiting /ball will drop a session cookie and redirect to the login form.
 | Any other direct visits to wp-login.php/wp-admin will be redirected
 | to the public blog page at https://mssf.com.ng/blog.
 |
@@ -609,11 +609,11 @@ function mssf_render_webhook_log() {
 function mssf_secure_login_protection() {
 	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
 
-	// 1. Intercept the secret URL /star
-	if ( preg_match( '/\/star\/?$/i', strtok( $request_uri, '?' ) ) || isset( $_GET['star'] ) ) {
+	// 1. Intercept the secret URL /ball
+	if ( preg_match( '/\/ball\/?$/i', strtok( $request_uri, '?' ) ) || isset( $_GET['ball'] ) ) {
 		$cookie_path = defined('COOKIEPATH') ? COOKIEPATH : '/';
 		$cookie_domain = defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '';
-		setcookie( 'mssf_star_access', '1', time() + 3600, $cookie_path, $cookie_domain, is_ssl(), true );
+		setcookie( 'mssf_ball_access', '1', time() + 3600, $cookie_path, $cookie_domain, is_ssl(), true );
 		
 		// Redirect to standard login URL
 		wp_safe_redirect( wp_login_url() );
@@ -630,7 +630,7 @@ function mssf_secure_login_protection() {
 		}
 
 		// Check for the secret cookie
-		if ( ! isset( $_COOKIE['mssf_star_access'] ) ) {
+		if ( ! isset( $_COOKIE['mssf_ball_access'] ) ) {
 			wp_redirect( 'https://mssf.com.ng/blog', 302 );
 			exit;
 		}
