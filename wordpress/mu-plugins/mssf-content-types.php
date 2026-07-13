@@ -611,8 +611,9 @@ function mssf_secure_login_protection() {
 
 	// 1. Intercept the secret URL /star
 	if ( preg_match( '/\/star\/?$/i', strtok( $request_uri, '?' ) ) || isset( $_GET['star'] ) ) {
-		// Set a secure, httpOnly cookie valid for 1 hour
-		setcookie( 'mssf_star_access', '1', time() + 3600, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true );
+		$cookie_path = defined('COOKIEPATH') ? COOKIEPATH : '/';
+		$cookie_domain = defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '';
+		setcookie( 'mssf_star_access', '1', time() + 3600, $cookie_path, $cookie_domain, is_ssl(), true );
 		
 		// Redirect to standard login URL
 		wp_safe_redirect( wp_login_url() );
@@ -635,5 +636,6 @@ function mssf_secure_login_protection() {
 		}
 	}
 }
-add_action( 'muplugins_loaded', 'mssf_secure_login_protection' );
+add_action( 'plugins_loaded', 'mssf_secure_login_protection' );
+
 
