@@ -593,49 +593,37 @@ function mssf_render_webhook_log() {
 |--------------------------------------------------------------------------
 |
 | Obscures the standard /wp-admin and wp-login.php login pages.
-| Visiting /ball will drop a session cookie and redirect to the login form.
+| Accessing wp-login.php?access=ball allows login access.
 | Any other direct visits to wp-login.php/wp-admin will be redirected
 | to the public blog page at https://mssf.com.ng/blog.
 |
 */
 
 /**
- * Hide standard login/admin paths unless accessed via the secret /star endpoint.
+ * Hide standard login/admin paths unless accessed via the secret ?access=ball query.
  *
- * Runs very early during muplugins_loaded to block unauthorized visits.
+ * Runs during plugins_loaded to block unauthorized visits.
  *
  * @return void
  */
 function mssf_secure_login_protection() {
-	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
-
-	// 1. Intercept the secret URL /ball
-	if ( preg_match( '/\/ball\/?$/i', strtok( $request_uri, '?' ) ) || isset( $_GET['ball'] ) ) {
-		$cookie_path = defined('COOKIEPATH') ? COOKIEPATH : '/';
-		$cookie_domain = defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '';
-		setcookie( 'mssf_ball_access', '1', time() + 3600, $cookie_path, $cookie_domain, is_ssl(), true );
-		
-		// Redirect to standard login URL
-		wp_safe_redirect( wp_login_url() );
-		exit;
-	}
-
-	// 2. Protect wp-login.php from unauthorized access
+	// Protect wp-login.php from unauthorized access
 	$is_login_page = ( isset( $_SERVER['SCRIPT_NAME'] ) && strpos( $_SERVER['SCRIPT_NAME'], 'wp-login.php' ) !== false );
 
 	if ( $is_login_page ) {
-		// Allow login submissions (POST) and already logged-in users to proceed
+		// 1. Allow login submissions (POST) and already logged-in users to proceed
 		if ( 'POST' === $_SERVER['REQUEST_METHOD'] || is_user_logged_in() ) {
 			return;
 		}
 
-		// Check for the secret cookie
-		if ( ! isset( $_COOKIE['mssf_ball_access'] ) ) {
+		// 2. Require the secret query key
+		if ( ! isset( $_GET['access'] ) || $_GET['access'] !== 'ball' ) {
 			wp_redirect( 'https://mssf.com.ng/blog', 302 );
 			exit;
 		}
 	}
 }
 add_action( 'plugins_loaded', 'mssf_secure_login_protection' );
+
 
 
